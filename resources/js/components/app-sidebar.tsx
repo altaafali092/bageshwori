@@ -10,11 +10,13 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { dashboard } from '@/routes';
+
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid } from 'lucide-react';
+import { BookOpen, Folder, LayoutGrid, LucideSettings2, Shield } from 'lucide-react';
 import AppLogo from './app-logo';
+import { dashboard } from '@/routes/admin';
+import { index as permissionsIndex } from '@/routes/admin/permissions';
 
 const mainNavItems: NavItem[] = [
     {
@@ -22,6 +24,19 @@ const mainNavItems: NavItem[] = [
         href: dashboard(),
         icon: LayoutGrid,
     },
+     {
+        title: "Settings",
+        href: "#",
+        icon: LucideSettings2,
+        items: [
+            {
+                title: "Permissions",
+                href: permissionsIndex(),
+                icon: Shield
+            },
+            
+        ]
+    }
 ];
 
 const footerNavItems: NavItem[] = [
@@ -57,7 +72,7 @@ export function AppSidebar() {
             </SidebarContent>
 
             <SidebarFooter>
-                <NavFooter items={footerNavItems} className="mt-auto" />
+                {/* <NavFooter items={footerNavItems} className="mt-auto" /> */}
                 <NavUser />
             </SidebarFooter>
         </Sidebar>
