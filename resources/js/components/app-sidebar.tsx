@@ -13,10 +13,12 @@ import {
 
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid, LucideSettings2, Shield } from 'lucide-react';
+import { BookOpen, Folder, LayoutGrid, LucideSettings2, Shield, User2Icon } from 'lucide-react';
 import AppLogo from './app-logo';
 import { dashboard } from '@/routes/admin';
 import { index as permissionsIndex } from '@/routes/admin/permissions';
+import { index as rolesIndex } from '@/routes/admin/roles';
+import { index as usersIndex } from '@/routes/admin/users';
 
 const mainNavItems: NavItem[] = [
     {
@@ -33,6 +35,16 @@ const mainNavItems: NavItem[] = [
                 title: "Permissions",
                 href: permissionsIndex(),
                 icon: Shield
+            },
+            {
+                title: "Roles",
+                href: rolesIndex(),
+                icon: Shield
+            },
+            {
+                title: "Users",
+                href: usersIndex(),
+                icon: User2Icon
             },
             
         ]
