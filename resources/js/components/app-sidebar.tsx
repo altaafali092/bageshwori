@@ -13,12 +13,13 @@ import {
 
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid, LucideSettings2, Shield, User2Icon } from 'lucide-react';
+import { BookOpen, Folder, LayoutGrid, LucideSettings2, PackageSearch, Shield, User2Icon, UserPen, UserRound } from 'lucide-react';
 import AppLogo from './app-logo';
 import { dashboard } from '@/routes/admin';
 import { index as permissionsIndex } from '@/routes/admin/permissions';
 import { index as rolesIndex } from '@/routes/admin/roles';
 import { index as usersIndex } from '@/routes/admin/users';
+import { index as categoriesIndex } from '@/routes/admin/categories';
 
 const mainNavItems: NavItem[] = [
     {
@@ -26,7 +27,30 @@ const mainNavItems: NavItem[] = [
         href: dashboard(),
         icon: LayoutGrid,
     },
-     {
+    {
+        title: "Product",
+        href: "#",
+        icon: PackageSearch,
+        items: [
+            {
+                title: " Paren Categories",
+                href: categoriesIndex(),
+                icon: Shield
+            },
+            {
+                title: "Categories",
+                href: rolesIndex(),
+                icon: UserPen
+            },
+            {
+                title: "Users",
+                href: usersIndex(),
+                icon: User2Icon
+            },
+
+        ]
+    },
+    {
         title: "Settings",
         href: "#",
         icon: LucideSettings2,
@@ -39,14 +63,14 @@ const mainNavItems: NavItem[] = [
             {
                 title: "Roles",
                 href: rolesIndex(),
-                icon: Shield
+                icon: UserPen
             },
             {
                 title: "Users",
                 href: usersIndex(),
                 icon: User2Icon
             },
-            
+
         ]
     }
 ];
