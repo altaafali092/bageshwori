@@ -43,17 +43,22 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Category $category)
     {
-        //
+        return Inertia::render('admin/Category/Show',[
+            'category' => $category,
+        ]);
+
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Category $category)
     {
-        //
+        return Inertia::render('admin/Category/Edit',[
+            'category' => $category,
+        ]);
     }
 
     /**
