@@ -1,7 +1,6 @@
 import React from 'react';
 import { Head, Form, usePage } from '@inertiajs/react';
 import AppLayout from '@/layouts/app-layout';
-
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
