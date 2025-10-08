@@ -33,7 +33,7 @@ const mainNavItems: NavItem[] = [
         icon: PackageSearch,
         items: [
             {
-                title: " Paren Categories",
+                title: " Parent Categories",
                 href: categoriesIndex(),
                 icon: Shield
             },
