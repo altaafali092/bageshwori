@@ -17,8 +17,13 @@ class Category extends Model
         'description',
         'status'
     ];
+
+    protected $casts = [
+        'status'=>'boolean',
+    ];
+    
      public function image(): Attribute
     {
-        return $this->castingFile(defaultPath: 'FoodCategory');
+        return $this->castingFile(defaultPath: 'Category');
     }
 }

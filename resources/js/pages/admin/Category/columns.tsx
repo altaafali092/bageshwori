@@ -4,8 +4,9 @@ import { Link, router } from "@inertiajs/react";
 import {  Pencil, ScanEye, Trash } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import { Category } from "@/types/Admin/Category";
-import { status } from "@/routes/admin/admin/categories";
+
 import { destroy, edit, show } from "@/routes/admin/categories";
+import { status } from "@/actions/App/Http/Controllers/Admin/CategoryController";
 
 
 
@@ -72,12 +73,12 @@ export const columns: ColumnDef<Category>[] = [
                 <div className="flex gap-2">
                     {/* Edit */}
                     <Button variant="outline" size="sm" asChild>
-                        <Link href={edit(category.id)}>
+                        <Link href={edit(category.slug)}>
                             <Pencil className="h-4 w-4" />
                         </Link>
                     </Button>
                     <Button variant="outline" size="sm" asChild>
-                        <Link href={show(category.id)}>
+                        <Link href={show(category.slug)}>
                             <ScanEye className="h-4 w-4" />
                         </Link>
                     </Button>

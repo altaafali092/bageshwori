@@ -17,6 +17,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('roles', RoleController::class);
     Route::resource('users',UserController::class);
     Route::resource('categories',CategoryController::class);
-    Route::get('categories/{slug:category}/status',[CategoryController::class,'status'])->name('admin.categories.status');
+    Route::get('categories/{category}/status',[CategoryController::class,'status'])->name('categories.status');
    
 });

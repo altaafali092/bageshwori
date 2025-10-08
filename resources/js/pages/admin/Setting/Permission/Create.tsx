@@ -1,5 +1,5 @@
-import React, { useState, FormEvent } from 'react';
-import { Form, Head, useForm } from '@inertiajs/react';
+
+import { Form, Head } from '@inertiajs/react';
 import AppLayout from '@/layouts/app-layout';
 
 
