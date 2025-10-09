@@ -68,17 +68,16 @@ export const columns: ColumnDef<Category>[] = [
         header: "Actions",
         cell: ({ row }) => {
             const category = row.original;
-
             return (
                 <div className="flex gap-2">
                     {/* Edit */}
                     <Button variant="outline" size="sm" asChild>
-                        <Link href={edit(category.slug)}>
+                        <Link href={edit(category.id)}>
                             <Pencil className="h-4 w-4" />
                         </Link>
                     </Button>
                     <Button variant="outline" size="sm" asChild>
-                        <Link href={show(category.slug)}>
+                        <Link href={show(category.id)}>
                             <ScanEye className="h-4 w-4" />
                         </Link>
                     </Button>
