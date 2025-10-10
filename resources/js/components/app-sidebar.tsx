@@ -20,6 +20,7 @@ import { index as permissionsIndex } from '@/routes/admin/permissions';
 import { index as rolesIndex } from '@/routes/admin/roles';
 import { index as usersIndex } from '@/routes/admin/users';
 import { index as categoriesIndex } from '@/routes/admin/categories';
+import { index as productIndex } from '@/routes/admin/products';
 
 const mainNavItems: NavItem[] = [
     {
@@ -38,10 +39,11 @@ const mainNavItems: NavItem[] = [
                 icon: Shield
             },
             {
-                title: "Categories",
-                href: rolesIndex(),
-                icon: UserPen
+                title: "Products",
+                href: productIndex(),
+                icon: PackageSearch
             },
+          
             {
                 title: "Users",
                 href: usersIndex(),

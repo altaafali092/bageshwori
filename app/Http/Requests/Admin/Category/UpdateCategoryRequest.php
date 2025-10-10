@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin\Category;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateCategoryRequest extends FormRequest
 {
@@ -24,6 +25,7 @@ class UpdateCategoryRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string', 'max:255'],
+            'slug'=>['required','alpha_dash',Rule::unique('categories','slug')->ignore($this->category)],
             'image' => ['nullable', 'image', 'max:2048'],
         ];
     }
