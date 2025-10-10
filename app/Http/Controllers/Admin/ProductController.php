@@ -50,8 +50,11 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+        $categories = Category::latest()->get();
+        $product->load('category');
         return Inertia::render('admin/Product/Show', [
             'product' => $product,
+            'categories' => $categories,
         ]);
     }
 
