@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Search, Facebook, Instagram, Phone, MapPin } from "lucide-react";
 import { CarouselDemo } from "@/components/Frontend/Carousel";
+import PromoBanner from "@/components/Frontend/PromoBanner";
 
 export default function BageshworiKennel() {
     const [searchQuery, setSearchQuery] = useState("");
@@ -265,8 +266,13 @@ export default function BageshworiKennel() {
                             </div>
                         </div>
                     </div>
+
+                </div>
+                <div>
+                    <PromoBanner />
                 </div>
             </div>
+
 
 
         </>
