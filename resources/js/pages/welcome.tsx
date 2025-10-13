@@ -3,6 +3,7 @@ import { Search, Facebook, Instagram, Phone, MapPin } from "lucide-react";
 import { CarouselDemo } from "@/components/Frontend/Carousel";
 import PromoBanner from "@/components/Frontend/PromoBanner";
 import AuthLayout from "./Frontend/layouts/AuthLayout";
+import CategorySlider from "@/components/Frontend/CategorySlider";
 
 export default function BageshworiKennel() {
 
@@ -18,21 +19,36 @@ export default function BageshworiKennel() {
 
     return (
         <AuthLayout>
-          
+
+            <div className="max-w-7xl mx-auto px-4 py-8 gap-6">
+                <div className="w-full">
+                    <CarouselDemo />
+                </div>
+                <div className="max-w-7xl mx-auto px-4 py-8  gap-6">
+                    <button className="bg-emerald-600 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 transition font-semibold shadow-lg">
+                        Weekly Discount
+                    </button>
+                </div>
+            </div>
+
             <div className="min-h-screen bg-gray-50 p-6">
                 <div className="max-w-7xl mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                        {/* Left Sidebar - Categories */}
+                        {/* ===== Left Sidebar - Categories ===== */}
                         <div className="lg:col-span-3">
                             <div className="bg-white rounded-2xl shadow-sm p-6">
                                 <h2 className="text-2xl font-bold text-gray-800 mb-6 pb-4 border-b-2 border-gray-200">
                                     Top Categories
                                 </h2>
-                                <div className="space-y-1">
+
+                                {/* Scrollable List — scrollbar hidden but scroll works */}
+                                <div className="h-[380px] overflow-y-auto space-y-1 
+                  [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                                     {categories.map((category, index) => (
                                         <div
                                             key={index}
-                                            className="flex items-center justify-between py-3 px-3 hover:bg-gray-50 rounded-lg cursor-pointer transition-colors group"
+                                            className="flex items-center justify-between py-3 px-3 hover:bg-gray-50 
+                      rounded-lg cursor-pointer transition-colors group"
                                         >
                                             <div className="flex items-center gap-3">
                                                 <span className="text-2xl">{category.icon}</span>
@@ -49,62 +65,15 @@ export default function BageshworiKennel() {
                             </div>
                         </div>
 
-                        {/* Main Content Area */}
+                        {/* ===== Main Content ===== */}
                         <div className="lg:col-span-9">
                             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                                {/* Main Featured Card - Healthy Vegetable Drinks */}
-                                <div className="lg:col-span-2 bg-gradient-to-br from-yellow-400 via-yellow-300 to-yellow-400 rounded-2xl shadow-lg p-8 relative overflow-hidden">
-                                    {/* Decorative circles */}
-                                    <div className="absolute top-10 right-10 w-64 h-64 bg-yellow-300/30 rounded-full blur-3xl"></div>
-                                    <div className="absolute bottom-10 left-10 w-48 h-48 bg-yellow-200/30 rounded-full blur-2xl"></div>
-
-                                    <div className="relative z-10">
-                                        <span className="inline-block bg-red-500 text-white text-xs font-bold px-4 py-1.5 rounded-full mb-4">
-                                            JUICY
-                                        </span>
-
-                                        <h1 className="text-5xl font-bold text-gray-900 mb-4 leading-tight">
-                                            Healthy Vegetable<br />Drinks
-                                        </h1>
-
-                                        <p className="text-emerald-700 text-2xl font-bold mb-6">
-                                            FROM $1.99-$2.99
-                                        </p>
-
-                                        <button className="bg-white text-gray-700 font-semibold px-8 py-3 rounded-full hover:bg-gray-50 transition-all shadow-md hover:shadow-lg">
-                                            Shop Now
-                                        </button>
-                                    </div>
-
-                                    {/* Product Image Area */}
-                                    <div className="absolute bottom-0 right-0 w-2/3">
-                                        <div className="relative">
-                                            {/* Smoothie glasses representation */}
-                                            <div className="flex gap-2 justify-end items-end p-8">
-                                                <div className="w-24 h-32 bg-gradient-to-b from-orange-500 to-orange-600 rounded-2xl shadow-xl"></div>
-                                                <div className="w-24 h-40 bg-gradient-to-b from-green-500 to-green-600 rounded-2xl shadow-xl"></div>
-                                                <div className="w-24 h-36 bg-gradient-to-b from-pink-400 to-pink-500 rounded-2xl shadow-xl"></div>
-                                                <div className="w-24 h-32 bg-gradient-to-b from-purple-600 to-purple-700 rounded-2xl shadow-xl"></div>
-                                            </div>
-                                            {/* Vegetables */}
-                                            <div className="absolute bottom-0 left-0 flex gap-2">
-                                                <div className="w-20 h-20 bg-orange-500 rounded-full"></div>
-                                                <div className="text-4xl">🥒</div>
-                                                <div className="text-4xl">🍅</div>
-                                                <div className="text-3xl">🥕</div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {/* Decorative dots */}
-                                    <div className="absolute bottom-6 left-8 flex gap-2">
-                                        <div className="w-3 h-3 bg-white/60 rounded-full"></div>
-                                        <div className="w-3 h-3 bg-white/40 rounded-full"></div>
-                                        <div className="w-3 h-3 bg-white/40 rounded-full"></div>
-                                    </div>
+                                {/* Slider */}
+                                <div className="lg:col-span-2">
+                                    <CategorySlider />
                                 </div>
 
-                                {/* Right Column - Two Product Cards */}
+                                {/* Right Column - Product Cards */}
                                 <div className="space-y-6">
                                     {/* Fresh Coconut Water Card */}
                                     <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl shadow-lg p-6 relative overflow-hidden">
@@ -120,7 +89,8 @@ export default function BageshworiKennel() {
                                             FROM $1.99-$2.99
                                         </p>
 
-                                        <button className="bg-white text-gray-700 font-semibold px-6 py-2 rounded-full hover:bg-gray-50 transition-all shadow-md text-sm">
+                                        <button className="bg-white text-gray-700 font-semibold px-6 py-2 rounded-full 
+                    hover:bg-gray-50 transition-all shadow-md text-sm">
                                             Shop Now
                                         </button>
 
@@ -147,7 +117,8 @@ export default function BageshworiKennel() {
                                             FROM $1.99-$2.99
                                         </p>
 
-                                        <button className="bg-white text-gray-700 font-semibold px-6 py-2 rounded-full hover:bg-gray-50 transition-all shadow-md text-sm">
+                                        <button className="bg-white text-gray-700 font-semibold px-6 py-2 rounded-full 
+                    hover:bg-gray-50 transition-all shadow-md text-sm">
                                             Shop Now
                                         </button>
 
@@ -162,9 +133,10 @@ export default function BageshworiKennel() {
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <div>
+
+                {/* Bottom Promo Banner */}
+                <div className="mt-8">
                     <PromoBanner />
                 </div>
             </div>
