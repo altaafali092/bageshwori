@@ -21,6 +21,7 @@ import { index as rolesIndex } from '@/routes/admin/roles';
 import { index as usersIndex } from '@/routes/admin/users';
 import { index as categoriesIndex } from '@/routes/admin/categories';
 import { index as productIndex } from '@/routes/admin/products';
+import { index as contactsIndex } from '@/routes/admin/contacts';
 
 const mainNavItems: NavItem[] = [
     {
@@ -74,7 +75,13 @@ const mainNavItems: NavItem[] = [
             },
 
         ]
-    }
+    },
+    {
+        title: "Contact",
+        href: contactsIndex(),
+        icon: UserRound,
+        
+    },
 ];
 
 const footerNavItems: NavItem[] = [
