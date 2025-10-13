@@ -1,38 +1,67 @@
-import React from 'react';
-import { Sparkles } from 'lucide-react';
+import { Asterisk } from "lucide-react"
+
+interface Promo {
+  id: number
+  text: string
+}
+
+const promos: Promo[] = [
+  { id: 1, text: "Exclusive 20% discount for loyal customers" },
+  { id: 2, text: "30% Cashback on orders above $499" },
+  { id: 3, text: 'Use code: "Hello25" to get $25 off on first order' },
+  { id: 4, text: "Trusted by over 10,000 happy customers" },
+]
 
 export default function PromoBanner() {
-    const promos = [
-        "30% Cashback on orders above $499",
-        'Use code:"Hello25" to get $25 off on first order',
-        "Trusted by Over 100,000 Healthy Customers Worldwide"
-    ];
+  // Duplicate for smooth infinite scroll
+  const duplicatedPromos = [...promos, ...promos]
 
-    return (
-        <div className="w-full bg-gray-100 py-4 overflow-hidden">
-            <div className="flex items-center justify-center gap-8 px-4">
-                {promos.map((promo, index) => (
-                    <React.Fragment key={index}>
-                        <div className="flex items-center gap-3">
-                            <Sparkles className="w-5 h-5 text-emerald-600 flex-shrink-0" fill="currentColor" />
-                            <span className="text-gray-700 font-medium whitespace-nowrap">
-                                {promo.includes('Hello25') ? (
-                                    <>
-                                        Use code:
-                                        <span className="font-bold">"Hello25"</span>
-                                        {' '}to get $25 off on first order
-                                    </>
-                                ) : (
-                                    promo
-                                )}
-                            </span>
-                        </div>
-                        {index < promos.length - 1 && (
-                            <Sparkles className="w-5 h-5 text-emerald-600 flex-shrink-0" fill="currentColor" />
-                        )}
-                    </React.Fragment>
-                ))}
+  return (
+    <section className="bg-[#f9f9f7] text-emerald-900 overflow-hidden border-y border-gray-200">
+      <div className="relative flex overflow-hidden whitespace-nowrap py-8">
+        {/* Gradient edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-[#f9f9f7] to-transparent z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#f9f9f7] to-transparent z-10" />
+
+        {/* Marquee text */}
+        <div
+          className="flex items-center gap-8 animate-marquee text-sm md:text-base font-medium"
+          style={{
+            animation: "marquee 40s linear infinite",
+            width: "max-content",
+          }}
+          onMouseEnter={(e) => {
+            const el = e.currentTarget
+            el.style.animationPlayState = "paused"
+          }}
+          onMouseLeave={(e) => {
+            const el = e.currentTarget
+            el.style.animationPlayState = "running"
+          }}
+        >
+          {duplicatedPromos.map((promo, i) => (
+            <div key={`${promo.id}-${i}`} className="flex items-center gap-8 text-2xl font-extrabold">
+              <span>{promo.text}</span>
+              <Asterisk className="text-emerald-700 w-16 h-8 font-extrabold flex-shrink-0" />
             </div>
+          ))}
         </div>
-    );
+      </div>
+
+      {/* Animation CSS */}
+      <style jsx>{`
+        @keyframes marquee {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        .animate-marquee {
+          animation: marquee 40s linear infinite;
+        }
+      `}</style>
+    </section>
+  )
 }

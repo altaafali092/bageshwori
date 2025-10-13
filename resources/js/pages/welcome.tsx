@@ -3,7 +3,9 @@ import { Search, Facebook, Instagram, Phone, MapPin } from "lucide-react";
 import { CarouselDemo } from "@/components/Frontend/Carousel";
 import PromoBanner from "@/components/Frontend/PromoBanner";
 import AuthLayout from "./Frontend/layouts/AuthLayout";
-import CategorySlider from "@/components/Frontend/CategorySlider";
+import { CategorySlider } from "@/components/Frontend/CategorySlider";
+
+
 
 export default function BageshworiKennel() {
 
@@ -94,13 +96,6 @@ export default function BageshworiKennel() {
                                             Shop Now
                                         </button>
 
-                                        {/* Coconut image placeholder */}
-                                        <div className="absolute -right-8 -bottom-4 w-48 h-48">
-                                            <div className="relative">
-                                                <div className="text-8xl">🥥</div>
-                                                <div className="absolute top-0 right-0 text-6xl">🌴</div>
-                                            </div>
-                                        </div>
                                     </div>
 
                                     {/* Nutritious Veggie Foods Card */}
@@ -122,12 +117,7 @@ export default function BageshworiKennel() {
                                             Shop Now
                                         </button>
 
-                                        {/* Pasta package placeholder */}
-                                        <div className="absolute -right-4 -bottom-4 w-40 h-40">
-                                            <div className="bg-gradient-to-br from-green-600 to-green-700 rounded-xl shadow-xl p-4 transform rotate-12">
-                                                <div className="text-yellow-300 text-6xl text-center">🍝</div>
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
