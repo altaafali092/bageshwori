@@ -4,6 +4,7 @@ import { CarouselDemo } from "@/components/Frontend/Carousel";
 import PromoBanner from "@/components/Frontend/PromoBanner";
 import AuthLayout from "./Frontend/layouts/AuthLayout";
 import { CategorySlider } from "@/components/Frontend/CategorySlider";
+import TrendingProduct from "./Frontend/Index/TrendingProduct";
 
 
 
@@ -129,6 +130,9 @@ export default function BageshworiKennel() {
                 <div className="mt-8">
                     <PromoBanner />
                 </div>
+            </div>
+            <div>
+                <TrendingProduct/>
             </div>
 
 
