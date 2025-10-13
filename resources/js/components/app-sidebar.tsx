@@ -13,7 +13,7 @@ import {
 
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid, LucideSettings2, PackageSearch, Shield, User2Icon, UserPen, UserRound } from 'lucide-react';
+import { BookOpen, Folder, LayoutGrid, LucideSettings2, MessageCircleMore, PackageSearch, Shield, User2Icon, UserPen, UserRound } from 'lucide-react';
 import AppLogo from './app-logo';
 import { dashboard } from '@/routes/admin';
 import { index as permissionsIndex } from '@/routes/admin/permissions';
@@ -79,7 +79,7 @@ const mainNavItems: NavItem[] = [
     {
         title: "Contact",
         href: contactsIndex(),
-        icon: UserRound,
+        icon: MessageCircleMore,
         
     },
 ];
