@@ -2,6 +2,7 @@ import { Star } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Separator } from '@/components/ui/separator';
 
 export default function TrendingProduct() {
   const topSellingProducts = [
@@ -71,10 +72,40 @@ export default function TrendingProduct() {
       rating: 5,
       inStock: true,
       bgColor: "bg-gray-50",
-    image: "https://images.unsplash.com/photo-1709884735626-63e92727d8b6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1228"
+      image: "https://images.unsplash.com/photo-1709884735626-63e92727d8b6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1228"
     },
     {
       id: 3,
+      name: "Mix Fruit Cart",
+      price: 49.99,
+      originalPrice: 69.99,
+      rating: 5,
+      inStock: true,
+      bgColor: "bg-orange-50",
+      image: "https://images.unsplash.com/photo-1709884735626-63e92727d8b6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1228"
+    },
+    {
+      id: 4,
+      name: "Mix Fruit Cart",
+      price: 49.99,
+      originalPrice: 69.99,
+      rating: 5,
+      inStock: true,
+      bgColor: "bg-orange-50",
+      image: "https://images.unsplash.com/photo-1709884735626-63e92727d8b6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1228"
+    },
+    {
+      id: 5,
+      name: "Mix Fruit Cart",
+      price: 49.99,
+      originalPrice: 69.99,
+      rating: 5,
+      inStock: true,
+      bgColor: "bg-orange-50",
+      image: "https://images.unsplash.com/photo-1709884735626-63e92727d8b6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1228"
+    },
+    {
+      id: 5,
       name: "Mix Fruit Cart",
       price: 49.99,
       originalPrice: 69.99,
@@ -91,9 +122,8 @@ export default function TrendingProduct() {
         {[...Array(5)].map((_, i) => (
           <Star
             key={i}
-            className={`w-3.5 h-3.5 ${
-              i < rating ? 'fill-orange-400 text-orange-400' : 'fill-gray-300 text-gray-300'
-            }`}
+            className={`w-3.5 h-3.5 ${i < rating ? 'fill-orange-400 text-orange-400' : 'fill-gray-300 text-gray-300'
+              }`}
           />
         ))}
       </div>
@@ -107,11 +137,12 @@ export default function TrendingProduct() {
           {/* Top Selling Sidebar */}
           <div className="lg:col-span-3">
             <Card>
-              <div className="p-6">
+              <div className="px-6">
                 <div className='mb-4'>
-                  <h2 className="text-lg font-semibold text-gray-900 pb-2 border-b-2 border-teal-400 inline-block">
+                  <h2 className="text-lg font-semibold text-gray-900 pb-2  inline-block">
                     Top Selling
                   </h2>
+                  <Separator className='bg-emerald-500' />
                 </div>
 
                 <div className="space-y-3">
@@ -143,23 +174,35 @@ export default function TrendingProduct() {
                 </div>
               </div>
             </Card>
+            <div className='mt-3'>
+              <div className='mb-4'>
+                <img
+                  src="https://bageshworikennelhouse.com.np/wp-content/themes/grocefycart/assets/images/ads.jpg"
+                  alt=""
+                  className='w-full h-80 object-cover rounded-lg'
+                />
+              </div>
+            </div>
           </div>
 
           {/* Trending Products Main Section */}
           <div className="lg:col-span-9">
-            <div className="flex justify-between items-center mb-6">
+            <div className="flex justify-between items-center mb-2">
               <div>
-                <h2 className="text-2xl font-semibold text-gray-900 pb-2 border-b-2 border-gray-300 inline-block">
+                <h2 className="text-2xl font-semibold text-gray-900 pb-2  inline-block">
                   Trending Products
                 </h2>
+
               </div>
-              <Button 
-                variant="outline" 
+
+              <Button
+                variant="outline"
                 className="rounded-full px-8 border-gray-300 text-gray-700 hover:bg-gray-50"
               >
                 See All
               </Button>
             </div>
+            <Separator className='bg-emerald-500 mb-4 mt-5' />
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {trendingProducts.map((product) => (
@@ -196,9 +239,9 @@ export default function TrendingProduct() {
                           ${product.price.toFixed(2)}
                         </span>
                       </div>
-                      <Button 
+                      <Button
                         size="sm"
-                        variant="outline" 
+                        variant="outline"
                         className="text-emerald-600 border-emerald-100 hover:bg-emerald-50 hover:text-emerald-700 bg-emerald-50/50 font-medium text-xs px-4"
                       >
                         Add To Cart
