@@ -42,15 +42,6 @@ export default function TrendingProduct() {
       bgColor: "bg-green-100",
       image: "https://images.unsplash.com/photo-1709884735626-63e92727d8b6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1228"
     },
-    {
-      id: 5,
-      name: "Pomegranate",
-      price: 49.99,
-      rating: 5,
-      inStock: true,
-      bgColor: "bg-red-100",
-      image: "https://images.unsplash.com/photo-1709884735626-63e92727d8b6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1228"
-    }
   ];
 
   const trendingProducts = [
@@ -131,7 +122,7 @@ export default function TrendingProduct() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6 mb-8">
+    <div className="min-h-screen max-w-7xl mx-auto px-4 py-8">
       <div className="max-w-[1400px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Top Selling Sidebar */}
@@ -156,7 +147,7 @@ export default function TrendingProduct() {
                           <h3 className="text-sm font-medium text-gray-900 mb-1.5">
                             {product.name}
                           </h3>
-                          <div className="flex items-center gap-2 mb-1.5">
+                          <div className="flex items-center gap-2 mb-1.5 mt-4">
                             <StarRating rating={product.rating} />
                             {product.inStock && (
                               <Badge variant="secondary" className="text-xs text-emerald-600 bg-emerald-50 hover:bg-emerald-50">
@@ -164,7 +155,7 @@ export default function TrendingProduct() {
                               </Badge>
                             )}
                           </div>
-                          <p className="text-base font-semibold text-emerald-600">
+                          <p className="text-base font-semibold text-emerald-600 mt-4">
                             ${product.price.toFixed(2)}
                           </p>
                         </div>

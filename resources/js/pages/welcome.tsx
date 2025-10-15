@@ -5,6 +5,8 @@ import PromoBanner from "@/components/Frontend/PromoBanner";
 import AuthLayout from "./Frontend/layouts/AuthLayout";
 import { CategorySlider } from "@/components/Frontend/CategorySlider";
 import TrendingProduct from "./Frontend/Index/TrendingProduct";
+import PromoCards from "./Frontend/Index/PromoCards";
+import DealWeek from "./Frontend/Index/DealWeek";
 
 
 
@@ -133,6 +135,12 @@ export default function BageshworiKennel() {
             </div>
             <div>
                 <TrendingProduct/>
+            </div>
+            <div>
+                <PromoCards/>
+            </div>
+            <div>
+                <DealWeek/>
             </div>
 
 
