@@ -7,6 +7,10 @@ import { CategorySlider } from "@/components/Frontend/CategorySlider";
 import TrendingProduct from "./Frontend/Index/TrendingProduct";
 import PromoCards from "./Frontend/Index/PromoCards";
 import DealWeek from "./Frontend/Index/DealWeek";
+import Banner from "./Frontend/Index/Banner";
+import BestSelling from "./Frontend/Index/BestSelling";
+import Blog from "./Frontend/Index/Blog";
+import CategoryBanner from "./Frontend/Index/CategoryBanner";
 
 
 
@@ -141,6 +145,14 @@ export default function BageshworiKennel() {
             </div>
             <div>
                 <DealWeek/>
+            </div>
+            <div>
+                <Banner/>
+            </div>
+            <div>
+                <BestSelling/>
+                <Blog/>
+                <CategoryBanner/>
             </div>
 
 

@@ -80,7 +80,7 @@ export default function DealWeek() {
             <div className="flex justify-between items-center mb-2">
                 <div>
                     <h2 className="text-2xl font-semibold text-gray-900 pb-2  inline-block">
-                        Trending Products
+                        Deal Of The Weak 
                     </h2>
 
                 </div>
