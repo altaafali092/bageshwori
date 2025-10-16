@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button"
+
 import { Separator } from "@/components/ui/separator"
-import { Star } from "lucide-react"// Define the Review type
+import { Star } from "lucide-react"// 
 interface Review {
     id: number
     name: string
