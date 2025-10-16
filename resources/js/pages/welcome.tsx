@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Search, Facebook, Instagram, Phone, MapPin } from "lucide-react";
+
 import { CarouselDemo } from "@/components/Frontend/Carousel";
 import PromoBanner from "@/components/Frontend/PromoBanner";
 import AuthLayout from "./Frontend/layouts/AuthLayout";
@@ -11,6 +11,8 @@ import Banner from "./Frontend/Index/Banner";
 import BestSelling from "./Frontend/Index/BestSelling";
 import Blog from "./Frontend/Index/Blog";
 import CategoryBanner from "./Frontend/Index/CategoryBanner";
+import CustomerReviews from "./Frontend/Index/Review";
+import LastBanner from "./Frontend/Index/LastBanner";
 
 
 
@@ -153,6 +155,8 @@ export default function BageshworiKennel() {
                 <BestSelling/>
                 <Blog/>
                 <CategoryBanner/>
+                <CustomerReviews/>
+                <LastBanner/>
             </div>
 
 

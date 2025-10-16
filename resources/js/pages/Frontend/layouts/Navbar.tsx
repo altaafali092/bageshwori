@@ -69,7 +69,7 @@ const Navbar = () => {
                             className="flex-1 px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:border-emerald-500"
                         />
                         <button className="bg-yellow-400 hover:bg-yellow-500 transition px-4 py-2 rounded-r-lg">
-                            <SearchIcon size={20} />
+                            <SearchIcon size={25} />
                         </button>
                     </div>
                 </div>

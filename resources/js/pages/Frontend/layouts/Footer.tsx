@@ -95,7 +95,7 @@ export default function Footer() {
                 </div>
 
                 {/* Newsletter Section */}
-                <div className="mt-16 pt-12 border-t border-gray-800">
+                {/* <div className="mt-16 pt-12 border-t border-gray-800">
                     <div className="grid md:grid-cols-2 gap-8 items-center">
                         <div>
                             <h3 className="text-2xl font-bold mb-4">Newsletter Sign-up</h3>
@@ -115,7 +115,7 @@ export default function Footer() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
 
             {/* Bottom Bar */}
