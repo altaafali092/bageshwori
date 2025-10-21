@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\sliderController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -26,4 +27,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('contacts/{contact}/status',[ContactController::class,'status'])->name('contacts.status');
     Route::delete('contacts/{contact}',[ContactController::class,'destroy'])->name('contacts.destroy');
     Route::get('contacts/{contact}',[ContactController::class,'show'])->name('contacts.show');
+
+    Route::resource('sliders',sliderController::class);
+    Route::get('sliders/{slider}/status',[sliderController::class,'status'])->name('sliders.status');
 });

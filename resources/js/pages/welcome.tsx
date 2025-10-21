@@ -13,11 +13,14 @@ import Blog from "./Frontend/Index/Blog";
 import CategoryBanner from "./Frontend/Index/CategoryBanner";
 import CustomerReviews from "./Frontend/Index/Review";
 import LastBanner from "./Frontend/Index/LastBanner";
+import { Link, usePage } from "@inertiajs/react";
+import { productDetail } from "@/routes";
+import { Sliders } from "@/types/frontend";
 
 
 
 export default function BageshworiKennel() {
-
+    const sliders=usePage<{sliders:Sliders[]}>().props.sliders
     const categories = [
         { name: 'Fruits & Vegetable', count: 9, icon: '🥬' },
         { name: 'Pet Foods', count: 4, icon: '🐕' },
@@ -27,18 +30,18 @@ export default function BageshworiKennel() {
         { name: 'Coffee & Tea', count: 10, icon: '☕' },
         { name: 'Food Cupboard', count: 3, icon: '🏪' },
     ];
-
+    
     return (
         <AuthLayout>
 
             <div className="max-w-7xl mx-auto px-4 py-8 gap-6">
                 <div className="w-full">
-                    <CarouselDemo />
+                    <CarouselDemo sliders={sliders} />
                 </div>
                 <div className="max-w-7xl mx-auto px-4 py-8  gap-6">
-                    <button className="bg-emerald-600 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 transition font-semibold shadow-lg">
+                  <Link href={productDetail()} className="bg-emerald-600 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 transition font-semibold shadow-lg">
                         Weekly Discount
-                    </button>
+                    </Link>
                 </div>
             </div>
 

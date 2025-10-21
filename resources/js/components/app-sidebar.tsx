@@ -13,7 +13,7 @@ import {
 
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid, LucideSettings2, MessageCircleMore, PackageSearch, Shield, User2Icon, UserPen, UserRound } from 'lucide-react';
+import { BookOpen, Folder, ImageOff, LayoutGrid, LucideSettings2, MessageCircleMore, PackageSearch, Shield, SlidersIcon, User2Icon, UserPen, UserRound } from 'lucide-react';
 import AppLogo from './app-logo';
 import { dashboard } from '@/routes/admin';
 import { index as permissionsIndex } from '@/routes/admin/permissions';
@@ -22,12 +22,18 @@ import { index as usersIndex } from '@/routes/admin/users';
 import { index as categoriesIndex } from '@/routes/admin/categories';
 import { index as productIndex } from '@/routes/admin/products';
 import { index as contactsIndex } from '@/routes/admin/contacts';
+import { index as sliderIndex } from '@/routes/admin/sliders';
 
 const mainNavItems: NavItem[] = [
     {
         title: 'Dashboard',
         href: dashboard(),
         icon: LayoutGrid,
+    },
+    {
+        title: 'Slider',
+        href: sliderIndex(),
+        icon: SlidersIcon,
     },
     {
         title: "Product",
