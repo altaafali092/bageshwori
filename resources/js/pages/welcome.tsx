@@ -15,21 +15,15 @@ import CustomerReviews from "./Frontend/Index/Review";
 import LastBanner from "./Frontend/Index/LastBanner";
 import { Link, usePage } from "@inertiajs/react";
 import { productDetail } from "@/routes";
-import { Sliders } from "@/types/frontend";
+import { Categories, Products, Sliders } from "@/types/frontend";
 
 
 
 export default function BageshworiKennel() {
-    const sliders=usePage<{sliders:Sliders[]}>().props.sliders
-    const categories = [
-        { name: 'Fruits & Vegetable', count: 9, icon: '🥬' },
-        { name: 'Pet Foods', count: 4, icon: '🐕' },
-        { name: 'Frozen Seafoods', count: 6, icon: '🦐' },
-        { name: 'Dairy Products', count: 5, icon: '🥛' },
-        { name: 'Alcohol', count: 8, icon: '🍷' },
-        { name: 'Coffee & Tea', count: 10, icon: '☕' },
-        { name: 'Food Cupboard', count: 3, icon: '🏪' },
-    ];
+    const { sliders } = usePage<{ sliders: Sliders[] }>().props;
+    const{categories}=usePage<{ categories: Categories[] }>().props;
+    const{products}=usePage<{ products: Products[] }>().props;
+    const{topSells}=usePage<{ topSells: Products[] }>().props;
     
     return (
         <AuthLayout>
@@ -65,13 +59,15 @@ export default function BageshworiKennel() {
                       rounded-lg cursor-pointer transition-colors group"
                                         >
                                             <div className="flex items-center gap-3">
-                                                <span className="text-2xl">{category.icon}</span>
+                                                <span className="text-2xl">
+                                                    <img src={category.image} alt="" className="w-8 h-8 rounded-full" />
+                                                </span>
                                                 <span className="text-gray-700 font-medium group-hover:text-emerald-600 transition-colors">
                                                     {category.name}
                                                 </span>
                                             </div>
                                             <span className="text-emerald-600 font-semibold">
-                                                ({category.count})
+                                                ({category.products_count})
                                             </span>
                                         </div>
                                     ))}
@@ -143,7 +139,8 @@ export default function BageshworiKennel() {
                 </div>
             </div>
             <div>
-                <TrendingProduct/>
+                <TrendingProduct  products={products} topSells={topSells} 
+                />
             </div>
             <div>
                 <PromoCards/>

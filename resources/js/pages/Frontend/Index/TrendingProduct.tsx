@@ -3,123 +3,28 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
+import { Products } from '@/types/frontend';
 
-export default function TrendingProduct() {
-  const topSellingProducts = [
-    {
-      id: 1,
-      name: "Penne Rigate",
-      price: 29.99,
-      rating: 5,
-      inStock: true,
-      bgColor: "bg-orange-100",
-      image: "https://images.unsplash.com/photo-1709884735626-63e92727d8b6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1228"
-    },
-    {
-      id: 2,
-      name: "Farfalle",
-      price: 29.99,
-      rating: 5,
-      inStock: true,
-      bgColor: "bg-yellow-100",
-      image: "https://images.unsplash.com/photo-1709884735626-63e92727d8b6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1228"
-    },
-    {
-      id: 3,
-      name: "Strawberry",
-      price: 39.99,
-      rating: 5,
-      inStock: true,
-      bgColor: "bg-red-50",
-      image: "https://images.unsplash.com/photo-1709884735626-63e92727d8b6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1228"
-    },
-    {
-      id: 4,
-      name: "Capellini Tagliati",
-      price: 29.99,
-      rating: 5,
-      inStock: true,
-      bgColor: "bg-green-100",
-      image: "https://images.unsplash.com/photo-1709884735626-63e92727d8b6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1228"
-    },
-  ];
+interface TrendingProductProps {
+  products: Products[];
+  topSells: Products[];
+}
 
-  const trendingProducts = [
-    {
-      id: 1,
-      name: "Penne Rigate",
-      price: 39.99,
-      originalPrice: 49.99,
-      rating: 5,
-      inStock: true,
-      bgColor: "bg-orange-50",
-      image: "https://images.unsplash.com/photo-1709884735626-63e92727d8b6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1228"
-    },
-    {
-      id: 2,
-      name: "Wine Collection",
-      price: 999.99,
-      originalPrice: 1299.99,
-      rating: 5,
-      inStock: true,
-      bgColor: "bg-gray-50",
-      image: "https://images.unsplash.com/photo-1709884735626-63e92727d8b6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1228"
-    },
-    {
-      id: 3,
-      name: "Mix Fruit Cart",
-      price: 49.99,
-      originalPrice: 69.99,
-      rating: 5,
-      inStock: true,
-      bgColor: "bg-orange-50",
-      image: "https://images.unsplash.com/photo-1709884735626-63e92727d8b6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1228"
-    },
-    {
-      id: 4,
-      name: "Mix Fruit Cart",
-      price: 49.99,
-      originalPrice: 69.99,
-      rating: 5,
-      inStock: true,
-      bgColor: "bg-orange-50",
-      image: "https://images.unsplash.com/photo-1709884735626-63e92727d8b6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1228"
-    },
-    {
-      id: 5,
-      name: "Mix Fruit Cart",
-      price: 49.99,
-      originalPrice: 69.99,
-      rating: 5,
-      inStock: true,
-      bgColor: "bg-orange-50",
-      image: "https://images.unsplash.com/photo-1709884735626-63e92727d8b6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1228"
-    },
-    {
-      id: 5,
-      name: "Mix Fruit Cart",
-      price: 49.99,
-      originalPrice: 69.99,
-      rating: 5,
-      inStock: true,
-      bgColor: "bg-orange-50",
-      image: "https://images.unsplash.com/photo-1709884735626-63e92727d8b6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1228"
-    }
-  ];
+export default function TrendingProduct({ products, topSells }: TrendingProductProps) {
 
-  const StarRating = ({ rating }) => {
-    return (
-      <div className="flex gap-0.5">
-        {[...Array(5)].map((_, i) => (
-          <Star
-            key={i}
-            className={`w-3.5 h-3.5 ${i < rating ? 'fill-orange-400 text-orange-400' : 'fill-gray-300 text-gray-300'
-              }`}
-          />
-        ))}
-      </div>
-    );
-  };
+  // const StarRating = ({ rating }) => {
+  //   return (
+  //     <div className="flex gap-0.5">
+  //       {[...Array(5)].map((_, i) => (
+  //         <Star
+  //           key={i}
+  //           className={`w-3.5 h-3.5 ${i < rating ? 'fill-orange-400 text-orange-400' : 'fill-gray-300 text-gray-300'
+  //             }`}
+  //         />
+  //       ))}
+  //     </div>
+  //   );
+  // };
 
   return (
     <div className="min-h-screen max-w-7xl mx-auto px-4 py-8">
@@ -137,27 +42,35 @@ export default function TrendingProduct() {
                 </div>
 
                 <div className="space-y-3">
-                  {topSellingProducts.map((product) => (
+                  {topSells.map((product) => (
                     <div key={product.id} className=" hover:shadow-md cursor-pointer">
                       <div className="flex gap-3">
                         <div className={`w-20 h-20 rounded-lg flex items-center justify-center flex-shrink-0 p-2 overflow-hidden`}>
-                          <img src={product.image} alt={product.name} className="w-full h-full object-cover rounded" />
+                          <img src={
+                            Array.isArray(product.image)
+                              ? product.image[Math.floor(Math.random() * product.image.length)]
+                              : product.image}
+                            alt={product.name} className="w-full h-full object-cover rounded" />
                         </div>
                         <div className="flex-1 min-w-0">
                           <h3 className="text-sm font-medium text-gray-900 mb-1.5">
                             {product.name}
                           </h3>
-                          <div className="flex items-center gap-2 mb-1.5 mt-4">
-                            <StarRating rating={product.rating} />
-                            {product.inStock && (
-                              <Badge variant="secondary" className="text-xs text-emerald-600 bg-emerald-50 hover:bg-emerald-50">
-                                In stock
-                              </Badge>
-                            )}
+                          <div className="flex items-center gap-2 mb-1.5">
+                            {/* <StarRating rating={product.rating} /> */}
+                            <div>
+                              {product.in_stock && (
+                                <Badge variant="secondary" className="text-xs text-emerald-600 bg-emerald-50 hover:bg-emerald-50">
+                                  In stock
+                                </Badge>
+                              )}
+                            </div>
+
+                            <p className="text-sm font-semibold text-emerald-600">
+                              ${product.price}
+                            </p>
                           </div>
-                          <p className="text-base font-semibold text-emerald-600 mt-4">
-                            ${product.price.toFixed(2)}
-                          </p>
+
                         </div>
                       </div>
                     </div>
@@ -196,13 +109,25 @@ export default function TrendingProduct() {
             <Separator className='bg-emerald-500 mb-4 mt-5' />
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {trendingProducts.map((product) => (
+              {products.map((product) => (
                 <div key={product.id} className="border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-300 rounded-lg">
                   <div className="p-5">
                     {/* Product Image */}
-                    <div className={`relative ${product.bgColor} rounded-xl mb-5 flex items-center justify-center h-52 overflow-hidden`}>
-                      <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
-                      {product.inStock && (
+                    <div className={`relative  rounded-xl mb-5 flex items-center justify-center h-52 overflow-hidden`}>
+                      {/* <img src={product.image}
+                        alt={product.name}
+                        className="w-full h-full object-cover"
+                      /> */}
+                      <img
+                        src={
+                          Array.isArray(product.image)
+                            ? product.image[Math.floor(Math.random() * product.image.length)]
+                            : product.image
+                        }
+                        alt={product.name}
+                        className="w-full h-full object-cover"
+                      />
+                      {product.in_stock && (
                         <Badge className="absolute top-3 left-3 bg-yellow-400 text-gray-900 hover:bg-yellow-400 font-semibold text-xs px-3 py-1">
                           In stock
                         </Badge>
@@ -214,20 +139,20 @@ export default function TrendingProduct() {
                       {product.name}
                     </h3>
 
-                    <div className="mb-4">
+                    {/* <div className="mb-4">
                       <StarRating rating={product.rating} />
-                    </div>
+                    </div> */}
 
                     <hr className="border-gray-200 mb-4" />
 
                     {/* Price and Button */}
                     <div className="flex items-center justify-between gap-3">
                       <div className="flex items-baseline gap-2">
-                        <span className="text-sm text-gray-400 line-through">
+                        {/* <span className="text-sm text-gray-400 line-through">
                           ${product.originalPrice.toFixed(2)}
-                        </span>
+                        </span> */}
                         <span className="text-xl font-bold text-emerald-600">
-                          ${product.price.toFixed(2)}
+                          ${product.price}
                         </span>
                       </div>
                       <Button

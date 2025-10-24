@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Category extends Model
 {
     use HasFactory,FileTrait;
-    use SoftDeletes;
     protected $fillable = [
         'name',
         'image',

@@ -1,25 +1,30 @@
 import * as React from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Sliders } from "@/types/frontend";
 
-export function CarouselDemo() {
-  const images = [
-    "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1494947665470-20322015e3a8?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1708204930650-abdd2928f9a3?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1588099140103-eb7e0ae84d00?auto=format&fit=crop&q=80&w=1200",
-  ];
 
+interface SiderProps{
+  sliders: Sliders[];
+}
+export function CarouselDemo({sliders}: SiderProps) {
+ 
   return (
     <div className="w-full max-w-7xl mx-auto">
       <Carousel className="w-full rounded-xl overflow-hidden shadow-md">
         <CarouselContent className="p-0 m-0">
-          {images.map((src, index) => (
-            <CarouselItem key={index} className="p-0 m-0">
+          {sliders.map((slider, index) => (
+            <CarouselItem key={index} className="p-0 m-0 relative">
               <img
-                src={src}
+                src={slider.image}
                 alt={`Slide ${index + 1}`}
                 className="w-full h-[450px] object-cover"
               />
+              <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                <div className="text-center text-white mt-44">
+                  <h2 className="text-3xl font-bold mb-2">{slider.title}</h2>
+                  <p className="text-lg">{slider.description}</p>
+                </div>
+              </div>
             </CarouselItem>
           ))}
         </CarouselContent>
