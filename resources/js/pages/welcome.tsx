@@ -20,13 +20,15 @@ import { Categories, Products, Sliders } from "@/types/frontend";
 
 
 export default function BageshworiKennel() {
-    const { sliders } = usePage<{ sliders: Sliders[] }>().props;
-    const { categories } = usePage<{ categories: Categories[] }>().props;
-    const { products } = usePage<{ products: Products[] }>().props;
-    const { topSells } = usePage<{ topSells: Products[] }>().props;
-    const { dealdays } = usePage<{ dealdays: Products[] }>().props;
-    const { dealWeeks } = usePage<{ dealWeeks: Products[] }>().props;
-    const { bestSells } = usePage<{ bestSells: Products[] }>().props;
+const { sliders, categories, products, topSells, dealdays, dealWeeks, bestSells } = usePage<{
+  sliders: Sliders[];
+  categories: Categories[];
+  products: Products[];
+  topSells: Products[];
+  dealdays: Products[];
+  dealWeeks: Products[];
+  bestSells: Products[];
+}>().props;
 
     return (
         <AuthLayout>
