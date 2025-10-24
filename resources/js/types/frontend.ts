@@ -14,6 +14,7 @@ export type Categories={
     count:number,
     image:string,
     status:number,
+    products_count:number,
 }
 export type Products={
     id:number,

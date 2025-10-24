@@ -10,20 +10,6 @@ interface BestSellingProps {
     bestSells: Products[];
 }
 
-const StarRating = ({ rating }) => {
-    return (
-        <div className="flex gap-0.5">
-            {[...Array(5)].map((_, i) => (
-                <StarIcon
-                    key={i}
-                    className={`w-3.5 h-3.5 ${i < rating ? 'fill-orange-400 text-orange-400' : 'fill-gray-300 text-gray-300'
-                        }`}
-                />
-            ))}
-        </div>
-    );
-};
-
 const BestSelling = ({ bestSells }: BestSellingProps) => {
     return (
 
