@@ -22,11 +22,29 @@ class FrontendController extends Controller
             ->where('in_stock', 1)
             ->latest()
             ->get();
-        $topSells=Product::with('category')
+        $topSells = Product::with('category')
             ->where('in_stock', 1)
             ->latest()->limit(6)
             ->get();
-        $topSells=Product::with('category')
+        $topSells = Product::with('category')
+            ->where('in_stock', 1)
+            ->latest()
+            ->limit(4)
+            ->get();
+        // Deals of the week
+
+        $dealdays = Product::with('category')
+            ->where('in_stock', 1)
+            ->latest()
+            ->limit(1)
+            ->get();
+        $dealWeeks = Product::with('category')
+            ->where('in_stock', 1)
+            ->latest()
+            ->limit(6)
+            ->get();
+
+        $bestSells = Product::with('category')
             ->where('in_stock', 1)
             ->latest()
             ->limit(4)
@@ -36,13 +54,17 @@ class FrontendController extends Controller
             'sliders' => $sliders,
             'categories' => $categories,
             'products' => $products,
-            'topSells'=>$topSells
+            'topSells' => $topSells,
+            'dealdays' => $dealdays,
+            'dealWeeks' => $dealWeeks,
+            'bestSells' => $bestSells,
+
         ]);
     }
     public function productPage(Product $product)
     {
-        return Inertia::render('Frontend/ProductDetail/Index',[
-            'product'=>$product
+        return Inertia::render('Frontend/ProductDetail/Index', [
+            'product' => $product
         ]);
     }
 }

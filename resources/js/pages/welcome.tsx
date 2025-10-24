@@ -24,6 +24,9 @@ export default function BageshworiKennel() {
     const{categories}=usePage<{ categories: Categories[] }>().props;
     const{products}=usePage<{ products: Products[] }>().props;
     const{topSells}=usePage<{ topSells: Products[] }>().props;
+    const{dealdays}=usePage<{ dealdays: Products[] }>().props;
+    const{dealWeeks}=usePage<{ dealWeeks: Products[] }>().props;
+    const{bestSells}=usePage<{ bestSells: Products[] }>().props;
     
     return (
         <AuthLayout>
@@ -146,13 +149,13 @@ export default function BageshworiKennel() {
                 <PromoCards/>
             </div>
             <div>
-                <DealWeek/>
+                <DealWeek  dealdays={dealdays}  dealWeeks={dealWeeks} />
             </div>
             <div>
                 <Banner/>
             </div>
             <div>
-                <BestSelling/>
+                <BestSelling  bestSells={bestSells} />
                 <Blog/>
                 <CategoryBanner/>
                 <CustomerReviews/>
