@@ -21,13 +21,13 @@ import { Categories, Products, Sliders } from "@/types/frontend";
 
 export default function BageshworiKennel() {
     const { sliders } = usePage<{ sliders: Sliders[] }>().props;
-    const{categories}=usePage<{ categories: Categories[] }>().props;
-    const{products}=usePage<{ products: Products[] }>().props;
-    const{topSells}=usePage<{ topSells: Products[] }>().props;
-    const{dealdays}=usePage<{ dealdays: Products[] }>().props;
-    const{dealWeeks}=usePage<{ dealWeeks: Products[] }>().props;
-    const{bestSells}=usePage<{ bestSells: Products[] }>().props;
-    
+    const { categories } = usePage<{ categories: Categories[] }>().props;
+    const { products } = usePage<{ products: Products[] }>().props;
+    const { topSells } = usePage<{ topSells: Products[] }>().props;
+    const { dealdays } = usePage<{ dealdays: Products[] }>().props;
+    const { dealWeeks } = usePage<{ dealWeeks: Products[] }>().props;
+    const { bestSells } = usePage<{ bestSells: Products[] }>().props;
+
     return (
         <AuthLayout>
 
@@ -36,7 +36,7 @@ export default function BageshworiKennel() {
                     <CarouselDemo sliders={sliders} />
                 </div>
                 <div className="max-w-7xl mx-auto px-4 py-8  gap-6">
-                  <Link href={productDetail()} className="bg-emerald-600 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 transition font-semibold shadow-lg">
+                    <Link href={productDetail()} className="bg-emerald-600 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 transition font-semibold shadow-lg">
                         Weekly Discount
                     </Link>
                 </div>
@@ -141,25 +141,17 @@ export default function BageshworiKennel() {
                     <PromoBanner />
                 </div>
             </div>
+
             <div>
-                <TrendingProduct  products={products} topSells={topSells} 
-                />
-            </div>
-            <div>
-                <PromoCards/>
-            </div>
-            <div>
-                <DealWeek  dealdays={dealdays}  dealWeeks={dealWeeks} />
-            </div>
-            <div>
-                <Banner/>
-            </div>
-            <div>
-                <BestSelling  bestSells={bestSells} />
-                <Blog/>
-                <CategoryBanner/>
-                <CustomerReviews/>
-                <LastBanner/>
+                <TrendingProduct products={products} topSells={topSells}/>
+                <PromoCards />
+                <DealWeek dealdays={dealdays} dealWeeks={dealWeeks} />
+                <Banner />
+                <BestSelling bestSells={bestSells} />
+                <Blog />
+                <CategoryBanner />
+                <CustomerReviews />
+                <LastBanner />
             </div>
 
 
