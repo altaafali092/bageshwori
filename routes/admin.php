@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PermissionController;
@@ -30,4 +31,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::resource('sliders',sliderController::class);
     Route::get('sliders/{slider}/status',[sliderController::class,'status'])->name('sliders.status');
+
+    Route::resource('blogs',BlogController::class);
+    Route::get('blogs/{blog}/status',[BlogController::class,'status'])->name('blogs.status');
 });

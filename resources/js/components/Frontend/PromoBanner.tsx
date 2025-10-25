@@ -13,55 +13,31 @@ const promos: Promo[] = [
 ]
 
 export default function PromoBanner() {
-  // Duplicate for smooth infinite scroll
   const duplicatedPromos = [...promos, ...promos]
 
   return (
     <section className="bg-[#f9f9f7] text-emerald-900 overflow-hidden border-y border-gray-200">
       <div className="relative flex overflow-hidden whitespace-nowrap py-8">
-        {/* Gradient edges */}
         <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-[#f9f9f7] to-transparent z-10" />
         <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#f9f9f7] to-transparent z-10" />
 
-        {/* Marquee text */}
         <div
           className="flex items-center gap-8 animate-marquee text-sm md:text-base font-medium"
-          style={{
-            animation: "marquee 40s linear infinite",
-            width: "max-content",
-          }}
           onMouseEnter={(e) => {
-            const el = e.currentTarget
-            el.style.animationPlayState = "paused"
+            e.currentTarget.style.animationPlayState = "paused"
           }}
           onMouseLeave={(e) => {
-            const el = e.currentTarget
-            el.style.animationPlayState = "running"
+            e.currentTarget.style.animationPlayState = "running"
           }}
         >
           {duplicatedPromos.map((promo, i) => (
             <div key={`${promo.id}-${i}`} className="flex items-center gap-8 text-2xl font-extrabold">
               <span>{promo.text}</span>
-              <Asterisk className="text-emerald-700 w-16 h-8 font-extrabold flex-shrink-0" />
+              <Asterisk className="text-emerald-700 w-16 h-8 flex-shrink-0" />
             </div>
           ))}
         </div>
       </div>
-
-      {/* Animation CSS */}
-      <style jsx>{`
-        @keyframes marquee {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        .animate-marquee {
-          animation: marquee 40s linear infinite;
-        }
-      `}</style>
     </section>
   )
 }

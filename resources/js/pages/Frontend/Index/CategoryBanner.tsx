@@ -25,7 +25,7 @@ export default function CategoryBanner() {
 
         {/* Right Image */}
         <img
-          src="https://cdn.pixabay.com/photo/2016/03/05/22/21/wine-1239090_1280.png"
+          src="https://th.bing.com/th/id/R.c23d7e81745089ba33eaac9be49dbd06?rik=CMATaiDvHO1D0g&pid=ImgRaw&r=0"
           alt="Wine Bottles"
           className="w-48 md:w-60 object-contain"
         />
@@ -54,7 +54,7 @@ export default function CategoryBanner() {
 
         {/* Right Image */}
         <img
-          src="https://cdn.pixabay.com/photo/2014/12/21/23/28/shopping-cart-576658_1280.png"
+          src="https://th.bing.com/th/id/R.c23d7e81745089ba33eaac9be49dbd06?rik=CMATaiDvHO1D0g&pid=ImgRaw&r=0"
           alt="Fruits Basket"
           className="w-48 md:w-60 object-contain"
         />

@@ -137,38 +137,7 @@ export default function CustomerReviews() {
                 </div>
             </div>
 
-            <style jsx>{`
-        @keyframes marquee {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
         
-        .animate-marquee {
-          animation: marquee 30s linear infinite;
-        }
-        
-        .hover\\:pause:hover {
-          animation-play-state: paused;
-        }
-        
-        /* Show exactly 3 cards on desktop */
-        @media (min-width: 1024px) {
-          .container {
-            max-width: 1200px; /* Perfect for 3 cards with gaps */
-          }
-        }
-        
-        /* Responsive card sizing */
-        @media (max-width: 768px) {
-          .hover-pause-trigger {
-            width: 280px;
-          }
-        }
-      `}</style>
         </section>
     )
 }

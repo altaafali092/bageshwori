@@ -1,7 +1,8 @@
 @import 'tailwindcss';
 
 @plugin 'tailwindcss-animate';
-
+/* @import 'react-quill-new/dist/quill.snow.css'; */
+@import 'react-quill/dist/quill.snow.css';
 @source '../views';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 
@@ -139,5 +140,22 @@
 
     body {
         @apply bg-background text-foreground;
+    }
+
+
+
+    /* In your global CSS file */
+    @keyframes marquee {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+
+    .animate-marquee {
+        animation: marquee 40s linear infinite;
     }
 }

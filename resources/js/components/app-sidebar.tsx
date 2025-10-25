@@ -23,6 +23,7 @@ import { index as categoriesIndex } from '@/routes/admin/categories';
 import { index as productIndex } from '@/routes/admin/products';
 import { index as contactsIndex } from '@/routes/admin/contacts';
 import { index as sliderIndex } from '@/routes/admin/sliders';
+import { index as blogIndex } from '@/routes/admin/blogs';
 
 const mainNavItems: NavItem[] = [
     {
@@ -34,6 +35,11 @@ const mainNavItems: NavItem[] = [
         title: 'Slider',
         href: sliderIndex(),
         icon: SlidersIcon,
+    },
+    {
+        title: 'Blogs',
+        href:  blogIndex(),
+        icon: BookOpen,
     },
     {
         title: "Product",

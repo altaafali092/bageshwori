@@ -14,8 +14,8 @@ import CategoryBanner from "./Frontend/Index/CategoryBanner";
 import CustomerReviews from "./Frontend/Index/Review";
 import LastBanner from "./Frontend/Index/LastBanner";
 import { Link, usePage } from "@inertiajs/react";
-import { productDetail } from "@/routes";
 import { Categories, Products, Sliders } from "@/types/frontend";
+import ProductDetail from "./Frontend/ProductDetail/Index";
 
 
 
@@ -38,7 +38,7 @@ export default function BageshworiKennel() {
                     <CarouselDemo sliders={sliders} />
                 </div>
                 <div className="max-w-7xl mx-auto px-4 py-8  gap-6">
-                    <Link href={productDetail()} className="bg-emerald-600 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 transition font-semibold shadow-lg">
+                    <Link href={ProductDetail()} className="bg-emerald-600 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 transition font-semibold shadow-lg">
                         Weekly Discount
                     </Link>
                 </div>
@@ -155,8 +155,6 @@ export default function BageshworiKennel() {
                 <CustomerReviews />
                 <LastBanner />
             </div>
-
-
 
         </AuthLayout>
     );
