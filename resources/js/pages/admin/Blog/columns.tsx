@@ -23,8 +23,10 @@ export const columns: ColumnDef<Blogs>[] = [
             const image = row.getValue("image") as string;
             return image ? (
                 <img
-                    src={image}
-                    alt={row.getValue("name")}
+                    src={
+                        Array.isArray(image) ? image[Math.floor(Math.random() * image.length)] : image
+                    }
+                    alt={row.getValue("title")}
                     className="h-20 w-20 object-fill rounded"
                 />
             ) : (

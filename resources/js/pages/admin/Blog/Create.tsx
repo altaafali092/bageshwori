@@ -93,14 +93,20 @@ export default function BlogCreate() {
 
                                             <div className="space-y-2">
                                                 <Label htmlFor="image">Image</Label>
-                                                <Input id="image" type="file" name="image[]" />
-                                                  {errors.image && (
-                                                <p className="text-sm text-red-500">
-                                                    {errors.image}
-                                                </p>
-                                            )}
+                                                <Input
+                                                    id="image"
+                                                    type="file"
+                                                    name="image[]"
+                                                    multiple
+                                                    accept="image/*"
+                                                />
+                                                {errors.image && (
+                                                    <p className="text-sm text-red-500">
+                                                        {errors.image}
+                                                    </p>
+                                                )}
                                             </div>
-                                          
+
                                         </div>
 
                                         {/* Description */}
@@ -118,7 +124,7 @@ export default function BlogCreate() {
                                                 </p>
                                             )}
 
-                                            
+
                                         </div>
 
                                         {/* Buttons */}

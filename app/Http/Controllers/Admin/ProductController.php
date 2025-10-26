@@ -75,7 +75,7 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-      $data = $request->validated();
+      $data = $request->validated()+['created_by'=>Auth::user()->id];
 
         if ($request->hasFile('image')) {
 

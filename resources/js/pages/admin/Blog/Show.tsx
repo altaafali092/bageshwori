@@ -3,6 +3,13 @@ import { Head, Link } from "@inertiajs/react"
 import AppLayout from "@/layouts/app-layout"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from "@/components/ui/carousel"
 import { ArrowLeft, Edit, Trash2 } from "lucide-react"
 import { type BreadcrumbItem } from "@/types"
 import { index, edit, destroy } from "@/routes/admin/blogs"
@@ -12,7 +19,7 @@ interface Blog {
     title: string
     slug: string
     description?: string
-    image?: string
+    images?: string[]
     created_at: string
     updated_at: string
 }
@@ -111,6 +118,12 @@ export default function BlogShow({ blog }: BlogShowProps) {
                                         </p>
                                     </div>
                                     <div>
+                                        <h3 className="text-sm font-medium text-muted-foreground">Author Name</h3>
+                                        <p className="mt-1 text-sm">
+                                            {blog.user?.name || 'Unknown'}
+                                        </p>
+                                    </div>
+                                    <div>
                                         <h3 className="text-sm font-medium text-muted-foreground">Updated At</h3>
                                         <p className="mt-1 text-sm">
                                             {new Date(blog.updated_at).toLocaleString()}
@@ -121,22 +134,41 @@ export default function BlogShow({ blog }: BlogShowProps) {
                         </Card>
                     </div>
 
-                    {/* Image */}
+                    {/* Images */}
                     <div className="lg:col-span-1">
                         <Card>
                             <CardHeader>
-                                <CardTitle>Image</CardTitle>
+                                <CardTitle>Images</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                {blog.image ? (
-                                    <img
-                                        src={blog.image}
-                                        alt={blog.title}
-                                        className="w-full h-auto rounded-lg object-cover"
-                                    />
+                                {blog.image && blog.image.length > 0 ? (
+                                    <Carousel className="w-full">
+                                        <CarouselContent>
+                                            {blog.image.map((img, index) => (
+                                                <CarouselItem key={index}>
+                                                    <div className="relative">
+                                                        <img
+                                                            src={img}
+                                                            alt={`${blog.title} - Image ${index + 1}`}
+                                                            className="w-full h-[450px] rounded-lg object-cover"
+                                                        />
+                                                        <span className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                                                            {index + 1} / {blog.image.length}
+                                                        </span>
+                                                    </div>
+                                                </CarouselItem>
+                                            ))}
+                                        </CarouselContent>
+                                        {blog.image.length > 1 && (
+                                            <>
+                                                <CarouselPrevious className="bg-white/70 hover:bg-white absolute left-4 top-1/2 -translate-y-1/2 rounded-full" />
+                                                <CarouselNext className="bg-white/70 hover:bg-white absolute right-4 top-1/2 -translate-y-1/2 rounded-full" />
+                                            </>
+                                        )}
+                                    </Carousel>
                                 ) : (
                                     <div className="w-full h-48 bg-muted rounded-lg flex items-center justify-center">
-                                        <p className="text-muted-foreground text-sm">No image available</p>
+                                        <p className="text-muted-foreground text-sm">No images available</p>
                                     </div>
                                 )}
                             </CardContent>

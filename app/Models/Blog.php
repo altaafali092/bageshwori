@@ -10,20 +10,25 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Blog extends Model
 {
-    use HasFactory, SoftDeletes,FileTrait;
+    use HasFactory, SoftDeletes, FileTrait;
 
-    protected $fillable=[
+    protected $fillable = [
         'title',
+        'slug',
         'description',
         'image',
+        'user_id',
         'status',
-
     ];
-    protected $casts=[
-        'status'=>'boolean'
+    protected $casts = [
+        'status' => 'boolean'
     ];
-    public function image():Attribute
+    public function image(): Attribute
     {
         return $this->castingFile(defaultPath: 'Blog');
-    } 
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

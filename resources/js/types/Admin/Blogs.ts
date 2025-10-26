@@ -1,0 +1,15 @@
+export type Blogs = {
+    id: number;
+    title: string;
+    description: string;
+    image: string | null;
+    status: boolean;
+    slug: string;
+    user_id: number;
+    user: {
+        id: number;
+        name: string;
+    }
+     created_at: string;
+    updated_at: string;
+}

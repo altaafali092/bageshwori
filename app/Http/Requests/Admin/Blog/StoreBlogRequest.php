@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin\Blog;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreBlogRequest extends FormRequest
 {
@@ -23,6 +24,7 @@ class StoreBlogRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'max:255'],
+            'slug'=>['required','alpha_dash',Rule::unique('blogs','slug')->withoutTrashed()],
             'description' => ['required', 'string'],
             'image' => ['nullable', 'array', 'min:1'],
             'image.*' => ['image', 'mimes:jpeg,png,jpg,gif,webp', 'max:2048'],

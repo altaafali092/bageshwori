@@ -1,5 +1,7 @@
 import { CarouselDemo } from '@/components/Frontend/Carousel';
 import Navbar from './Navbar';
+import { Link } from '@inertiajs/react';
+import { blogIndex } from '@/routes';
 
 const Header = () => {
 
@@ -26,6 +28,12 @@ const Header = () => {
                         >
                             About
                         </a>
+                        <Link
+                            href={blogIndex().url}
+                            className="text-gray-700 px-4 py-2 hover:text-emerald-600 transition font-medium whitespace-nowrap"
+                        >
+                            Blog
+                        </Link>
                     </div>
                 </div>
 

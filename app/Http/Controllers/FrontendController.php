@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Slider;
@@ -65,6 +66,21 @@ class FrontendController extends Controller
     {
         return Inertia::render('Frontend/ProductDetail/Index', [
             'product' => $product
+        ]);
+    }
+
+    public function blogIndex()
+    {
+        $blogs = Blog::where('status', 1)->latest()->get();
+        $blogs->load('user');
+        return Inertia::render('Frontend/Blog/Index', [
+            'blogs' => $blogs
+        ]);
+    }
+    public function blogDetail(Blog $blog)
+    {
+        return Inertia::render('Frontend/Blog/Detail', [
+            'blog' => $blog
         ]);
     }
 }

@@ -29,3 +29,19 @@ export type Products={
     updated_at:Date,
     in_stock:number,
 }
+
+export type Blog={
+    id:number,
+    title:string,
+    slug:string,
+    description:string,
+    image:string,
+    user_id:number
+    user:{
+        id:number,
+        name:string,
+    }
+    status:number,
+    created_at:Date,
+    updated_at:Date,
+}

@@ -38,9 +38,8 @@ class BlogController extends Controller
      */
     public function store(StoreBlogRequest $request)
     {
-        Blog::create($request->validated() + [
-            'auther_name' => Auth::user()->id
-        ]);
+        Blog::create($request->validated() + ['user_id'=>Auth::user()->id]);
+      
         return to_route('admin.blogs.index')->with('success', 'Blog Created Successfully');
     }
 
@@ -49,6 +48,7 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
+        $blog->load('user');
         return Inertia::render('admin/Blog/Show', [
             'blog' => $blog,
         ]);
@@ -59,6 +59,7 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
+     
         return Inertia::render('admin/Blog/Edit', [
             'blog' => $blog,
         ]);
@@ -70,7 +71,7 @@ class BlogController extends Controller
     public function update(UpdateBlogRequest $request, Blog $blog)
     {
 
-        $data = $request->validated();
+        $data = $request->validated()+['user_id'=>Auth::user()->id];
         if ($request->hasFile('image')) {
             if ($blog->getRawOriginal('image') && Storage::disk('public')->exists($blog->getRawOriginal('image'))) {
                 Storage::disk('public')->delete($blog->getRawOriginal('image'));
