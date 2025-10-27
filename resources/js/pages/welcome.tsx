@@ -14,14 +14,14 @@ import CategoryBanner from "./Frontend/Index/CategoryBanner";
 import CustomerReviews from "./Frontend/Index/Review";
 import LastBanner from "./Frontend/Index/LastBanner";
 import { Link, usePage } from "@inertiajs/react";
-import { Categories, Products, Sliders } from "@/types/frontend";
+import { Blogs, Categories, Products, Sliders } from "@/types/frontend";
 import ProductDetail from "./Frontend/ProductDetail/Index";
 import { SliderCarousel } from "@/components/Frontend/SliderCarousel";
 
 
 
 export default function BageshworiKennel() {
-    const { sliders, categories, products, topSells, dealdays, dealWeeks, bestSells } = usePage<{
+    const { sliders, categories, products, topSells, dealdays, dealWeeks, bestSells, blogs } = usePage<{
         sliders: Sliders[];
         categories: Categories[];
         products: Products[];
@@ -29,6 +29,7 @@ export default function BageshworiKennel() {
         dealdays: Products[];
         dealWeeks: Products[];
         bestSells: Products[];
+        blogs: Blogs[];
     }>().props;
 
     return (
@@ -152,7 +153,7 @@ export default function BageshworiKennel() {
                 <DealWeek dealdays={dealdays} dealWeeks={dealWeeks} />
                 <Banner />
                 <BestSelling bestSells={bestSells} />
-                <Blog />
+                <Blog blogs={blogs} />
                 <CategoryBanner />
                 <CustomerReviews />
                 <LastBanner />

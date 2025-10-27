@@ -3,13 +3,13 @@ import { Head, Link } from "@inertiajs/react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
-import { Search, ArrowRight, CalendarHeartIcon } from "lucide-react"
-import { Blog } from "@/types/frontend"
+import { Search, ArrowRight, CalendarHeartIcon, ChevronRight } from "lucide-react"
+import { Blogs } from "@/types/frontend"
 import AuthLayout from "../layouts/AuthLayout"
-import { blogDetail } from "@/routes"
+import { blogDetail, home } from "@/routes"
 
 interface BlogIndexProps {
-    blogs: Blog[]
+    blogs: Blogs[]
 }
 
 export default function BlogIndex({ blogs, categories = ["All", "Technology", "Design", "Business", "Productivity"] }: BlogIndexProps) {
@@ -18,8 +18,8 @@ export default function BlogIndex({ blogs, categories = ["All", "Technology", "D
 
     const formatDate = (dateString: string) => {
         const date = new Date(dateString)
-        return date.toLocaleDateString('en-US', { 
-            month: 'long', 
+        return date.toLocaleDateString('en-US', {
+            month: 'long',
             day: 'numeric',
             year: 'numeric'
         })
@@ -27,15 +27,26 @@ export default function BlogIndex({ blogs, categories = ["All", "Technology", "D
 
     const filteredBlogs = blogs.filter(blog => {
         const matchesSearch = blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                            blog.description?.toLowerCase().includes(searchTerm.toLowerCase())
+            blog.description?.toLowerCase().includes(searchTerm.toLowerCase())
         return matchesSearch
     })
 
     return (
         <AuthLayout>
-        
+
             <Head title="Latest Articles" />
-            
+            <div className="bg-white border-b">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                        <Link href={home()} className="hover:text-blue-600 transition-colors">
+                            Home
+                        </Link>
+                        <ChevronRight className="h-4 w-4" />
+                        <span className="text-gray-900 line-clamp-1">Blog</span>
+                    </div>
+                </div>
+            </div>
+
             <div className="min-h-screen bg-gray-50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                     {/* Header */}
@@ -58,7 +69,7 @@ export default function BlogIndex({ blogs, categories = ["All", "Technology", "D
                                     </div>
                                 ) : (
                                     filteredBlogs.map((blog) => (
-                                        <article 
+                                        <article
                                             key={blog.id}
                                             className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
                                         >
@@ -88,7 +99,7 @@ export default function BlogIndex({ blogs, categories = ["All", "Technology", "D
                                                 </Link>
 
                                                 <p className="text-sm text-gray-500 mb-3">
-                                                    {blog.user?.name || "John Doe"} <span className="text-gray-400">{formatDate(blog.created_at)}</span> 
+                                                    {blog.user?.name || "John Doe"} <span className="text-gray-400">{formatDate(blog.created_at)}</span>
                                                 </p>
 
                                                 {blog.description && (
@@ -97,7 +108,7 @@ export default function BlogIndex({ blogs, categories = ["All", "Technology", "D
                                                     </p>
                                                 )}
 
-                                                <Link 
+                                                <Link
                                                     href={blogDetail(blog.slug)}
                                                     className="inline-flex items-center gap-2 text-white hover:text-white font-medium text-sm group bg-green-500 px-3 py-1.5 rounded-md"
                                                 >
@@ -138,11 +149,10 @@ export default function BlogIndex({ blogs, categories = ["All", "Technology", "D
                                             <Badge
                                                 key={category}
                                                 variant={selectedCategory === category ? "default" : "outline"}
-                                                className={`cursor-pointer ${
-                                                    selectedCategory === category
+                                                className={`cursor-pointer ${selectedCategory === category
                                                         ? "bg-blue-600 hover:bg-blue-700"
                                                         : "hover:bg-gray-100"
-                                                }`}
+                                                    }`}
                                                 onClick={() => setSelectedCategory(category)}
                                             >
                                                 {category}
@@ -158,7 +168,7 @@ export default function BlogIndex({ blogs, categories = ["All", "Technology", "D
                                     </h3>
                                     <div className="space-y-4">
                                         {blogs.slice(0, 3).map((blog) => (
-                                            <Link 
+                                            <Link
                                                 key={blog.id}
                                                 href={`/blogs/${blog.slug || blog.id}`}
                                                 className="block group"

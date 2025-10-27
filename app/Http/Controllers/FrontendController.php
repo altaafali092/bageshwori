@@ -50,6 +50,7 @@ class FrontendController extends Controller
             ->latest()
             ->limit(4)
             ->get();
+        $blogs=Blog::where('status', 1)->latest()->get();
 
         return Inertia::render('welcome', [
             'sliders' => $sliders,
@@ -59,6 +60,7 @@ class FrontendController extends Controller
             'dealdays' => $dealdays,
             'dealWeeks' => $dealWeeks,
             'bestSells' => $bestSells,
+            'blogs'=>$blogs
 
         ]);
     }

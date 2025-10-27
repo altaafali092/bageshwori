@@ -14,15 +14,15 @@ import {
     ArrowLeft,
     ChevronRight
 } from "lucide-react"
-import { Blog } from "@/types/frontend"
 import AuthLayout from "../layouts/AuthLayout"
 import { BlogCard } from "@/components/Frontend/BlogCard"
 import { blogDetail } from "@/routes"
+import { Blogs } from "@/types/frontend"
 
 
 interface BlogDetailProps {
-    blog: Blog
-    blogs: Blog[]
+    blog: Blogs
+    blogs: Blogs[]
 }
 
 export default function BlogDetail({ blog, blogs = [] }: BlogDetailProps) {

@@ -30,7 +30,7 @@ export type Products={
     in_stock:number,
 }
 
-export type Blog={
+export type Blogs={
     id:number,
     title:string,
     slug:string,

@@ -2,6 +2,7 @@ import { BlogCard } from "@/components/Frontend/BlogCard";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { Blogs } from "@/types/frontend";
 import { CalendarDays, ArrowRight } from "lucide-react";
 import React from "react";
 
@@ -40,7 +41,7 @@ const blogs = [
   },
 ];
 
-const Blog = () => {
+const Blog = ({ blogs }: { blogs: Blogs[] }) => {
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
       {/* Header */}
@@ -64,9 +65,9 @@ const Blog = () => {
             key={blog.id}
             id={blog.id}
             title={blog.title}
-            category={blog.category}
+            // category={blog.category}
             date={blog.date}
-            excerpt={blog.excerpt}
+            excerpt={blog.description}
           />
         ))}
       </div>
