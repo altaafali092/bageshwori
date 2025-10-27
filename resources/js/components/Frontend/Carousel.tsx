@@ -1,30 +1,30 @@
 import * as React from "react";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Sliders } from "@/types/frontend";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
-
-interface SiderProps{
-  sliders: Sliders[];
+interface CarouselWrapperProps<T> {
+  items: T[]; // generic type for any data (sliders, categories, etc.)
+  renderItem: (item: T, index: number) => React.ReactNode; // how to render each item
+  className?: string;
 }
-export function CarouselDemo({sliders}: SiderProps) {
- 
+
+export function CarouselWrapper<T>({
+  items,
+  renderItem,
+  className,
+}: CarouselWrapperProps<T>) {
   return (
-    <div className="w-full max-w-7xl mx-auto">
+    <div className={`w-full max-w-7xl mx-auto ${className ?? ""}`}>
       <Carousel className="w-full rounded-xl overflow-hidden shadow-md">
         <CarouselContent className="p-0 m-0">
-          {sliders.map((slider, index) => (
-            <CarouselItem key={index} className="p-0 m-0 relative">
-              <img
-                src={slider.image}
-                alt={`Slide ${index + 1}`}
-                className="w-full h-[450px] object-cover"
-              />
-              <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                <div className="text-center text-white mt-44">
-                  <h2 className="text-3xl font-bold mb-2">{slider.title}</h2>
-                  <p className="text-lg">{slider.description}</p>
-                </div>
-              </div>
+          {items.map((item, index) => (
+            <CarouselItem key={index} className="p-0 m-0">
+              {renderItem(item, index)}
             </CarouselItem>
           ))}
         </CarouselContent>

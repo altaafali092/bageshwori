@@ -38,8 +38,8 @@ class BlogController extends Controller
      */
     public function store(StoreBlogRequest $request)
     {
-        Blog::create($request->validated() + ['user_id'=>Auth::user()->id]);
-      
+        Blog::create($request->validated() + ['user_id' => Auth::user()->id]);
+
         return to_route('admin.blogs.index')->with('success', 'Blog Created Successfully');
     }
 
@@ -59,7 +59,7 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-     
+
         return Inertia::render('admin/Blog/Edit', [
             'blog' => $blog,
         ]);
@@ -71,14 +71,23 @@ class BlogController extends Controller
     public function update(UpdateBlogRequest $request, Blog $blog)
     {
 
-        $data = $request->validated()+['user_id'=>Auth::user()->id];
+        $data = $request->validated() + ['user_id' => Auth::user()->id];
         if ($request->hasFile('image')) {
-            if ($blog->getRawOriginal('image') && Storage::disk('public')->exists($blog->getRawOriginal('image'))) {
-                Storage::disk('public')->delete($blog->getRawOriginal('image'));
+            // Delete old images (if stored locally)
+            $oldImages = (array) $blog->getRawOriginal('image');
+            foreach ($oldImages as $oldImage) {
+                if (Storage::disk('public')->exists($oldImage)) {
+                    Storage::disk('public')->delete($oldImage);
+                }
             }
-            // Store new image
-            $path = $request->file('image')->store('Blog', 'public');
-            $data['image'] = $path;
+
+            // Store new images
+            $paths = [];
+            foreach ($request->file('image') as $file) {
+                $paths[] = $file->store('Blog', 'public');
+            }
+
+            $data['image'] = $paths;
         } else {
             // keep the old image
             $data['image'] = $blog->getRawOriginal('image');

@@ -1,4 +1,4 @@
-import { CarouselDemo } from '@/components/Frontend/Carousel';
+
 import Navbar from './Navbar';
 import { Link } from '@inertiajs/react';
 import { blogIndex } from '@/routes';

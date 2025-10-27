@@ -77,10 +77,14 @@ class FrontendController extends Controller
             'blogs' => $blogs
         ]);
     }
+
     public function blogDetail(Blog $blog)
     {
+        $blogs = Blog::where('status', 1)->latest()->get();
+        $blog->load('user');
         return Inertia::render('Frontend/Blog/Detail', [
-            'blog' => $blog
+            'blog' => $blog,
+            'blogs' => $blogs   
         ]);
     }
 }

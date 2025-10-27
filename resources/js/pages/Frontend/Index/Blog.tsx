@@ -1,3 +1,4 @@
+import { BlogCard } from "@/components/Frontend/BlogCard";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -59,41 +60,14 @@ const Blog = () => {
       {/* Blog Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {blogs.map((blog) => (
-          <div
+          <BlogCard
             key={blog.id}
-            className="group bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-          >
-            {/* Category */}
-            <Badge className="mb-4 bg-emerald-100 text-emerald-700 font-medium">
-              {blog.category}
-            </Badge>
-
-            {/* Title */}
-            <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors duration-300">
-              {blog.title}
-            </h3>
-
-            {/* Date */}
-            <div className="flex items-center text-gray-500 text-xs mb-4">
-              <CalendarDays className="w-3.5 h-3.5 mr-1" />
-              <span>{blog.date}</span>
-            </div>
-
-            {/* Excerpt */}
-            <p className="text-sm text-gray-600 mb-6 line-clamp-3">
-              {blog.excerpt}
-            </p>
-
-            {/* Read More */}
-            <Button
-              variant="ghost"
-              size="sm"
-              className="text-emerald-600 font-medium group/btn p-0"
-            >
-              Read More
-              <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-            </Button>
-          </div>
+            id={blog.id}
+            title={blog.title}
+            category={blog.category}
+            date={blog.date}
+            excerpt={blog.excerpt}
+          />
         ))}
       </div>
     </div>

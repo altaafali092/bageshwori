@@ -21,8 +21,11 @@ class Blog extends Model
         'status',
     ];
     protected $casts = [
-        'status' => 'boolean'
+        'status' => 'boolean',
+        'image' => 'array',
     ];
+
+
     public function image(): Attribute
     {
         return $this->castingFile(defaultPath: 'Blog');

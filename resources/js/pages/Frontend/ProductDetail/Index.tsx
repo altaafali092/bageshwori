@@ -10,7 +10,8 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import AuthLayout from "../layouts/AuthLayout";
-import { CarouselDemo } from "@/components/Frontend/Carousel";
+import { CarouselWrapper } from "@/components/Frontend/Carousel";
+
 
 const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
@@ -88,7 +89,7 @@ const ProductDetail = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
     
            <div className="space-y-4">
-                <CarouselDemo images={product.images} />
+                {/* <CarouselWrapper images={product.images} /> */}
             <div className="grid grid-cols-4 gap-3">
               {product.images.map((img, idx) => (
                 <button

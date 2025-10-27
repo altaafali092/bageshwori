@@ -10,7 +10,6 @@ import { blogDetail } from "@/routes"
 
 interface BlogIndexProps {
     blogs: Blog[]
-    categories?: string[]
 }
 
 export default function BlogIndex({ blogs, categories = ["All", "Technology", "Design", "Business", "Productivity"] }: BlogIndexProps) {
@@ -34,6 +33,7 @@ export default function BlogIndex({ blogs, categories = ["All", "Technology", "D
 
     return (
         <AuthLayout>
+        
             <Head title="Latest Articles" />
             
             <div className="min-h-screen bg-gray-50">
