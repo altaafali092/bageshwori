@@ -17,6 +17,7 @@ import { Link, usePage } from "@inertiajs/react";
 import { Blogs, Categories, Products, Sliders } from "@/types/frontend";
 import ProductDetail from "./Frontend/ProductDetail/Index";
 import { SliderCarousel } from "@/components/Frontend/SliderCarousel";
+import { categorywiseProduct } from "@/routes";
 
 
 
@@ -77,6 +78,9 @@ export default function BageshworiKennel() {
                                             <span className="text-emerald-600 font-semibold">
                                                 ({category.products_count})
                                             </span>
+                                            <Link href={categorywiseProduct(category.slug)}>
+                                            hello
+                                            </Link>
                                         </div>
                                     ))}
                                 </div>

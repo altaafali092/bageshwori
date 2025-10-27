@@ -15,6 +15,7 @@ export type Categories={
     image:string,
     status:number,
     products_count:number,
+    slug:string
 }
 export type Products={
     id:number,
@@ -25,6 +26,7 @@ export type Products={
     status:number,
     is_featured:number,
     category_id:number,
+    category: Categories[],
     created_at:Date,
     updated_at:Date,
     in_stock:number,

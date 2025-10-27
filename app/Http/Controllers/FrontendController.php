@@ -50,7 +50,7 @@ class FrontendController extends Controller
             ->latest()
             ->limit(4)
             ->get();
-        $blogs=Blog::where('status', 1)->latest()->get();
+        $blogs = Blog::where('status', 1)->latest()->get();
 
         return Inertia::render('welcome', [
             'sliders' => $sliders,
@@ -60,16 +60,27 @@ class FrontendController extends Controller
             'dealdays' => $dealdays,
             'dealWeeks' => $dealWeeks,
             'bestSells' => $bestSells,
-            'blogs'=>$blogs
+            'blogs' => $blogs
 
         ]);
     }
+    public function categorywiseProduct(Category $category)
+    {
+     
+        $products = $category->products()->where('in_stock', 1)->latest()->get();
+        return Inertia::render('Frontend/ProductDetail/CategoryProduct', [
+            'products' => $products,
+            'category'=>$category
+        ]);
+    }
+
     public function productPage(Product $product)
     {
         return Inertia::render('Frontend/ProductDetail/Index', [
             'product' => $product
         ]);
     }
+
 
     public function blogIndex()
     {
@@ -86,7 +97,7 @@ class FrontendController extends Controller
         $blog->load('user');
         return Inertia::render('Frontend/Blog/Detail', [
             'blog' => $blog,
-            'blogs' => $blogs   
+            'blogs' => $blogs
         ]);
     }
 }
