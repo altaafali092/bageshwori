@@ -83,6 +83,20 @@ export default function BlogEdit({ blog }: BlogEditProps) {
                                                 )}
                                             </div>
                                             <div className="space-y-2">
+                                                <Label htmlFor="subject">Blog subject</Label>
+                                                <Input
+                                                    id="subject"
+                                                    name="subject"
+                                                    type="text"
+                                                    defaultValue={blog.subject}
+                                                />
+                                                {errors.subject && (
+                                                    <p className="text-sm text-red-500">
+                                                        {errors.subject}
+                                                    </p>
+                                                )}
+                                            </div>
+                                            <div className="space-y-2">
                                                 <Label htmlFor="slug">Slug Name</Label>
                                                 <Input
                                                     id="slug"

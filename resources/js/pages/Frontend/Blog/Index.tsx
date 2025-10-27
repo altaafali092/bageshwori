@@ -12,7 +12,7 @@ interface BlogIndexProps {
     blogs: Blogs[]
 }
 
-export default function BlogIndex({ blogs, categories = ["All", "Technology", "Design", "Business", "Productivity"] }: BlogIndexProps) {
+export default function BlogIndex({ blogs }: BlogIndexProps) {
     const [searchTerm, setSearchTerm] = React.useState("")
     const [selectedCategory, setSelectedCategory] = React.useState("All")
 
@@ -92,7 +92,7 @@ export default function BlogIndex({ blogs, categories = ["All", "Technology", "D
 
                                             {/* Content */}
                                             <div className="p-6">
-                                                <Link href={`/blogs/${blog.slug || blog.id}`}>
+                                                <Link href={blogDetail(blog.slug)}>
                                                     <h2 className="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors line-clamp-2">
                                                         {blog.title}
                                                     </h2>
@@ -145,17 +145,17 @@ export default function BlogIndex({ blogs, categories = ["All", "Technology", "D
                                         Filter by Category
                                     </h3>
                                     <div className="flex flex-wrap gap-2">
-                                        {categories.map((category) => (
+                                        {blogs.map((blog) => (
                                             <Badge
-                                                key={category}
-                                                variant={selectedCategory === category ? "default" : "outline"}
-                                                className={`cursor-pointer ${selectedCategory === category
+                                                key={blog.id}
+                                                variant={selectedCategory === blog.subject ? "default" : "outline"}
+                                                className={`cursor-pointer ${selectedCategory === blog.subject
                                                         ? "bg-blue-600 hover:bg-blue-700"
                                                         : "hover:bg-gray-100"
                                                     }`}
-                                                onClick={() => setSelectedCategory(category)}
+                                                onClick={() => setSelectedCategory(blog.subject)}
                                             >
-                                                {category}
+                                                {blog.subject}
                                             </Badge>
                                         ))}
                                     </div>

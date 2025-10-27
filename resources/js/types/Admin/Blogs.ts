@@ -1,6 +1,7 @@
 export type Blogs = {
     id: number;
     title: string;
+    subject: string;
     description: string;
     image: string | null;
     status: boolean;

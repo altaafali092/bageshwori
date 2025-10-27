@@ -33,6 +33,7 @@ export type Products={
 export type Blogs={
     id:number,
     title:string,
+    subject:string,
     slug:string,
     description:string,
     image:string,

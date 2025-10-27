@@ -24,6 +24,7 @@ class UpdateBlogRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'max:255'],
+            'subject' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'alpha_dash', Rule::unique('blogs', 'slug')->ignore($this->blog)],
             'description' => ['required', 'string'],
             'image' => ['nullable', 'array', 'min:1'],

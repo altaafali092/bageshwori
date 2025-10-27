@@ -13,19 +13,13 @@ import {
 import { ArrowLeft, Edit, Trash2 } from "lucide-react"
 import { type BreadcrumbItem } from "@/types"
 import { index, edit, destroy } from "@/routes/admin/blogs"
+import { Blogs } from "@/types/Admin/Blogs"
+import { Badge } from "@/components/ui/badge"
 
-interface Blog {
-    id: number
-    title: string
-    slug: string
-    description?: string
-    images?: string[]
-    created_at: string
-    updated_at: string
-}
+
 
 interface BlogShowProps {
-    blog: Blog
+    blog: Blogs
 }
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -93,14 +87,20 @@ export default function BlogShow({ blog }: BlogShowProps) {
                                 <CardTitle>Information</CardTitle>
                             </CardHeader>
                             <CardContent className="space-y-4">
-                                <div>
+                               <div className="flex items-center justify-between">
+                                 <div>
                                     <h3 className="text-sm font-medium text-muted-foreground">Title</h3>
                                     <p className="mt-1 text-base">{blog.title}</p>
                                 </div>
+                                <div>
+                                    <h3 className="text-sm font-medium text-muted-foreground">Subject</h3>
+                                   <Badge className="mt-1 bg-blue-600 text-sm">{blog.subject}</Badge>
+                                </div>
+                               </div>
 
                                 <div>
                                     <h3 className="text-sm font-medium text-muted-foreground">Slug</h3>
-                                    <p className="mt-1 text-base font-mono text-sm">{blog.slug}</p>
+                                    <p className="mt-1  font-mono text-sm">{blog.slug}</p>
                                 </div>
 
                                 {blog.description && (

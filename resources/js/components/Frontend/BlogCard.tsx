@@ -7,8 +7,8 @@ import { Link } from "@inertiajs/react"
 interface BlogCardProps {
   id: number
   title: string
-  category: string
-  date: string
+  subject: string
+  created_at: string
   excerpt: string
   image?: string
   link?: string // optional link to blog detail page
@@ -17,7 +17,7 @@ interface BlogCardProps {
 export function BlogCard({
   id,
   title,
-  category,
+  subject,
   date,
   excerpt,
   image,
@@ -38,7 +38,7 @@ export function BlogCard({
 
       {/* Category */}
       <Badge className="mb-3 bg-emerald-100 text-emerald-700 font-medium">
-        {category}
+        {subject}
       </Badge>
 
       {/* Title */}

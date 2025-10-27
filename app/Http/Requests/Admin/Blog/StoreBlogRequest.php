@@ -24,6 +24,7 @@ class StoreBlogRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'max:255'],
+            'subject' => ['required', 'string', 'max:255'],
             'slug'=>['required','alpha_dash',Rule::unique('blogs','slug')->withoutTrashed()],
             'description' => ['required', 'string'],
             'image' => ['nullable', 'array', 'min:1'],

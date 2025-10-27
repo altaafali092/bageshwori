@@ -68,7 +68,7 @@ export default function BlogDetail({ blog, blogs = [] }: BlogDetailProps) {
                         {/* Header */}
                         <div className="p-8 sm:p-12 border-b">
                             {/* Category Badge */}
-                            <Badge className="mb-4 bg-blue-600">Technology</Badge>
+                            <Badge className="mb-4 bg-blue-600">{blog.subject}</Badge>
 
                             {/* Title */}
                             <h1 className="text-2xl sm:text-2xl lg:text-4xl font-bold text-gray-900 mb-6 leading-tight">
@@ -158,12 +158,13 @@ export default function BlogDetail({ blog, blogs = [] }: BlogDetailProps) {
                                 Related Articles
                             </h2>
                             <div className="grid sm:grid-cols-3 lg:grid-cols-4 gap-2">
-                                {blogs.slice(0, 3).map((relatedBlog) => (
+                                {blogs.slice(0, 4).map((relatedBlog) => (
                                    <BlogCard
                                     key={relatedBlog.id}
                                     id={relatedBlog.id}
                                     title={relatedBlog.title}
-                                    date={relatedBlog.date}
+                                    subject={relatedBlog.subject}
+                                    date={new Date(relatedBlog.created_at).toLocaleDateString()}
                                     excerpt={relatedBlog.description}
                                     link={blogDetail(relatedBlog.slug)}
                                    />

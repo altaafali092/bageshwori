@@ -39,6 +39,10 @@ export const columns: ColumnDef<Blogs>[] = [
         header: "Title",
     },
     {
+        accessorKey: "subject",
+        header: "Subject",
+    },
+    {
         accessorKey: "status",
         header: "Status",
         cell: ({ row }) => {
