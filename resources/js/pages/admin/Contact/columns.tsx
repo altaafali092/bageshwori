@@ -18,13 +18,31 @@ export const columns: ColumnDef<Contact>[] = [
         cell: ({ row }) => row.index + 1,
     },
     
+         {
+        accessorKey: "image",
+        header: "Image",
+        cell: ({ row }) => {
+            const images = row.getValue("image") as string | string[];
+            const image = Array.isArray(images)
+                ? images[Math.floor(Math.random() * images.length)]
+                : images;
+
+            return image ? (
+                <img src={image} alt={row.getValue("name")} className="h-20 w-20 object-cover rounded" />
+            ) : (
+                <div className="h-20 w-20 rounded bg-gray-200 flex items-center justify-center text-gray-400 text-sm">
+                    No Image
+                </div>
+            );
+        },
+    },
     {
         accessorKey: "name",
         header: "Title",
     },
     {
-        accessorKey: "email",
-        header: "Email",
+        accessorKey: "subject",
+        header: "Subject",
     },
     {
         accessorKey: "status",
