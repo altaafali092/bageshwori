@@ -1,7 +1,7 @@
 
 import Navbar from './Navbar';
 import { Link } from '@inertiajs/react';
-import { blogIndex } from '@/routes';
+import { aboutUs, blogIndex } from '@/routes';
 
 const Header = () => {
 
@@ -22,12 +22,12 @@ const Header = () => {
                         >
                             Home
                         </a>
-                        <a
-                            href="#"
+                        <Link
+                            href={aboutUs()}
                             className="text-gray-700 px-4 py-2 hover:text-emerald-600 transition font-medium whitespace-nowrap"
                         >
                             About
-                        </a>
+                        </Link>
                         <Link
                             href={blogIndex().url}
                             className="text-gray-700 px-4 py-2 hover:text-emerald-600 transition font-medium whitespace-nowrap"

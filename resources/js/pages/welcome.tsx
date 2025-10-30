@@ -44,7 +44,7 @@ export default function BageshworiKennel() {
                     <Link href={ProductDetail()} className="bg-emerald-600 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 transition font-semibold shadow-lg">
                         Weekly Discount
                     </Link>
-                    
+
                 </div>
             </div>
 
@@ -67,20 +67,18 @@ export default function BageshworiKennel() {
                                             className="flex items-center justify-between py-3 px-3 hover:bg-gray-50 
                       rounded-lg cursor-pointer transition-colors group"
                                         >
-                                            <div className="flex items-center gap-3">
+                                            <Link href={categorywiseProduct(category.slug)} className="flex items-center gap-3">
                                                 <span className="text-2xl">
                                                     <img src={category.image} alt="" className="w-8 h-8 rounded-full" />
                                                 </span>
                                                 <span className="text-gray-700 font-medium group-hover:text-emerald-600 transition-colors">
                                                     {category.name}
                                                 </span>
-                                            </div>
+                                            </Link>
                                             <span className="text-emerald-600 font-semibold">
                                                 ({category.products_count})
                                             </span>
-                                            <Link href={categorywiseProduct(category.slug)}>
-                                            hello
-                                            </Link>
+
                                         </div>
                                     ))}
                                 </div>

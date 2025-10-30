@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Front\StoreContactRequest;
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Contact;
 use App\Models\Product;
 use App\Models\Slider;
 use Illuminate\Http\Request;
@@ -99,5 +101,15 @@ class FrontendController extends Controller
             'blog' => $blog,
             'blogs' => $blogs
         ]);
+    }
+
+    public function aboutUs()
+    {
+        return Inertia::render('Frontend/About/Index');
+    }
+    public function message(StoreContactRequest $request)
+    {
+        Contact::create($request->validated());
+        return back()->with('message send sucessfully','sucess');
     }
 }
