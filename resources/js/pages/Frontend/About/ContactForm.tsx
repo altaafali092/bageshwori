@@ -135,7 +135,7 @@ const ContactForm = () => {
                                     id="message"
                                     name="message"
                                     placeholder="Tell us more about your inquiry..."
-                                    rows={16}
+                                    rows={10}
                                     className="border-2 focus:border-pink-500 transition-all duration-300 focus:shadow-lg focus:shadow-pink-100 resize-none"
                                 />
                                 {errors.message && (

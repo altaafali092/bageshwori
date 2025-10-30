@@ -30,9 +30,10 @@ import {
 } from 'lucide-react';
 import AuthLayout from '../layouts/AuthLayout';
 import ContactForm from './ContactForm';
+import useFlashToast from '@/components/useFlashToast';
 
 const AboutContact = () => {
- 
+
   const stats = [
     { icon: Users, label: 'Happy Customers', value: '50K+' },
     { icon: Award, label: 'Awards Won', value: '25+' },
@@ -112,10 +113,10 @@ const AboutContact = () => {
       link: null
     }
   ];
-
+ 
   return (
+
     <AuthLayout>
-      useFlashToast()
       <div className="min-h-screen">
         {/* Hero Section */}
         <section className=" h-[400px] bg-gradient-to-r from-emerald-50 to-teal-50 flex items-center justify-center">
@@ -308,7 +309,7 @@ const AboutContact = () => {
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
-                
+
                   loading="lazy"
                   title="Store Location"
                 ></iframe>
