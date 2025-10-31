@@ -14,7 +14,7 @@ import CategoryBanner from "./Frontend/Index/CategoryBanner";
 import CustomerReviews from "./Frontend/Index/Review";
 import LastBanner from "./Frontend/Index/LastBanner";
 import { Link, usePage } from "@inertiajs/react";
-import { Blogs, Categories, Products, Sliders } from "@/types/frontend";
+import { Blogs, Categories, Product, Sliders } from "@/types/frontend";
 import ProductDetail from "./Frontend/ProductDetail/Index";
 import { SliderCarousel } from "@/components/Frontend/SliderCarousel";
 import { categorywiseProduct } from "@/routes";
@@ -25,11 +25,11 @@ export default function BageshworiKennel() {
     const { sliders, categories, products, topSells, dealdays, dealWeeks, bestSells, blogs } = usePage<{
         sliders: Sliders[];
         categories: Categories[];
-        products: Products[];
-        topSells: Products[];
-        dealdays: Products[];
-        dealWeeks: Products[];
-        bestSells: Products[];
+        products: Product[];
+        topSells: Product[];
+        dealdays: Product[];
+        dealWeeks: Product[];
+        bestSells: Product[];
         blogs: Blogs[];
     }>().props;
 
@@ -41,7 +41,7 @@ export default function BageshworiKennel() {
                     <SliderCarousel sliders={sliders} />
                 </div>
                 <div className="max-w-7xl mx-auto px-4 py-8  gap-6">
-                    <Link href={ProductDetail()} className="bg-emerald-600 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 transition font-semibold shadow-lg">
+                    <Link href="" className="bg-emerald-600 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 transition font-semibold shadow-lg">
                         Weekly Discount
                     </Link>
 

@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use PHPUnit\Event\TestSuite\Loaded;
 
 class FrontendController extends Controller
 {
@@ -78,6 +79,7 @@ class FrontendController extends Controller
 
     public function productPage(Product $product)
     {
+        $product->load('category');
         return Inertia::render('Frontend/ProductDetail/Index', [
             'product' => $product
         ]);

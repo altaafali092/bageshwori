@@ -17,9 +17,10 @@ export type Categories={
     products_count:number,
     slug:string
 }
-export type Products={
+export type Product={
     id:number,
     name:string,
+    slug:string,
     price:number,
     description:string,
     image:string,

@@ -150,8 +150,8 @@ export default function BlogIndex({ blogs }: BlogIndexProps) {
                                                 key={blog.id}
                                                 variant={selectedCategory === blog.subject ? "default" : "outline"}
                                                 className={`cursor-pointer ${selectedCategory === blog.subject
-                                                        ? "bg-blue-600 hover:bg-blue-700"
-                                                        : "hover:bg-gray-100"
+                                                    ? "bg-blue-600 hover:bg-blue-700"
+                                                    : "hover:bg-gray-100"
                                                     }`}
                                                 onClick={() => setSelectedCategory(blog.subject)}
                                             >
