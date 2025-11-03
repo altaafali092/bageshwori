@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\OfficeSettingController;
 use App\Http\Controllers\Admin\sliderController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,4 +35,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::resource('blogs',BlogController::class);
     Route::get('blogs/{blog}/status',[BlogController::class,'status'])->name('blogs.status');
+    Route::resource('office-setting',OfficeSettingController::class);
+
 });

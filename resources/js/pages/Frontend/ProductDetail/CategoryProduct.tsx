@@ -15,11 +15,11 @@ import {
     SlidersHorizontal,
 } from "lucide-react"
 import AuthLayout from "../layouts/AuthLayout"
-import { Categories, Products } from "@/types/frontend"
+import { Categories, Product } from "@/types/frontend"
 import { ProductCard } from "@/components/Frontend/ProductCard"
 
 interface ProductProps {
-    products: Products[]
+    products: Product[]
     category: Categories
 }
 
