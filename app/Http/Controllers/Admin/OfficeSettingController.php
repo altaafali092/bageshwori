@@ -5,7 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\OfficeSetting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Inertia\Inertia;
+
+use function App\Helpers\checkFileExists;
 
 class OfficeSettingController extends Controller
 {
@@ -33,7 +37,25 @@ class OfficeSettingController extends Controller
      */
     public function store(Request $request)
     {
-        return "hello";
+        $officeSetting = OfficeSetting::latest()->first();
+
+        if (!empty($officeSetting)) {
+            $officeSetting->update(checkFileExists($request->validated(), [
+                'office_image' => null,
+                'office_cover' => null
+            ]));
+        } else {
+            OfficeSetting::create(checkFileExists($request->validated(), [
+                'office_image' => null,
+                'office_cover' => null
+            ]) + [
+                'created_by' => Auth::user()->id,
+            ]);
+        }
+
+        Cache::forget('office_setting');
+        return to_route('admin.office-setting.index')
+            ->with('success', 'Office Setting Updated Successfully');
     }
 
     /**

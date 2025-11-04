@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Helpers;
+
+use App\Models\OfficeSetting;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 
@@ -44,10 +46,10 @@ if (!function_exists('deleteFile')) {
         }
     }
 
-    // if (!function_exists('officeSettings')) {
-    //     function officeSettings()
-    //     {
-    //         return OfficeSetting::latest()->first();
-    //     }
-    // }
+    if (!function_exists('officeSettings')) {
+        function officeSettings()
+        {
+            return OfficeSetting::latest()->first();
+        }
+    }
 }
