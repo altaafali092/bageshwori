@@ -13,7 +13,7 @@ import {
 
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, ImageOff, LayoutGrid, LucideSettings2, MessageCircleMore, PackageSearch, Shield, SlidersIcon, User2Icon, UserPen, UserRound } from 'lucide-react';
+import { BookOpen, Building2Icon, Folder, ImageOff, LayoutGrid, LucideSettings2, MessageCircleMore, PackageSearch, Shield, SlidersIcon, User2Icon, UserPen, UserRound } from 'lucide-react';
 import AppLogo from './app-logo';
 import { dashboard } from '@/routes/admin';
 import { index as permissionsIndex } from '@/routes/admin/permissions';
@@ -24,6 +24,7 @@ import { index as productIndex } from '@/routes/admin/products';
 import { index as contactsIndex } from '@/routes/admin/contacts';
 import { index as sliderIndex } from '@/routes/admin/sliders';
 import { index as blogIndex } from '@/routes/admin/blogs';
+import { index as officeSettingIndex } from '@/routes/admin/office-setting';
 
 const mainNavItems: NavItem[] = [
     {
@@ -84,6 +85,11 @@ const mainNavItems: NavItem[] = [
                 title: "Users",
                 href: usersIndex(),
                 icon: User2Icon
+            },
+            {
+                title: "Office Settings",
+                href: officeSettingIndex(),
+                icon: Building2Icon
             },
 
         ]

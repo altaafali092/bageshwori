@@ -15,7 +15,7 @@ class OfficeSettingController extends Controller
     public function index()
     {
         $officeSetting = OfficeSetting::first();
-        return Inertia::render('admin/OffceSetting/Index',[
+        return Inertia::render('admin/OfficeSetting/Index',[
             'officeSetting'=>$officeSetting
         ]);
     }
@@ -33,7 +33,7 @@ class OfficeSettingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "hello";
     }
 
     /**
