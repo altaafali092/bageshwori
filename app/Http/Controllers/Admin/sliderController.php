@@ -55,7 +55,7 @@ class sliderController extends Controller
      */
     public function edit(Slider $slider)
     {
-        return inertia::render('admin/Slider/Edit',[
+        return Inertia::render('admin/Slider/Edit',[
             'slider'=>$slider
         ]);
     }
