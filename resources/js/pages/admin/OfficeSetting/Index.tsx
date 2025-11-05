@@ -1,12 +1,9 @@
-import React from "react"
+
 import { Head, Form } from "@inertiajs/react"
 import AppLayout from "@/layouts/app-layout"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { ArrowLeft, Building2, Building2Icon, FacebookIcon, Image, InstagramIcon, LocateIcon, MailIcon, MapIcon, MapPin, Music2Icon, Phone, PhoneIcon, TwitterIcon, YoutubeIcon } from "lucide-react"
+import {CardContent, } from "@/components/ui/card"
+import { ArrowLeft, Building2, FacebookIcon, Image, InstagramIcon, LocateIcon, MailIcon, MapIcon, MapPin, Music2Icon, Phone, PhoneIcon, TwitterIcon, YoutubeIcon } from "lucide-react"
 import { type BreadcrumbItem } from "@/types"
 import { index, store } from "@/routes/admin/office-setting"
 import { OfficeSetting } from "@/types/Admin/OfficeSetting"
@@ -23,7 +20,6 @@ interface officeSettingProps{
 
 export default function OfficeSettingCreate({officeSetting}: officeSettingProps) {
   const handleCancel = () => window.history.back()
-  console.log(officeSetting)
 
   return (
     <AppLayout breadcrumbs={breadcrumbs}>
@@ -66,7 +62,7 @@ export default function OfficeSettingCreate({officeSetting}: officeSettingProps)
                     <div className="space-y-6">
                       {/* Basic Information */}
                       <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-                        <div className="bg-gradient-to-r from-blue-500 to-blue-600 px-6 py-4">
+                        <div className="bg-gradient-to-r from-gray-500 to-gray-400 px-6 py-4">
                           <h2 className="text-lg font-semibold text-white flex items-center gap-2">
                             <Building2 className="h-5 w-5" />
                             Basic Information
@@ -176,7 +172,7 @@ export default function OfficeSettingCreate({officeSetting}: officeSettingProps)
 
 
                     <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-                      <div className="bg-gradient-to-r from-purple-500 to-purple-600 px-6 py-4">
+                      <div className="bg-gradient-to-r from-gray-500 to-gray-400 px-6 py-4">
                         
                         <h2 className="text-lg font-semibold text-white flex items-center gap-2">
                           <Image className="h-5 w-5" />
@@ -195,7 +191,7 @@ export default function OfficeSettingCreate({officeSetting}: officeSettingProps)
                               {field.label}
                             </label>
                             <div className="mb-4">
-                              <img src={officeSetting[field.name]} alt={officeSetting.office_name} className="w-full h-16 object-cover rounded-lg" />
+                              <img src={officeSetting[field.name]} alt={officeSetting.office_name} className="w-full h-36 object-cover rounded-lg" />
                             </div>
                             <div className="relative border-2 border-dashed border-slate-300 rounded-lg p-6 text-center hover:border-purple-400 transition-colors cursor-pointer group-hover:bg-purple-50">
                               <input
@@ -216,7 +212,7 @@ export default function OfficeSettingCreate({officeSetting}: officeSettingProps)
 
                     {/* Social Media */}
                     <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-                      <div className="bg-gradient-to-r from-pink-500 to-rose-500 px-6 py-4">
+                      <div className="bg-gradient-to-r from-gray-500 to-gray-400 px-6 py-4">
                         <h2 className="text-lg font-semibold text-white">Social Media Links</h2>
                       </div>
                       <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -240,7 +236,6 @@ export default function OfficeSettingCreate({officeSetting}: officeSettingProps)
                                   name={social.name}
                                   placeholder={social.placeholder}
                                   defaultValue={officeSetting[social.name] || ''}
-
                                   className="w-full pl-10 pr-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all"
                                 />
                               </div>

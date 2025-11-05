@@ -24,7 +24,7 @@ export const columns: ColumnDef<Slider>[] = [
             return image ? (
                 <img
                     src={image}
-                    alt={row.getValue("name")}
+                    alt={row.getValue("title")}
                     className="h-20 w-20 object-fill rounded"
                 />
             ) : (
