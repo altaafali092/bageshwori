@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { ArrowLeft, Building2, Building2Icon, FacebookIcon, Image, InstagramIcon, LocateIcon, MailIcon, MapIcon, MapPin, Music2Icon, Phone, PhoneIcon, TwitterIcon, YoutubeIcon } from "lucide-react"
 import { type BreadcrumbItem } from "@/types"
 import { index, store } from "@/routes/admin/office-setting"
+import { OfficeSetting } from "@/types/Admin/OfficeSetting"
 
 
 
@@ -16,9 +17,13 @@ const breadcrumbs: BreadcrumbItem[] = [
   { title: "Office Settings", href: index().url },
   { title: "Index", href: "#" },
 ]
+interface officeSettingProps{
+  officeSetting: OfficeSetting;
+}
 
-export default function OfficeSettingCreate() {
+export default function OfficeSettingCreate({officeSetting}: officeSettingProps) {
   const handleCancel = () => window.history.back()
+  console.log(officeSetting)
 
   return (
     <AppLayout breadcrumbs={breadcrumbs}>
@@ -78,6 +83,7 @@ export default function OfficeSettingCreate() {
                                 type="text"
                                 name="office_name"
                                 placeholder="Enter office name"
+                                defaultValue={officeSetting.office_name}
                                 className="w-full pl-10 pr-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                               />
                               {errors.office_name && (
@@ -96,6 +102,7 @@ export default function OfficeSettingCreate() {
                                 type="email"
                                 name="office_email"
                                 placeholder="office@example.com"
+                                defaultValue={officeSetting.office_email}
                                 className="w-full pl-10 pr-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                               />
                             </div>
@@ -111,6 +118,7 @@ export default function OfficeSettingCreate() {
                                 type="tel"
                                 name="office_phone"
                                 placeholder="98xxxxxxxxxx"
+                                 defaultValue={officeSetting.office_phone}
 
                                 className="w-full pl-10 pr-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                               />
@@ -127,7 +135,7 @@ export default function OfficeSettingCreate() {
                                 type="text"
                                 name="office_address"
                                 placeholder="123 Main St, City"
-
+                                defaultValue={officeSetting.office_address}
                                 className="w-full pl-10 pr-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                               />
                             </div>
@@ -143,6 +151,7 @@ export default function OfficeSettingCreate() {
                                 type="url"
                                 name="office_google_map"
                                 placeholder="https://maps.google.com/..."
+                                defaultValue={officeSetting.office_google_map}
 
                                 className="w-full pl-10 pr-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                               />
@@ -154,10 +163,10 @@ export default function OfficeSettingCreate() {
                               Description
                             </label>
                             <textarea
-                              name="description"
+                              name="desc"
                               rows={4}
                               placeholder="Tell us about your office..."
-
+                              defaultValue={officeSetting.desc}
                               className="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
                             />
                           </div>
@@ -168,6 +177,7 @@ export default function OfficeSettingCreate() {
 
                     <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
                       <div className="bg-gradient-to-r from-purple-500 to-purple-600 px-6 py-4">
+                        
                         <h2 className="text-lg font-semibold text-white flex items-center gap-2">
                           <Image className="h-5 w-5" />
                           Media & Branding
@@ -184,6 +194,9 @@ export default function OfficeSettingCreate() {
                             <label className="block text-sm font-medium text-slate-700 mb-2">
                               {field.label}
                             </label>
+                            <div className="mb-4">
+                              <img src={officeSetting[field.name]} alt={officeSetting.office_name} className="w-full h-16 object-cover rounded-lg" />
+                            </div>
                             <div className="relative border-2 border-dashed border-slate-300 rounded-lg p-6 text-center hover:border-purple-400 transition-colors cursor-pointer group-hover:bg-purple-50">
                               <input
                                 type="file"
@@ -199,6 +212,7 @@ export default function OfficeSettingCreate() {
                         ))}
                       </div>
                     </div>
+
 
                     {/* Social Media */}
                     <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
@@ -225,6 +239,7 @@ export default function OfficeSettingCreate() {
                                   type="url"
                                   name={social.name}
                                   placeholder={social.placeholder}
+                                  defaultValue={officeSetting[social.name] || ''}
 
                                   className="w-full pl-10 pr-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all"
                                 />

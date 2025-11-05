@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\FileTrait;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class OfficeSetting extends Model
 {
+    use HasFactory, FileTrait;
 
     protected $fillable = [
         'office_name',
@@ -26,16 +29,22 @@ class OfficeSetting extends Model
         'tiktok',
     ];
 
+    public function officeLogo(): Attribute
+    {
+        return $this->castingFile(defaultPath: 'OfficeSetting/officeLogo', fileToDelete: $this->attributes['office_logo'] ?? null);
+         
+    }
     public function officeCover(): Attribute
     {
-        return $this->castingFile(defaultPath: 'OfficeSetting');
+        return $this->castingFile(defaultPath: 'OfficeSetting/officeCover', fileToDelete: $this->attributes['office_cover'] ?? null);
+         
     }
     public function officeBanner(): Attribute
     {
-        return $this->castingFile(defaultPath: 'OfficeSetting');
+        return $this->castingFile(defaultPath: 'OfficeSetting/officeBanner', fileToDelete: $this->attributes['office_banner'] ?? null);
     }
     public function officeBanner2(): Attribute
     {
-        return $this->castingFile(defaultPath: 'OfficeSetting');
+        return $this->castingFile(defaultPath: 'OfficeSetting/officeBanner2', fileToDelete: $this->attributes['office_banner_2'] ?? null);
     }
 }

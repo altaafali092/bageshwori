@@ -6,71 +6,42 @@ use App\Helpers\Helper;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Facades\Storage;
 
+use function App\Helpers\deleteFile;
 
 trait FileTrait
 {
-    public function castingFile(string|null $defaultData = null, string $defaultPath = ''): Attribute
+    public function castingFile(string $defaultData = '', string $defaultPath = '', ?string $fileToDelete = null): Attribute
     {
-        $defaultData ??= '';
         return Attribute::make(
-            get: function (string|null $value) use ($defaultData) {
+            get: function (?string $value) use ($defaultData) {
                 if (!empty($value)) {
-                    $files = json_decode($value, true);
-                    if (is_array($files)) {
-                        return array_map(function ($file) use ($defaultData) {
-                            if (Helper::isUrl($file)) {
-                                return $file;
-                            } else {
-                                return Storage::disk('public')->exists($file)
-                                    ? Storage::disk('public')->url($file)
-                                    : $defaultData;
-                            }
-                        }, $files);
+                    if (filter_var($value, FILTER_VALIDATE_URL)) {
+                        return $value;
                     } else {
-                        if (Helper::isUrl($value)) {
-                            return $value;
+                        if (Storage::disk('public')->exists($value)) {
+                            return Storage::disk('public')->url($value);
                         } else {
-                            return Storage::disk('public')->exists($value)
-                                ? Storage::disk('public')->url($value)
-                                : $defaultData;
+                            return $defaultData;
                         }
                     }
                 } else {
                     return $defaultData;
                 }
             },
-            set: function (mixed $value) use ($defaultPath) {
-                if (is_array($value)) {
-                    $paths = [];
-                    foreach ($value as $file) {
-                        if (!empty($file)) {
-                            if (Helper::isUrl($file)) {
-                                $paths[] = $file;
-                            } elseif ($file instanceof \Illuminate\Http\UploadedFile) {
-                                $paths[] = $file->store($defaultPath, 'public');
-                            } else {
-                                // Already stored path (string)
-                                $paths[] = $file;
-                            }
-                        }
-                    }
-                    return json_encode($paths);
-                } else {
-                    if (!empty($value)) {
-                        if (Helper::isUrl($value)) {
-                            return $value;
-                        } elseif ($value instanceof \Illuminate\Http\UploadedFile) {
-                            return $value->store($defaultPath, 'public');
-                        } else {
-                            // Already stored path (string)
-                            return $value;
-                        }
+            set: function ($value) use ($defaultPath, $fileToDelete) {
+                if (!empty($value)) {
+                    if (filter_var($value, FILTER_VALIDATE_URL)) {
+                        return $value;
                     } else {
-                        return null;
+                        if (!empty($fileToDelete)) {
+                            deleteFile($fileToDelete);
+                        }
+                        return $value->store($defaultPath, 'public');
                     }
+                } else {
+                    return null;
                 }
-            }
-
+            },
         );
     }
 }
