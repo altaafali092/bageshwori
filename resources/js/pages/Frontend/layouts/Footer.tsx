@@ -1,7 +1,17 @@
 import React from 'react';
-import { Facebook, Instagram, Linkedin, Phone } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Phone, Twitter } from 'lucide-react';
 
-export default function Footer() {
+import { officeSetting } from '@/types/frontend';
+
+
+interface FooterProps {
+  officeSettings: officeSetting | null;
+}
+export default function Footer({ officeSettings }: FooterProps) {
+
+    // const { officeSettings } = usePage<{ officeSettings: officeSetting | null }>().props;
+
+
     return (
         <footer className="bg-black text-white">
             {/* Main Footer Content */}
@@ -10,30 +20,27 @@ export default function Footer() {
                     {/* Brand Section */}
                     <div className="lg:col-span-2">
                         <h2 className="text-3xl font-bold mb-6">
-                            Bageshwori<br />Kennel House
+                            {officeSettings?.office_name}
                         </h2>
                         <p className="text-gray-400 mb-8 leading-relaxed">
                             But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system
                         </p>
                         <div className="mb-6">
                             <p className="text-white font-semibold">
-                                2345 Beach,Rd Metrocity USA,<br />
-                                HWY 1235
+                                {officeSettings?.office_address}
                             </p>
                         </div>
                         <div className="flex gap-4">
-                            <a href="#" className="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors">
+                            <a href={officeSettings?.facebook} className="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors">
                                 <Facebook size={20} />
                             </a>
-                            <a href="#" className="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors">
-                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                                </svg>
+                            <a href={officeSettings?.twitter} className="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors">
+                                <Twitter size={20} />
                             </a>
-                            <a href="#" className="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors">
+                            <a href={officeSettings?.instagram} className="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors">
                                 <Instagram size={20} />
                             </a>
-                            <a href="#" className="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors">
+                            <a href={officeSettings?.twitter} className="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors">
                                 <Linkedin size={20} />
                             </a>
                         </div>
