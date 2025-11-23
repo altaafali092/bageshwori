@@ -111,7 +111,7 @@ export default function OfficeSettingCreate({ officeSetting }: officeSettingProp
       <Head title="Office Settings" />
 
       <div className="min-h-full bg-slate-50/50 p-6 md:p-8">
-        <div className="max-w-5xl mx-auto space-y-8">
+        <div className="max-w-7xl mx-auto space-y-8">
 
           {/* Header Section */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
