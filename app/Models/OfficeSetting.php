@@ -43,6 +43,6 @@ class OfficeSetting extends Model
     }
     public function officeBannerTwo(): Attribute
     {
-        return $this->castingFile(defaultPath: 'OfficeSetting/officeBanner2', fileToDelete: $this->attributes['office_banner_2'] ?? null);
+        return $this->castingFile(defaultPath: 'OfficeSetting/officeBanner2', fileToDelete: $this->attributes['office_banner_two'] ?? null);
     }
 }

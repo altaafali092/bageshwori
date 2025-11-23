@@ -23,6 +23,8 @@ import { index as userIndex } from '@/routes/admin/users';
 import { index as categoryIndex } from '@/routes/admin/categories';
 import { index as productIndex } from '@/routes/admin/products';
 import { index as IndexBlog } from '@/routes/admin/blogs';
+import { index as contactIndex } from '@/routes/admin/contacts';
+import { index } from '@/routes/admin/office-setting';
 
 const mainNavItems: NavItem[] = [
     {
@@ -61,7 +63,7 @@ const mainNavItems: NavItem[] = [
     },
     {
         title: "Contact",
-        href: dashboard(),
+        href: contactIndex(),
         icon: MessageCircleMore,
 
     },
@@ -87,18 +89,13 @@ const mainNavItems: NavItem[] = [
             },
             {
                 title: "Office Settings",
-                href: dashboard(),
+                href: index(),
                 icon: Building2Icon
             },
 
         ]
     },
-    {
-        title: "Contact",
-        href: dashboard(),
-        icon: MessageCircleMore,
 
-    },
 ];
 
 const footerNavItems: NavItem[] = [
