@@ -1,5 +1,6 @@
 import { InertiaLinkProps } from '@inertiajs/react';
 import { LucideIcon } from 'lucide-react';
+import { OfficeSetting } from './Frontend';
 
 export interface Auth {
     user: User;
@@ -27,6 +28,7 @@ export interface SharedData {
     quote: { message: string; author: string };
     auth: Auth;
     sidebarOpen: boolean;
+    officeSettings: OfficeSetting;
     [key: string]: unknown;
 }
 
