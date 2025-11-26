@@ -101,7 +101,7 @@ export default function BageshworiKennel() {
                             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                                 {/* Slider */}
                                 <div className="lg:col-span-2">
-                                    <CategorySlider />
+                                    <CategorySlider categories={ categories}/>
                                 </div>
 
                                 {/* Right Column - Product Cards */}
