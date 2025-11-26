@@ -76,4 +76,13 @@ export type OfficeSetting = {
     instagram: string,
     youtube: string,
     tiktok: string,
-} 
+}
+
+export interface MenuItem {
+    id: number;
+    title: string;
+    slug: string;
+    url: string;
+    children: MenuItem[];
+}
+

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Middleware;
 use Symfony\Component\HttpFoundation\Response;
+use App\Models\MenuSetting; // Assuming MenuSetting model exists and needs to be imported
 
 class HandleFrontend extends Middleware
 {
@@ -24,6 +25,12 @@ class HandleFrontend extends Middleware
             'globalCategories' => Category::withCount('products')
                 ->where('status', 1)
                 ->latest()
+                ->get(),
+
+            'menuSettings' => MenuSetting::where('is_active', 1)
+                ->whereNull('menu_id')
+                ->with(['children' => fn($query) => $query->where('is_active', 1)])
+                ->orderBy('position')
                 ->get(),
         ]);
     }

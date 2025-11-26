@@ -66,7 +66,7 @@ class FrontendController extends Controller
 
         ]);
     }
-     public function categorywiseProduct(Category $category)
+    public function categorywiseProduct(Category $category)
     {
 
         $products = $category->products()->where('in_stock', 1)->latest()->get();

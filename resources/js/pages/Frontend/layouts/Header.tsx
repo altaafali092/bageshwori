@@ -1,79 +1,110 @@
 import Navbar from './Navbar';
 import { Link, usePage } from '@inertiajs/react';
-import { aboutUs, blogIndex, categorywiseProduct, home } from '@/routes';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
-import { GlobalCategories } from '@/types/Frontend';
-
+import { aboutUs, categorywiseProduct } from '@/routes';
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger
+} from '@/components/ui/dropdown-menu';
+import { Button } from '@/components/ui/button'; // Assuming Button component path
+import { GlobalCategories, MenuItem } from '@/types/Frontend';
+import { ChevronDown } from 'lucide-react'; // Assuming lucide-react is available for icons
 
 interface CategoryProps {
-    globalCategories: GlobalCategories[] | null,
+    globalCategories: GlobalCategories[] | null;
 }
-const Header = () => {
-    const { url } = usePage()
-    const { globalCategories } = usePage<CategoryProps>().props;
 
+const Header = () => {
+    const { url } = usePage();
+    const { globalCategories } = usePage<CategoryProps>().props;
+    const { menuSettings } = usePage<{ menuSettings: MenuItem[] }>().props;
 
     return (
         <div className="bg-gray-50 flex flex-col">
-
             <Navbar />
 
-            {/* 🔹 Navigation */}
-            <div className="bg-white border-b  sticky top-0 ">
-                <div className="max-w-7xl mx-auto px-4 flex gap-4 py-2 overflow-x-auto">
+            {/* 🌐 Main Navigation */}
+            <div className="bg-white border-b sticky top-0 z-40 shadow-sm">
+                <div className="max-w-7xl mx-auto px-4 flex items-center gap-6 py-3 overflow-x-auto">
+
+                    {/* 🔽 Category Selector */}
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                            <button className="bg-emerald-600 text-white px-6 py-2 rounded-md hover:bg-emerald-700 transition whitespace-nowrap">
+                            <Button
+                                variant="default"
+                                className="bg-emerald-600 hover:bg-emerald-700 shadow-sm whitespace-nowrap"
+                            >
                                 Select Category
-                            </button>
+                            </Button>
                         </DropdownMenuTrigger>
-                        <DropdownMenuContent className='px-8' align="start">
+
+                        <DropdownMenuContent
+                            align="start"
+                            className="w-56" // shadcn/ui provides sensible defaults for styling
+                        >
                             {globalCategories?.map((category, idx) => (
-                                <DropdownMenuItem key={idx} className="p-0">
+                                <DropdownMenuItem key={idx} asChild>
                                     <Link
                                         href={categorywiseProduct(category.slug)}
-                                        className="block w-full px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600"
+                                        className="w-full h-full block px-2 py-1.5" // Fill DropdownMenuItem space
                                     >
                                         {category.name}
                                     </Link>
                                 </DropdownMenuItem>
                             ))}
-
-
                         </DropdownMenuContent>
                     </DropdownMenu>
 
-                    {/* Home */}
-                    <Link
-                        href={home().url}
-                        className={`px-4 py-2  font-bold whitespace-nowrap transition ${url === "/" ? "text-yellow-400" : "text-gray-700 hover:text-yellow-500"
-                            }`}
-                    >
-                        Home
-                    </Link>
+                    {/* 🧭 Dynamic Menu Items */}
+                    {menuSettings.map((menu) =>
+                        menu.children?.length > 0 ? (
+                            <DropdownMenu key={menu.id}>
+                                <DropdownMenuTrigger asChild>
+                                    <Button
+                                        variant="ghost"
+                                        className="whitespace-nowrap flex items-center gap-1 text-gray-700 hover:text-emerald-600"
+                                    >
+                                        {menu.title}
+                                        <ChevronDown className="ml-1 h-3 w-3" />
+                                    </Button>
+                                </DropdownMenuTrigger>
 
-                    {/* Blog */}
-                    <Link
-                        href={blogIndex().url}
-                        className={`px-4 py-2 font-bold  whitespace-nowrap transition ${url.startsWith("/blog") ? "text-yellow-400" : "text-gray-700 hover:text-yellow-500"
-                            }`}
-                    >
-                        Blog
-                    </Link>
+                                <DropdownMenuContent
+                                    align="start"
+                                    className="w-56"
+                                >
+                                    {menu.children.map((child) => (
+                                        <DropdownMenuItem key={child.id} asChild>
+                                            <Link
+                                                href={child.url}
+                                                className="w-full h-full block px-2 py-1.5"
+                                            >
+                                                {child.title}
+                                            </Link>
+                                        </DropdownMenuItem>
+                                    ))}
+                                </DropdownMenuContent>
+                            </DropdownMenu>
+                        ) : (
+                            <Button
+                                key={menu.id}
+                                variant="ghost"
+                                asChild
+                                className="whitespace-nowrap text-gray-700 hover:text-emerald-600"
+                            >
+                                <Link href={menu.url}>
+                                    {menu.title}
+                                </Link>
+                            </Button>
+                        )
+                    )}
 
-                    {/* About */}
-                    <Link
-                        href={aboutUs()}
-                        className={`px-4 py-2 font-bold  whitespace-nowrap transition ${url.startsWith("/about") ? "text-yellow-400" : "text-gray-700 hover:text-yellow-500"
-                            }`}
-                    >
-                        About
-                    </Link>
+
                 </div>
             </div>
-
         </div>
-    )
-}
+    );
+};
 
-export default Header
+export default Header;

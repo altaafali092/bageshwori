@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\StaticPageController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
@@ -17,3 +18,6 @@ Route::post('message', [FrontendController::class, 'message'])->name('frontMessa
 
 
 require __DIR__ . '/settings.php';
+
+Route::get('/{slug}', [StaticPageController::class, 'show'])
+    ->name('staticPage');

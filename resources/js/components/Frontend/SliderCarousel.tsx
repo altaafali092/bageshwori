@@ -20,8 +20,8 @@ export function SliderCarousel({ sliders }: SliderCarouselProps) {
           />
           <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
             <div className="text-center text-white mt-44">
-              <h2 className="text-3xl font-bold mb-2">{slider.title}</h2>
-              <p className="text-lg">{slider.description}</p>
+              {/* <h2 className="text-3xl font-bold mb-2">{slider.title}</h2>
+              <p className="text-lg">{slider.description}</p> */}
             </div>
           </div>
         </div>

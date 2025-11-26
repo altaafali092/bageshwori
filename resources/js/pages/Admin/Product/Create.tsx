@@ -20,7 +20,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     { title: "Create", href: "#" },
 ]
 
-export default function ProductCreate({categories}: categoryProps) {
+export default function ProductCreate({ categories }: categoryProps) {
     const handleCancel = () => window.history.back()
 
     return (
@@ -68,7 +68,7 @@ export default function ProductCreate({categories}: categoryProps) {
                                         {/* Name and Image in one row */}
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                                              <div className="space-y-2">
+                                            <div className="space-y-2">
                                                 <Label htmlFor="category_id">
                                                     Category <span className="text-red-500">*</span>
                                                 </Label>
@@ -118,7 +118,7 @@ export default function ProductCreate({categories}: categoryProps) {
                                                 )}
                                             </div>
 
-                                             <div className="space-y-2">
+                                            <div className="space-y-2">
                                                 <Label htmlFor="price">Product Price</Label>
                                                 <Input
                                                     id="price"
