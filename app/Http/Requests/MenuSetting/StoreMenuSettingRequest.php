@@ -28,7 +28,7 @@ class StoreMenuSettingRequest extends FormRequest
             'menu_id' => ['nullable', Rule::exists('menu_settings', 'id')->withoutTrashed()],
             'menuable_id' => ['nullable'],
             'title' => ['required', 'string', 'max:255'],
-            'slug' => ['nullable', 'string', 'max:255'],
+            'slug' => ['nullable', 'alpha_dash', 'string', 'max:255'],
             'position' => ['nullable', 'integer'],
             'menu_type' => ['required', new Enum(MenuTypeEnum::class)],
             'menu_url' => ['nullable', 'url'],

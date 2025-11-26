@@ -47,10 +47,19 @@ class MenuSettingController extends Controller
 
     public function edit(MenuSetting $menuSetting)
     {
+        $categories = Category::latest()->get();
+        $menuSettings = MenuSetting::latest()->get();
+
         return Inertia::render('Admin/MenuSetting/Edit', [
             'menuSetting' => $menuSetting,
+            'categories' => $categories,
+            'menuSettings' => $menuSettings,
+            'menuTypes' => MenuTypeEnum::labels(),
+            'staticPages' => config('MenuFile.static_pages'),
+            'staticPageSlugs' => config('StaticePageSlug.static_page_slugs'),
         ]);
     }
+
 
     public function update(UpdateMenuSettingRequest $request, MenuSetting $menuSetting)
     {
