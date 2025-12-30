@@ -269,6 +269,7 @@ const AboutContact = () => {
                     </div>
                   </CardContent>
                 </Card>
+          
               ))}
 
               {/* Social Media */}
