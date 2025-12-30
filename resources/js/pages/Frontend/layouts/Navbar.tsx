@@ -14,10 +14,10 @@ const Navbar = () => {
                     <div className="flex items-center gap-4 flex-wrap">
                         <span className="flex items-center gap-2">
                             <MapPin size={16} />
-                            {officeSettings.office_address}
+                            {officeSettings.office_address || "Heloo"}
                         </span>
                         <span className="flex items-center gap-2">
-                            <Phone size={16} /> {officeSettings.office_phone}
+                            <Phone size={16} /> {officeSettings.office_phone || ""}
                         </span>
                     </div>
                     <div className="flex items-center gap-4">

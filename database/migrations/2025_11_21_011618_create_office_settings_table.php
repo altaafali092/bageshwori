@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('office_phone');
             $table->string('desc')->nullable();
             $table->string('office_address');
-            $table->string('office_google_map')->nullable();
+            $table->text('office_google_map')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
             $table->string('instagram')->nullable();

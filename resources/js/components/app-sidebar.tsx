@@ -13,7 +13,7 @@ import {
 
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BookOpen, Building2Icon, Dessert, Folder, LayoutGrid, LucideSettings2, MessageCircleMore, PackageSearch, Shield, SlidersIcon, SquareMenu, User2Icon, UserPen } from 'lucide-react';
+import { BookOpen, Building2Icon, Dessert, Folder, LayoutGrid, LucideSettings2, MessageCircleMore, PackageSearch, Shield, SlidersIcon, SquareMenu, Text, User2Icon, UserPen } from 'lucide-react';
 import AppLogo from './app-logo';
 import { dashboard } from '@/routes/admin';
 import { index as sliderIndex } from '@/routes/admin/sliders';
@@ -26,6 +26,7 @@ import { index as IndexBlog } from '@/routes/admin/blogs';
 import { index as contactIndex } from '@/routes/admin/contacts';
 import { index } from '@/routes/admin/office-setting';
 import { index as menuIndex } from '@/routes/admin/menu-setting';
+import { index as promoTextIndex } from '@/routes/admin/promo-text';
 
 const mainNavItems: NavItem[] = [
     {
@@ -42,6 +43,11 @@ const mainNavItems: NavItem[] = [
         title: 'Blogs',
         href: IndexBlog(),
         icon: BookOpen,
+    },
+    {
+        title: 'Promo Text',
+        href: promoTextIndex(),
+        icon: Text,
     },
     {
         title: "Product",

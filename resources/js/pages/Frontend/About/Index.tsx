@@ -31,8 +31,11 @@ import {
 import AuthLayout from '../layouts/AuthLayout';
 import ContactForm from './ContactForm';
 import useFlashToast from '@/components/useFlashToast';
+import { usePage } from '@inertiajs/react';
+import { SharedData } from '@/types';
 
 const AboutContact = () => {
+  const { officeSettings } = usePage<SharedData>().props;
 
   const stats = [
     { icon: Users, label: 'Happy Customers', value: '50K+' },
@@ -113,7 +116,7 @@ const AboutContact = () => {
       link: null
     }
   ];
- 
+
   return (
 
     <AuthLayout>
@@ -305,7 +308,7 @@ const AboutContact = () => {
             <CardContent>
               <div className="w-full h-[400px] bg-muted rounded-lg overflow-hidden">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093705!2d144.95373631531654!3d-37.81720997975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b349649%3A0xb6899234e561db11!2sEnvato!5e0!3m2!1sen!2sus!4v1589492735967!5m2!1sen!2sus"
+                  src={officeSettings.office_google_map || ""}
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

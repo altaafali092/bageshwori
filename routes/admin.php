@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\MenuSettingController;
 use App\Http\Controllers\Admin\OfficeSettingController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\PromoTextController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\UserController;
@@ -34,3 +35,5 @@ Route::get('blogs/{blog}/status', [BlogController::class, 'status'])->name('blog
 Route::resource('office-setting', OfficeSettingController::class);
 Route::resource('menu-setting', MenuSettingController::class);
 Route::get('menu-setting/{menuSetting}/status', [MenuSettingController::class, 'status'])->name('menu-setting.status');
+Route::resource('promo-text', PromoTextController::class);
+Route::get('promo-text/{promoText}/status', [PromoTextController::class, 'status'])->name('promo-text.status');
