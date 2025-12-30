@@ -94,27 +94,22 @@ const AboutContact = () => {
     {
       icon: Phone,
       title: 'Phone',
-      details: ['+1 (555) 123-4567', '+1 (555) 987-6543'],
-      link: 'tel:+15551234567'
+      details: [officeSettings.office_phone],
+      link: `tel:${officeSettings.office_phone}`
     },
     {
       icon: Mail,
       title: 'Email',
-      details: ['info@organicstore.com', 'support@organicstore.com'],
-      link: 'mailto:info@organicstore.com'
+      details: [officeSettings.office_email],
+      link: `mailto:${officeSettings.office_email}`
     },
     {
       icon: MapPin,
       title: 'Address',
-      details: ['123 Organic Street', 'Green Valley, CA 90210'],
+      details: [officeSettings.office_address],
       link: null
     },
-    {
-      icon: Clock,
-      title: 'Working Hours',
-      details: ['Mon - Fri: 9:00 AM - 6:00 PM', 'Sat - Sun: 10:00 AM - 4:00 PM'],
-      link: null
-    }
+
   ];
 
   return (
@@ -269,7 +264,7 @@ const AboutContact = () => {
                     </div>
                   </CardContent>
                 </Card>
-          
+
               ))}
 
               {/* Social Media */}
