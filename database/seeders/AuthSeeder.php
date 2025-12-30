@@ -25,6 +25,7 @@ class AuthSeeder extends Seeder
             ['email' => 'admin@admin.com'],
             [
                 'name' => 'Super Admin',
+                'role' => 'admin',
                 'password' => Hash::make('password')
             ]
         );
