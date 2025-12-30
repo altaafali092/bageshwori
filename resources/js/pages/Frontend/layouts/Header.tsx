@@ -1,6 +1,6 @@
 import Navbar from './Navbar';
 import { Link, usePage } from '@inertiajs/react';
-import { aboutUs, categorywiseProduct } from '@/routes';
+import { categorywiseProduct } from '@/routes';
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -24,7 +24,6 @@ const Header = () => {
         <div className="bg-gray-50 flex flex-col">
             <Navbar />
 
-            {/* 🌐 Main Navigation */}
             <div className="bg-white border-b sticky top-0 z-40 shadow-sm">
                 <div className="max-w-7xl mx-auto px-4 flex items-center gap-6 py-3 overflow-x-auto">
 
@@ -41,13 +40,13 @@ const Header = () => {
 
                         <DropdownMenuContent
                             align="start"
-                            className="w-56" // shadcn/ui provides sensible defaults for styling
+                            className="w-56"
                         >
                             {globalCategories?.map((category, idx) => (
                                 <DropdownMenuItem key={idx} asChild>
                                     <Link
                                         href={categorywiseProduct(category.slug)}
-                                        className="w-full h-full block px-2 py-1.5" // Fill DropdownMenuItem space
+                                        className="w-full h-full block px-2 py-1.5"
                                     >
                                         {category.name}
                                     </Link>
@@ -56,7 +55,6 @@ const Header = () => {
                         </DropdownMenuContent>
                     </DropdownMenu>
 
-                    {/* 🧭 Dynamic Menu Items */}
                     {menuSettings.map((menu) =>
                         menu.children?.length > 0 ? (
                             <DropdownMenu key={menu.id}>

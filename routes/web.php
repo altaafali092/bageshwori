@@ -1,10 +1,10 @@
 <?php
 
+use App\Http\Controllers\AuthLoginController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\StaticPageController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
-use Laravel\Fortify\Features;
+
 
 
 

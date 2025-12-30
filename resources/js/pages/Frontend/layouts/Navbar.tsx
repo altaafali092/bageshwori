@@ -1,5 +1,6 @@
+import { login, loginPage } from '@/routes';
 import { SharedData } from '@/types';
-import { usePage } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import { Facebook, Instagram, MapPin, Phone, SearchIcon } from 'lucide-react'
 import React, { useState } from 'react'
 
@@ -61,20 +62,27 @@ const Navbar = () => {
             <div className="bg-white shadow-sm">
                 <div className="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
                     <h1 className="text-3xl font-bold text-gray-800 text-center md:text-left">
-                        Bageshwori Kennel House
+                        {officeSettings.office_name || ""}
                     </h1>
-                    <div className="flex items-center w-full md:w-96">
-                        <input
-                            type="text"
-                            placeholder="Search"
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            className="flex-1 px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:border-emerald-500"
-                        />
-                        <button className="bg-yellow-400 hover:bg-yellow-500 transition px-4 py-2 rounded-r-lg">
-                            <SearchIcon size={25} />
-                        </button>
+                    <div className="flex items-center w-full gap-3 md:w-96">
+                        <div className="flex items-center">
+                            <input
+                                type="text"
+                                placeholder="Search"
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                className="flex-1 px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:border-emerald-500"
+                            />
+                            <button className="bg-yellow-400 hover:bg-yellow-500 transition px-4 py-2 rounded-r-lg">
+                                <SearchIcon size={25} />
+                            </button>
+                        </div>
+                        <Link href={login()} className="bg-emerald-600 text-white hover:bg-emerald-700 transition px-4 py-2 rounded">
+
+                            Login
+                        </Link>
                     </div>
+
                 </div>
             </div>
         </>

@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Phone, Twitter } from 'lucide-react';
 import { usePage } from '@inertiajs/react';
 import { SharedData } from '@/types';
 
@@ -95,27 +95,7 @@ export default function Footer() {
                 </div>
 
                 {/* Newsletter Section */}
-                {/* <div className="mt-16 pt-12 border-t border-gray-800">
-                    <div className="grid md:grid-cols-2 gap-8 items-center">
-                        <div>
-                            <h3 className="text-2xl font-bold mb-4">Newsletter Sign-up</h3>
-                            <p className="text-gray-400 text-sm">
-                                **NOTE: Insert Contact Form 7 plugin shortcode and use the classname" grocefycart-contact-newsletter-1, grocefycart-contact-newsletter-2, grocefycart-contact-newsletter-3 or grocefycart-contact-newsletter-4"
-                            </p>
-                        </div>
-                        <div className="border border-gray-700 rounded-lg p-6">
-                            <div className="flex items-center gap-4">
-                                <div className="bg-white p-3 rounded-lg">
-                                    <Phone className="text-black" size={24} />
-                                </div>
-                                <div>
-                                    <p className="text-gray-400 text-sm mb-1">Hotline Number</p>
-                                    <p className="text-xl font-bold">+1 (000)012-3456</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
+
             </div>
 
             {/* Bottom Bar */}
@@ -123,9 +103,9 @@ export default function Footer() {
                 <div className="max-w-7xl mx-auto px-6 py-6">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                         <div className="text-gray-400 text-sm">
-                            Proudly powered by <span className="text-white">❤️</span> | GrocefyCart by <span className="text-white">CozyThemes</span>.
+                            Proudly powered by <span className="text-white">❤️</span> |Altaaf  <span className="text-white">Bagesh</span>
                         </div>
-                        <div className="flex gap-3">
+                        {/* <div className="flex gap-3">
                             <div className="bg-white px-4 py-2 rounded">
                                 <span className="text-blue-600 font-bold text-sm">VISA</span>
                             </div>
@@ -139,7 +119,7 @@ export default function Footer() {
                             <div className="bg-white px-4 py-2 rounded">
                                 <span className="text-blue-600 font-bold text-sm">PayPal</span>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
