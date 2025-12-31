@@ -15,8 +15,11 @@ export default function Footer() {
                         <h2 className="text-3xl font-bold mb-6">
                             {officeSettings?.office_name}
                         </h2>
-                        <p className="text-gray-400 mb-8 leading-relaxed">
-                            {officeSettings?.desc}
+                        <p className="text-gray-400 mb-4 leading-relaxed">
+                            {officeSettings?.desc && (
+                                officeSettings.desc.split(' ').slice(0, 50).join(' ') +
+                                (officeSettings.desc.split(' ').length > 50 ? '...' : '')
+                            )}
                         </p>
                         <div className="mb-6">
                             <p className="text-white font-semibold">

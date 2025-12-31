@@ -3,14 +3,6 @@ import { SharedData } from '@/types'
 import { Link, useForm, usePage } from '@inertiajs/react'
 import { Facebook, Instagram, MapPin, Phone, SearchIcon, LogOut, User } from 'lucide-react'
 import React, { useState } from 'react'
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Button } from "@/components/ui/button"
 
 const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState("")
@@ -31,7 +23,7 @@ const Navbar = () => {
     return (
         <>
             {/* TOP BAR */}
-            <div className="hidden md:block bg-emerald-600 text-white py-2 px-4">
+            <div className="bg-emerald-600 text-white py-2 px-4">
                 <div className="max-w-7xl mx-auto flex justify-between items-center text-sm flex-wrap gap-3">
                     <div className="flex items-center gap-4 flex-wrap">
                         <span className="flex items-center gap-2">
@@ -52,87 +44,54 @@ const Navbar = () => {
 
             {/* MAIN HEADER */}
             <div className="bg-white shadow-sm">
-                <div className="max-w-7xl mx-auto px-4 py-4 md:py-6 flex flex-wrap md:flex-nowrap justify-between items-center gap-4">
-                    {/* LOGO */}
-                    <h1 className="text-2xl md:text-3xl font-bold text-gray-800 order-1">
+                <div className="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <h1 className="text-3xl font-bold text-gray-800">
                         {officeSettings.office_name || ""}
                     </h1>
 
-                    {/* SEARCH BAR */}
-                    <div className="w-full md:w-96 order-3 md:order-2">
-                        <div className="flex items-center w-full">
+                    <div className="flex items-center w-full gap-3 md:w-96">
+                        <div className="flex items-center flex-1">
                             <input
                                 type="text"
                                 placeholder="Search"
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="flex-1 px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:border-emerald-500 min-w-0"
+                                className="flex-1 px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:border-emerald-500"
                             />
-                            <button className="bg-yellow-400 px-4 py-2 rounded-r-lg hover:bg-yellow-500 transition-colors flex-shrink-0">
-                                <SearchIcon size={20} />
+                            <button className="bg-yellow-400 px-4 py-2 rounded-r-lg">
+                                <SearchIcon size={25} />
                             </button>
                         </div>
-                    </div>
 
-                    {/* AUTH SECTION */}
-                    {/* AUTH SECTION */}
-                    <div className="order-2 md:order-3 flex-shrink-0">
+                        {/* AUTH SECTION */}
                         {!user ? (
                             <Link
                                 href={login()}
-                                className="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 transition-colors text-sm md:text-base whitespace-nowrap"
+                                className="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700"
                             >
                                 Login
                             </Link>
                         ) : (
-                            <DropdownMenu>
-                                <DropdownMenuTrigger asChild>
-                                    <button
-                                        aria-label="User menu"
-                                        className="flex items-center justify-center h-11 w-11 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 text-white font-semibold shadow-md
-                    ring-2 ring-emerald-100 hover:ring-emerald-200 active:scale-95 transition-all"
-                                    >
-                                        {initials}
-                                    </button>
-                                </DropdownMenuTrigger>
-
-                                <DropdownMenuContent
-                                    align="end"
-                                    sideOffset={8}
-                                    className="w-56 rounded-xl p-2 shadow-lg"
+                            <div className="flex items-center gap-2">
+                                {/* Avatar */}
+                                <div
+                                    title={user.name}
+                                    className="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-semibold"
                                 >
-                                    {/* USER INFO */}
-                                    <div className="px-2 py-2">
-                                        <p className="text-sm font-semibold text-gray-900">
-                                            {user.name}
-                                        </p>
-                                        <p className="text-xs text-muted-foreground truncate">
-                                            {user.email}
-                                        </p>
-                                    </div>
+                                    {initials}
+                                </div>
 
-                                    <DropdownMenuSeparator />
+                                {/* Logout */}
+                                <Link
+                                    href={logout()}
+                                    className="flex items-center gap-2 text-red-600 hover:text-red-700"
+                                >
+                                    <LogOut size={18} />
 
-                                    {/* LOGOUT */}
-                                    <DropdownMenuItem
-                                        asChild
-                                        className="cursor-pointer rounded-md focus:bg-red-50 focus:text-red-600"
-                                    >
-                                        <Link
-                                            href={logout()}
-                                            method="post"
-                                            as="button"
-                                            className="w-full flex items-center gap-2 px-2 py-2 text-red-600"
-                                        >
-                                            <LogOut className="h-4 w-4" />
-                                            Logout
-                                        </Link>
-                                    </DropdownMenuItem>
-                                </DropdownMenuContent>
-                            </DropdownMenu>
+                                </Link>
+                            </div>
                         )}
                     </div>
-
                 </div>
             </div>
         </>
