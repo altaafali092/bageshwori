@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\PromoText;
 use App\Models\Slider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class FrontendController extends Controller
@@ -115,5 +116,45 @@ class FrontendController extends Controller
     {
         Contact::create($request->validated());
         return back()->with('message send sucessfully', 'sucess');
+    }
+
+    // user profile
+    public function userProfile()
+    {
+        return Inertia::render('Frontend/UserProfile/Index');
+    }
+
+    public function editProfile()
+    {
+        return Inertia::render('Frontend/UserProfile/Edit');
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'phone' => 'nullable|string|max:20',
+            'address' => 'nullable|string|max:255',
+            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $user = $request->user();
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+
+        if ($request->hasFile('avatar')) {
+            if ($user->avatar) {
+                // Remove /storage/ prefix if present to get relative path
+                $oldPath = str_replace('/storage/', '', $user->avatar);
+                Storage::disk('public')->delete($oldPath);
+            }
+            $path = $request->file('avatar')->store('avatars', 'public');
+            $user->avatar = '/storage/' . $path;
+        }
+
+        $user->save();
+
+        return redirect()->route('userProfile')->with('success', 'Profile updated successfully.');
     }
 }

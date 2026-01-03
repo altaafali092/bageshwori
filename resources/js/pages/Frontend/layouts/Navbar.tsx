@@ -1,4 +1,4 @@
-import { login, logout } from '@/routes'
+import { login, logout, userProfile } from '@/routes'
 import { SharedData } from '@/types'
 import { Link, useForm, usePage } from '@inertiajs/react'
 import { Facebook, Instagram, MapPin, Phone, SearchIcon, LogOut, User } from 'lucide-react'
@@ -24,7 +24,7 @@ const Navbar = () => {
 
     // Close dropdown when clicking outside
     useEffect(() => {
-        const handleClickOutside = (event) => {
+        const handleClickOutside = (event: MouseEvent) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
                 setIsDropdownOpen(false)
             }
@@ -105,7 +105,7 @@ const Navbar = () => {
                                         </div>
 
                                         <Link
-                                            href="/profile"
+                                            href={userProfile()}
                                             className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
                                         >
                                             <User size={18} />

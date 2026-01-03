@@ -16,6 +16,10 @@ Route::get('blog-Detail/{blog:slug}', [FrontendController::class, 'blogDetail'])
 Route::get('about-us', [FrontendController::class, 'aboutUs'])->name('aboutUs');
 Route::post('message', [FrontendController::class, 'message'])->name('frontMessage');
 
+Route::get('user-profile', [FrontendController::class, 'userProfile'])->name('userProfile');
+Route::get('user-profile/edit', [FrontendController::class, 'editProfile'])->name('userProfile.edit');
+Route::put('user-profile/update', [FrontendController::class, 'updateProfile'])->name('userProfile.update');
+
 
 require __DIR__ . '/settings.php';
 
