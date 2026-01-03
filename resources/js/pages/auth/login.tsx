@@ -177,7 +177,7 @@ export default function Login({
                                             Don’t have an account?{' '}
                                             <Link
                                                 href={register()}
-                                                className="text-emerald-600 font-semibold"
+                                                className="text-emerald-600 hover:underline font-semibold"
                                             >
                                                 Sign up
                                             </Link>
