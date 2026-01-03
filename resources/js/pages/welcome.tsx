@@ -14,7 +14,7 @@ import CategoryBanner from "./Frontend/Index/CategoryBanner";
 import CustomerReviews from "./Frontend/Index/Review";
 import LastBanner from "./Frontend/Index/LastBanner";
 import { Link, usePage } from "@inertiajs/react";
-import { Blogs, Categories, GlobalCategories, OfficeSetting, Product, Sliders } from "@/types/Frontend";
+import { Blogs, Categories, GlobalCategories, OfficeSetting, Product, PromoText, Sliders } from "@/types/Frontend";
 import { SliderCarousel } from "@/components/Frontend/SliderCarousel";
 import { categorywiseProduct } from "@/routes";
 
@@ -31,6 +31,7 @@ export default function BageshworiKennel() {
         blogs,
         officeSettings,
         globalCategories,
+        promoTexts,
     } = usePage<{
         sliders: Sliders[];
         categories: Categories[];
@@ -42,7 +43,7 @@ export default function BageshworiKennel() {
         blogs: Blogs[];
         officeSettings: OfficeSetting | null;
         globalCategories: GlobalCategories[] | null
-
+        promoTexts: PromoText[] | null
     }>().props;
     return (
         <AuthLayout>
@@ -101,7 +102,7 @@ export default function BageshworiKennel() {
                             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                                 {/* Slider */}
                                 <div className="lg:col-span-2">
-                                    <CategorySlider categories={ categories}/>
+                                    <CategorySlider categories={categories} />
                                 </div>
 
                                 {/* Right Column - Product Cards */}
@@ -156,7 +157,7 @@ export default function BageshworiKennel() {
 
                 {/* Bottom Promo Banner */}
                 <div className="mt-8">
-                    <PromoBanner />
+                    <PromoBanner promoTexts={promoTexts} />
                 </div>
             </div>
 

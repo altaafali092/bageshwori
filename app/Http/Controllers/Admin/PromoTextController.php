@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PromoText\StorePromoTextRequest;
+use App\Http\Requests\PromoText\UpdatePromoTextRequest;
 use App\Models\PromoText;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -49,17 +50,20 @@ class PromoTextController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(PromoText $promoText)
     {
-        //
+        return Inertia::render('Admin/PromoText/Edit', [
+            'promoText' => $promoText
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdatePromoTextRequest   $request, PromoText $promoText)
     {
-        //
+        $promoText->update($request->validated());
+        return to_route('admin.promo-text.index')->with('success', 'Promo Text Updated Successfully');
     }
 
     /**

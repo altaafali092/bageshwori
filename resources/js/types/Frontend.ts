@@ -86,3 +86,13 @@ export interface MenuItem {
     children: MenuItem[];
 }
 
+export type PromoText = {
+    id: number,
+    title: string,
+    description: string,
+    status: number,
+    created_at: Date,
+    updated_at: Date,
+}
+
+

@@ -7,6 +7,7 @@ use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Contact;
 use App\Models\Product;
+use App\Models\PromoText;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -53,6 +54,7 @@ class FrontendController extends Controller
             ->limit(4)
             ->get();
         $blogs = Blog::where('status', 1)->latest()->get();
+        $promoTexts = PromoText::latest()->get();
 
         return Inertia::render('welcome', [
             'sliders' => $sliders,
@@ -62,7 +64,8 @@ class FrontendController extends Controller
             'dealdays' => $dealdays,
             'dealWeeks' => $dealWeeks,
             'bestSells' => $bestSells,
-            'blogs' => $blogs
+            'blogs' => $blogs,
+            'promoTexts' => $promoTexts
 
         ]);
     }
