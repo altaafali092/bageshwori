@@ -44,7 +44,8 @@ export default function Login({
                 <div className="hidden lg:flex lg:w-1/2 relative bg-zinc-900 text-white flex-col justify-between p-12">
                     <div className="absolute inset-0">
                         <img
-                            src="https://images.unsplash.com/photo-1542838132-92c53300491e"
+                            src="/assets/login.jpg"
+                            alt="Login background"
                             className="w-full h-full object-cover opacity-50"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/50 to-transparent" />

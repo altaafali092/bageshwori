@@ -39,7 +39,7 @@ const Register = () => {
                 <div className="hidden lg:flex lg:w-1/2 relative bg-zinc-900 text-white flex-col justify-between p-12 overflow-hidden">
                     <div className="absolute inset-0">
                         <img
-                            src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1974"
+                            src="/assets/register.jpg"
                             alt="Organic Lifestyle"
                             className="w-full h-full object-cover opacity-50"
                         />
