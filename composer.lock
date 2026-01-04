@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4044018c6a5d9dbdde843595fb741199",
+    "content-hash": "659b8644966ed0dbb1133a2780e0ffa4",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -7022,6 +7022,72 @@
                 "source": "https://github.com/laravel/sail"
             },
             "time": "2025-11-17T22:05:34+00:00"
+        },
+        {
+            "name": "leek/laravel-vendor-cleanup",
+            "version": "v0.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/leek/laravel-vendor-cleanup.git",
+                "reference": "f1ddfa6e32554857e37761d9ddc6871add195d77"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/leek/laravel-vendor-cleanup/zipball/f1ddfa6e32554857e37761d9ddc6871add195d77",
+                "reference": "f1ddfa6e32554857e37761d9ddc6871add195d77",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^11.0|^12.0",
+                "illuminate/filesystem": "^11.0|^12.0",
+                "illuminate/support": "^11.0|^12.0",
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^9.0|^10.0",
+                "phpunit/phpunit": "^10.5|^11.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Leek\\LaravelVendorCleanup\\VendorCleanupServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Leek\\LaravelVendorCleanup\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Jones",
+                    "email": "leeked@gmail.com"
+                }
+            ],
+            "description": "Laravel commands to detect and clean up unchanged vendor-published files (configs, migrations, views, lang files)",
+            "keywords": [
+                "cleanup",
+                "config",
+                "cruft",
+                "diff",
+                "lang",
+                "laravel",
+                "migration",
+                "published",
+                "vendor",
+                "view"
+            ],
+            "support": {
+                "issues": "https://github.com/leek/laravel-vendor-cleanup/issues",
+                "source": "https://github.com/leek/laravel-vendor-cleanup/tree/v0.9.0"
+            },
+            "time": "2025-10-31T04:08:05+00:00"
         },
         {
             "name": "mockery/mockery",
