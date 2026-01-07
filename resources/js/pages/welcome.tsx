@@ -25,6 +25,7 @@ export default function BageshworiKennel() {
         categories,
         products,
         topSells,
+        trendingProducts,
         dealdays,
         dealWeeks,
         bestSells,
@@ -41,8 +42,9 @@ export default function BageshworiKennel() {
         dealdays: Product[];
         dealWeeks: Product[];
         bestSells: Product[];
-        promoCategories: Product[];
-        sideCategories: Product[];
+        trendingProducts: Product[];
+        promoCategories: Categories[];
+        sideCategories: Categories[];
         categoryBanners: Categories[];
         blogs: Blogs[];
         officeSettings: OfficeSetting | null;
@@ -150,7 +152,7 @@ export default function BageshworiKennel() {
             </div>
 
             <div>
-                <TrendingProduct products={products} topSells={topSells} />
+                <TrendingProduct trendingProducts={trendingProducts} topSells={topSells} />
                 <PromoCards promoCategories={promoCategories} />
                 <DealWeek dealdays={dealdays} dealWeeks={dealWeeks} />
                 <Banner />

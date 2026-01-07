@@ -36,9 +36,10 @@ class FrontendController extends Controller
 
         $sideCategories = $categories->shuffle()->take(2);
         $promoCategories = $categories->shuffle()->take(3);
-        $categoryBanners=$categories->shuffle()->take(2);
+        $categoryBanners = $categories->shuffle()->take(2);
 
-        $topSells = $allProducts->take(6);
+        $topSells = $allProducts->take(5);
+        $trendingProducts = $allProducts->take(6);
         $dealdays = $allProducts->take(1);
         $dealWeeks = $allProducts->take(6);
         $bestSells = $allProducts->take(4);
@@ -59,9 +60,23 @@ class FrontendController extends Controller
             'sideCategories' => $sideCategories,
             'promoCategories' => $promoCategories,
             'categoryBanners' => $categoryBanners,
+            'trendingProducts' => $trendingProducts,
 
         ]);
     }
+
+    public function allProduct()
+    {
+        $products = Product::where('in_stock', 1)
+            ->latest()
+            ->get();
+
+        return Inertia::render('Frontend/ProductDetail/CategoryProduct', [
+            'products' => $products,
+            'category' => null, // Important for all products
+        ]);
+    }
+
     public function categorywiseProduct(Category $category)
     {
 

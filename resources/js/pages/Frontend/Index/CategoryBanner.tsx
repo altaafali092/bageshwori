@@ -15,7 +15,7 @@ export default function CategoryBanner({ categoryBanners }: CategoryBannerProps)
         {categoryBanners.map((category) => (
           <div
             key={category.id}
-            className="relative h-[340px] overflow-hidden rounded-[2rem] bg-zinc-900 flex items-center shadow-lg"
+            className="relative h-[340px] overflow-hidden rounded-md bg-zinc-900 flex items-center shadow-lg"
           >
             {/* Background Image */}
             <div className="absolute inset-0">

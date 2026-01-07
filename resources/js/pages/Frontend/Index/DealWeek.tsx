@@ -3,30 +3,17 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { Products } from '@/types/frontend';
+
+import { Link } from '@inertiajs/react';
+import { allproduct } from '@/routes';
+import { Product } from '@/types/Frontend';
 
 interface DealWeeksProps {
-    dealdays: Products[];
-    dealWeeks: Products[];
+    dealdays: Product[];
+    dealWeeks: Product[];
 }
 export default function DealWeek({ dealdays, dealWeeks }: DealWeeksProps) {
 
-
-   
-
-    // const StarRating = ({ rating }) => {
-    //     return (
-    //         <div className="flex gap-0.5">
-    //             {[...Array(5)].map((_, i) => (
-    //                 <Star
-    //                     key={i}
-    //                     className={`w-3.5 h-3.5 ${i < rating ? 'fill-orange-400 text-orange-400' : 'fill-gray-300 text-gray-300'
-    //                         }`}
-    //                 />
-    //             ))}
-    //         </div>
-    //     );
-    // };
 
     return (
         <div className="min-h-screen max-w-7xl mx-auto px-4 py-8">
@@ -38,12 +25,14 @@ export default function DealWeek({ dealdays, dealWeeks }: DealWeeksProps) {
 
                 </div>
 
-                <Button
-                    variant="outline"
-                    className="rounded-full px-8 border-gray-300 text-gray-700 hover:bg-gray-50"
-                >
-                    See All
-                </Button>
+                <Link href={allproduct()}>
+                    <Button
+                        variant="outline"
+                        className="rounded-full px-8 border-gray-300 text-gray-700 hover:bg-gray-50"
+                    >
+                        See All
+                    </Button>
+                </Link>
             </div>
             <Separator className='bg-emerald-500 mb-4 mt-5' />
 
@@ -87,7 +76,7 @@ export default function DealWeek({ dealdays, dealWeeks }: DealWeeksProps) {
                                     </h3>
 
                                     <p className="text-gray-500  mb-4 mt-4">
-                                       {product.description}
+                                        {product.description}
                                     </p>
 
                                     <hr className="border-gray-200 mb-4" />

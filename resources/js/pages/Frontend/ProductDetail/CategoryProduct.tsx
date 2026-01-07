@@ -2,38 +2,22 @@ import React from "react"
 import { Head, Link } from "@inertiajs/react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Badge } from "@/components/ui/badge"
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select"
-import {
-    Search,
-    SlidersHorizontal,
-} from "lucide-react"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Search, SlidersHorizontal } from "lucide-react"
 import AuthLayout from "../layouts/AuthLayout"
-import { Categories, Product } from "@/types/frontend"
+
 import { ProductCard } from "@/components/Frontend/ProductCard"
+import { Categories, Product } from "@/types/Frontend"
 
 interface ProductProps {
     products: Product[]
-    category: Categories
+    category?: Categories | null
 }
 
 export default function ProductsIndex({ products, category }: ProductProps) {
     const [searchTerm, setSearchTerm] = React.useState("")
     const [sortBy, setSortBy] = React.useState("newest")
 
-    const formatPrice = (price: number) =>
-        new Intl.NumberFormat("en-US", {
-            style: "currency",
-            currency: "USD",
-        }).format(price)
-
-    // ✅ Filter + Sort Logic
     const filteredProducts = products
         .filter((product) => {
             const search = searchTerm.toLowerCase()
@@ -48,23 +32,31 @@ export default function ProductsIndex({ products, category }: ProductProps) {
             return 0 // newest or default
         })
 
+    const categoryName = category?.name ?? "All Products"
+
     return (
         <AuthLayout>
-            <Head title={`${category.name} Products`} />
+            <Head title={`${categoryName} Products`} />
 
             <div className="min-h-screen bg-gray-50">
                 {/* Header */}
                 <div className="bg-white border-b">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                         <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
-                            {category?.name || "All Products"}
+                            {categoryName}
                         </h1>
                         <p className="text-gray-600">
-                            Discover our collection of amazing products in{" "}
-                            <span className="font-semibold text-emerald-600">
-                                {category?.name}
-                            </span>{" "}
-                            category.
+                            {category ? (
+                                <>
+                                    Discover our collection of amazing products in{" "}
+                                    <span className="font-semibold text-emerald-600">
+                                        {categoryName}
+                                    </span>{" "}
+                                    category.
+                                </>
+                            ) : (
+                                "Browse all available products from our store."
+                            )}
                         </p>
                     </div>
                 </div>
@@ -79,7 +71,7 @@ export default function ProductsIndex({ products, category }: ProductProps) {
                                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
                                     <Input
                                         type="text"
-                                        placeholder={`Search in ${category?.name}...`}
+                                        placeholder={`Search in ${categoryName}...`}
                                         value={searchTerm}
                                         onChange={(e) => setSearchTerm(e.target.value)}
                                         className="pl-10"
@@ -94,12 +86,8 @@ export default function ProductsIndex({ products, category }: ProductProps) {
                                 </SelectTrigger>
                                 <SelectContent>
                                     <SelectItem value="newest">Newest</SelectItem>
-                                    <SelectItem value="price-low">
-                                        Price: Low to High
-                                    </SelectItem>
-                                    <SelectItem value="price-high">
-                                        Price: High to Low
-                                    </SelectItem>
+                                    <SelectItem value="price-low">Price: Low to High</SelectItem>
+                                    <SelectItem value="price-high">Price: High to Low</SelectItem>
                                 </SelectContent>
                             </Select>
 
@@ -115,13 +103,16 @@ export default function ProductsIndex({ products, category }: ProductProps) {
                     <div className="mb-6">
                         <p className="text-gray-600">
                             Showing{" "}
-                            <span className="font-semibold">
-                                {filteredProducts.length}
-                            </span>{" "}
-                            products in{" "}
-                            <span className="font-semibold text-emerald-600">
-                                {category?.name}
-                            </span>
+                            <span className="font-semibold">{filteredProducts.length}</span>{" "}
+                            products
+                            {category && (
+                                <>
+                                    {" "}in{" "}
+                                    <span className="font-semibold text-emerald-600">
+                                        {categoryName}
+                                    </span>
+                                </>
+                            )}
                         </p>
                     </div>
 
@@ -130,7 +121,7 @@ export default function ProductsIndex({ products, category }: ProductProps) {
                         <div className="text-center py-16">
                             <div className="text-6xl mb-4">🔍</div>
                             <h2 className="text-2xl font-semibold mb-2 text-gray-900">
-                                No products found in {category?.name}
+                                {category ? `No products found in ${categoryName}` : "No products found"}
                             </h2>
                             <p className="text-gray-600 mb-4">
                                 Try adjusting your search or filters

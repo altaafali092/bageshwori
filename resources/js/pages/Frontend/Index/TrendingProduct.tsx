@@ -4,16 +4,17 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { ProductCard } from '@/components/Frontend/ProductCard';
-import { Product } from '@/types/frontend';
-import { usePage } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import { SharedData } from '@/types';
+import { allproduct } from '@/routes';
+import { Product } from '@/types/Frontend';
 
 interface TrendingProductProps {
-  products: Product[];
+  trendingProducts: Product[];
   topSells: Product[];
 }
 
-export default function TrendingProduct({ products, topSells }: TrendingProductProps) {
+export default function TrendingProduct({ trendingProducts, topSells }: TrendingProductProps) {
   const { officeSettings } = usePage<SharedData>().props;
 
   return (
@@ -89,18 +90,20 @@ export default function TrendingProduct({ products, topSells }: TrendingProductP
 
               </div>
 
-              <Button
-                variant="outline"
-                className="rounded-full px-8 border-gray-300 text-gray-700 hover:bg-gray-50"
-              >
-                See All
-              </Button>
+              <Link href={allproduct()}>
+                <Button
+                  variant="outline"
+                  className="rounded-full px-8 border-gray-300 text-gray-700 hover:bg-gray-50"
+                >
+                  See All
+                </Button>
+              </Link>
             </div>
             <Separator className='bg-emerald-500 mb-4 mt-5' />
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-              {products.map((product) => (
+              {trendingProducts.map((product) => (
                 <ProductCard
                   key={product.id}
                   product={product}
