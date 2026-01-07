@@ -5,5 +5,6 @@ return [
         'index' => 'Index',
         'about' => 'About Us',
         'blogs' => 'Blogs',
+        'service' => 'Our Service',
     ],
 ];
