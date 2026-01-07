@@ -63,7 +63,7 @@ const Navbar = () => {
                 <div className="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
                     <h1 className="text-3xl font-bold text-gray-800">
                         {officeSettings?.office_name || ""}
-                        sdfsdfg
+                        
                     </h1>
 
                     <div className="flex items-center w-full gap-3 md:w-96">
