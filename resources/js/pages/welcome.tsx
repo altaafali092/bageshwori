@@ -31,7 +31,8 @@ export default function BageshworiKennel() {
         blogs,
         promoTexts,
         sideCategories,
-        promoCategories
+        promoCategories,
+        categoryBanners
     } = usePage<{
         sliders: Sliders[];
         categories: Categories[];
@@ -42,6 +43,7 @@ export default function BageshworiKennel() {
         bestSells: Product[];
         promoCategories: Product[];
         sideCategories: Product[];
+        categoryBanners: Categories[];
         blogs: Blogs[];
         officeSettings: OfficeSetting | null;
         globalCategories: GlobalCategories[] | null
@@ -154,7 +156,7 @@ export default function BageshworiKennel() {
                 <Banner />
                 <BestSelling bestSells={bestSells} />
                 <Blog blogs={blogs} />
-                <CategoryBanner />
+                <CategoryBanner categoryBanners={categoryBanners} />
                 <CustomerReviews />
                 {/* <LastBanner /> */}
             </div>

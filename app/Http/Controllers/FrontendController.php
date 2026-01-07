@@ -36,6 +36,7 @@ class FrontendController extends Controller
 
         $sideCategories = $categories->shuffle()->take(2);
         $promoCategories = $categories->shuffle()->take(3);
+        $categoryBanners=$categories->shuffle()->take(2);
 
         $topSells = $allProducts->take(6);
         $dealdays = $allProducts->take(1);
@@ -56,7 +57,8 @@ class FrontendController extends Controller
             'blogs' => $blogs,
             'promoTexts' => $promoTexts,
             'sideCategories' => $sideCategories,
-            'promoCategories' => $promoCategories
+            'promoCategories' => $promoCategories,
+            'categoryBanners' => $categoryBanners,
 
         ]);
     }
