@@ -5,6 +5,8 @@ import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { ProductCard } from '@/components/Frontend/ProductCard';
 import { Product } from '@/types/frontend';
+import { usePage } from '@inertiajs/react';
+import { SharedData } from '@/types';
 
 interface TrendingProductProps {
   products: Product[];
@@ -12,20 +14,7 @@ interface TrendingProductProps {
 }
 
 export default function TrendingProduct({ products, topSells }: TrendingProductProps) {
-
-  // const StarRating = ({ rating }) => {
-  //   return (
-  //     <div className="flex gap-0.5">
-  //       {[...Array(5)].map((_, i) => (
-  //         <Star
-  //           key={i}
-  //           className={`w-3.5 h-3.5 ${i < rating ? 'fill-orange-400 text-orange-400' : 'fill-gray-300 text-gray-300'
-  //             }`}
-  //         />
-  //       ))}
-  //     </div>
-  //   );
-  // };
+  const { officeSettings } = usePage<SharedData>().props;
 
   return (
     <div className="min-h-screen max-w-7xl mx-auto px-4 py-8">
@@ -82,7 +71,8 @@ export default function TrendingProduct({ products, topSells }: TrendingProductP
             <div className='mt-3'>
               <div className='mb-4'>
                 <img
-                  src="https://media.istockphoto.com/id/467416670/photo/huge-grass-fed-bison-hamburger-with-chips-beer.jpg?s=612x612&w=0&k=20&c=NA5S3gfJYRydMViaUMHz2d7wHuexygVM02xkiaE2p3c="
+                  src={officeSettings?.office_banner}
+                  alt={officeSettings?.office_name}
                   className='w-full h-80 object-cover rounded-lg'
                 />
               </div>

@@ -29,9 +29,8 @@ export default function BageshworiKennel() {
         dealWeeks,
         bestSells,
         blogs,
-        officeSettings,
-        globalCategories,
         promoTexts,
+        sideCategories,
     } = usePage<{
         sliders: Sliders[];
         categories: Categories[];
@@ -40,6 +39,7 @@ export default function BageshworiKennel() {
         dealdays: Product[];
         dealWeeks: Product[];
         bestSells: Product[];
+        sideCategories: Product[];
         blogs: Blogs[];
         officeSettings: OfficeSetting | null;
         globalCategories: GlobalCategories[] | null
@@ -107,48 +107,32 @@ export default function BageshworiKennel() {
 
                                 {/* Right Column - Product Cards */}
                                 <div className="space-y-6">
-                                    {/* Fresh Coconut Water Card */}
-                                    <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl shadow-lg p-6 relative overflow-hidden">
-                                        <span className="inline-block bg-red-500 text-white text-xs font-bold px-4 py-1.5 rounded-full mb-3">
-                                            JUICY
-                                        </span>
+                                    {sideCategories.map((sideCategory, index) => (
+                                        <div
+                                            key={index}
+                                            className="bg-cover bg-center rounded-2xl shadow-lg p-6 relative overflow-hidden"
+                                            style={{ backgroundImage: `url(${sideCategory.image})` }}
+                                        >
+                                            <span className="inline-block bg-red-500 text-white text-xs font-bold px-4 py-1.5 rounded-full mb-3">
+                                                {sideCategory.name}
+                                            </span>
 
-                                        <h3 className="text-2xl font-bold text-gray-800 mb-2">
-                                            Fresh Coconut<br />Water
-                                        </h3>
+                                            <h3 className="text-2xl font-bold text-gray-800 mb-2 mt-4">
+                                                {sideCategory.name}
+                                            </h3>
+                                            <p className="text-emerald-700 text-sm font-bold mb-4 mt-8 uppercase tracking-wide">
+                                                {sideCategory.products_count} Products Available
+                                            </p>
+                                            <Link href={categorywiseProduct(sideCategory.slug)}>
 
-                                        <p className="text-emerald-700 text-sm font-bold mb-4">
-                                            FROM $1.99-$2.99
-                                        </p>
-
-                                        <button className="bg-white text-gray-700 font-semibold px-6 py-2 rounded-full 
-                    hover:bg-gray-50 transition-all shadow-md text-sm">
-                                            Shop Now
-                                        </button>
-
-                                    </div>
-
-                                    {/* Nutritious Veggie Foods Card */}
-                                    <div className="bg-gradient-to-br from-cyan-400 to-cyan-500 rounded-2xl shadow-lg p-6 relative overflow-hidden">
-                                        <span className="inline-block bg-red-500 text-white text-xs font-bold px-4 py-1.5 rounded-full mb-3">
-                                            JUICY
-                                        </span>
-
-                                        <h3 className="text-2xl font-bold text-gray-800 mb-2">
-                                            Nutritious Veggie<br />Foods
-                                        </h3>
-
-                                        <p className="text-emerald-700 text-sm font-bold mb-4">
-                                            FROM $1.99-$2.99
-                                        </p>
-
-                                        <button className="bg-white text-gray-700 font-semibold px-6 py-2 rounded-full 
-                    hover:bg-gray-50 transition-all shadow-md text-sm">
-                                            Shop Now
-                                        </button>
+                                                <button className="bg-white text-gray-700 font-semibold px-6 py-2 rounded-full hover:bg-gray-50 transition-all shadow-md text-sm">
+                                                    Shop Now
+                                                </button>
+                                            </Link>
+                                        </div>
+                                    ))}
 
 
-                                    </div>
                                 </div>
                             </div>
                         </div>

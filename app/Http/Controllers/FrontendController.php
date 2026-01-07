@@ -34,6 +34,8 @@ class FrontendController extends Controller
 
         $products = $allProducts->where('is_featured', 1)->values();
 
+        $sideCategories = $categories->shuffle()->take(2);
+
         $topSells = $allProducts->take(6);
         $dealdays = $allProducts->take(1);
         $dealWeeks = $allProducts->take(6);
@@ -51,7 +53,8 @@ class FrontendController extends Controller
             'dealWeeks' => $dealWeeks,
             'bestSells' => $bestSells,
             'blogs' => $blogs,
-            'promoTexts' => $promoTexts
+            'promoTexts' => $promoTexts,
+            'sideCategories' => $sideCategories
 
         ]);
     }

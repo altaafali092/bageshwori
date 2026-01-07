@@ -1,17 +1,19 @@
 
 import { Button } from '@/components/ui/button'
 import { productDetail } from '@/routes'
-import { Link } from '@inertiajs/react'
+import { SharedData } from '@/types'
+import { Link, usePage } from '@inertiajs/react'
 import { ArrowRightIcon } from 'lucide-react'
 import React from 'react'
 
 const Banner = () => {
+    const { officeSettings } = usePage<SharedData>().props;
     return (
 
         <div className="max-w-7xl mx-auto px-4 py-8">
             <div className="text-white px-6 md:px-10 relative flex flex-col md:flex-row items-center justify-center md:justify-between min-h-[300px] md:h-[200px] py-10 md:py-0 text-center md:text-left overflow-hidden rounded-2xl">
 
-                <img src="https://media.istockphoto.com/id/467416670/photo/huge-grass-fed-bison-hamburger-with-chips-beer.jpg?s=612x612&w=0&k=20&c=NA5S3gfJYRydMViaUMHz2d7wHuexygVM02xkiaE2p3c=" alt=""
+                <img src={officeSettings?.office_banner_two} alt={officeSettings?.office_name}
                     className='absolute inset-0 w-full h-full object-cover'
                 />
 
@@ -19,8 +21,8 @@ const Banner = () => {
                 <div className="absolute inset-0 bg-black/40 md:bg-black/20" />
 
                 <div className='relative z-10 max-w-2xl'>
-                    <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4">GrocefyCart's New Arrivals, Shop Fast, Limited Supply!</h2>
-                    <p className="text-base md:text-lg mb-6 md:mb-8 opacity-90">New Fresh Vegetable at our shop with limited stocks!</p>
+                    <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4">{officeSettings?.office_name}'s New Arrivals, Shop Fast, Limited Supply!</h2>
+                    <p className="text-base md:text-lg mb-6 md:mb-8 opacity-90">New Fresh Products at our shop with limited stocks!</p>
                 </div>
                 <div className='relative z-10'>
                     <Button
