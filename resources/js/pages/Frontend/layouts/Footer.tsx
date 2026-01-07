@@ -106,7 +106,7 @@ export default function Footer() {
                 <div className="max-w-7xl mx-auto px-6 py-6">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                         <div className="text-gray-400 text-sm">
-                            Proudly powered by <span className="text-white">❤️</span> |Altaaf  <span className="text-white">Bagesh</span>
+                            Proudly powered by <span className="text-white">❤️</span> |  <span className="text-white">{officeSettings?.office_name}</span>
                         </div>
                         {/* <div className="flex gap-3">
                             <div className="bg-white px-4 py-2 rounded">
