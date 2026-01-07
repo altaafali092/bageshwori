@@ -42,11 +42,13 @@ const Navbar = () => {
                     <div className="flex items-center gap-4 flex-wrap">
                         <span className="flex items-center gap-2">
                             <MapPin size={16} />
-                            {officeSettings.office_address || ""}
+                            {officeSettings?.office_address || ''}
+
                         </span>
                         <span className="flex items-center gap-2">
                             <Phone size={16} />
-                            {officeSettings.office_phone || ""}
+                            {officeSettings?.office_phone || ""}
+
                         </span>
                     </div>
                     <div className="flex items-center gap-4">
@@ -60,7 +62,8 @@ const Navbar = () => {
             <div className="bg-white shadow-sm">
                 <div className="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
                     <h1 className="text-3xl font-bold text-gray-800">
-                        {officeSettings.office_name || ""}
+                        {officeSettings?.office_name || ""}
+                        sdfsdfg
                     </h1>
 
                     <div className="flex items-center w-full gap-3 md:w-96">

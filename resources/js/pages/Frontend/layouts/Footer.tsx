@@ -23,7 +23,7 @@ export default function Footer() {
                         </p>
                         <div className="mb-6">
                             <p className="text-white font-semibold">
-                                {officeSettings?.office_address}
+                                {officeSettings?.office_address || 'No address found'}
                             </p>
                         </div>
                         <div className="flex gap-4">
