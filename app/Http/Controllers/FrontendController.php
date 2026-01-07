@@ -18,42 +18,27 @@ class FrontendController extends Controller
     public function index()
     {
         $sliders = Slider::where('status', 1)->latest()->get();
-        $categories = Category::withCount('products')
-            ->where('status', 1)
+
+        $categories = Category::where('status', 1)
+            ->withCount(['products' => function ($q) {
+                $q->whereNull('deleted_at');
+            }])
             ->latest()
             ->get();
-        $products = Product::with('category')
+
+        $allProducts = Product::with('category')
             ->where('is_featured', 1)
             ->where('in_stock', 1)
             ->latest()
             ->get();
-        $topSells = Product::with('category')
-            ->where('in_stock', 1)
-            ->latest()->limit(6)
-            ->get();
-        $topSells = Product::with('category')
-            ->where('in_stock', 1)
-            ->latest()
-            ->limit(4)
-            ->get();
-        // Deals of the week
 
-        $dealdays = Product::with('category')
-            ->where('in_stock', 1)
-            ->latest()
-            ->limit(1)
-            ->get();
-        $dealWeeks = Product::with('category')
-            ->where('in_stock', 1)
-            ->latest()
-            ->limit(6)
-            ->get();
+        $products = $allProducts->where('is_featured', 1)->values();
 
-        $bestSells = Product::with('category')
-            ->where('in_stock', 1)
-            ->latest()
-            ->limit(4)
-            ->get();
+        $topSells = $allProducts->take(6);
+        $dealdays = $allProducts->take(1);
+        $dealWeeks = $allProducts->take(6);
+        $bestSells = $allProducts->take(4);
+
         $blogs = Blog::where('status', 1)->latest()->get();
         $promoTexts = PromoText::latest()->get();
 

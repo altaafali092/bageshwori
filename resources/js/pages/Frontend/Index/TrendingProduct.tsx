@@ -82,8 +82,7 @@ export default function TrendingProduct({ products, topSells }: TrendingProductP
             <div className='mt-3'>
               <div className='mb-4'>
                 <img
-                  src="https://bageshworikennelhouse.com.np/wp-content/themes/grocefycart/assets/images/ads.jpg"
-                  alt=""
+                  src="https://media.istockphoto.com/id/467416670/photo/huge-grass-fed-bison-hamburger-with-chips-beer.jpg?s=612x612&w=0&k=20&c=NA5S3gfJYRydMViaUMHz2d7wHuexygVM02xkiaE2p3c="
                   className='w-full h-80 object-cover rounded-lg'
                 />
               </div>
