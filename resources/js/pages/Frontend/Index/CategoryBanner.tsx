@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 export default function CategoryBanner() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 lg:grid-cols-2 gap-6">
-      
+
       {/* Drinks Card */}
       <div className="relative bg-[#86DB46] rounded-2xl overflow-hidden flex items-center justify-between p-8">
         {/* Left Content */}

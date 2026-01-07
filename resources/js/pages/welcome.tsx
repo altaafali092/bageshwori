@@ -31,6 +31,7 @@ export default function BageshworiKennel() {
         blogs,
         promoTexts,
         sideCategories,
+        promoCategories
     } = usePage<{
         sliders: Sliders[];
         categories: Categories[];
@@ -39,6 +40,7 @@ export default function BageshworiKennel() {
         dealdays: Product[];
         dealWeeks: Product[];
         bestSells: Product[];
+        promoCategories: Product[];
         sideCategories: Product[];
         blogs: Blogs[];
         officeSettings: OfficeSetting | null;
@@ -147,14 +149,14 @@ export default function BageshworiKennel() {
 
             <div>
                 <TrendingProduct products={products} topSells={topSells} />
-                <PromoCards />
+                <PromoCards promoCategories={promoCategories} />
                 <DealWeek dealdays={dealdays} dealWeeks={dealWeeks} />
                 <Banner />
                 <BestSelling bestSells={bestSells} />
                 <Blog blogs={blogs} />
                 <CategoryBanner />
                 <CustomerReviews />
-                <LastBanner />
+                {/* <LastBanner /> */}
             </div>
 
         </AuthLayout>
