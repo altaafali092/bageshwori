@@ -16,6 +16,7 @@ Route::get('blogs', [FrontendController::class, 'blogIndex'])->name('blogIndex')
 Route::get('blog-Detail/{blog:slug}', [FrontendController::class, 'blogDetail'])->name('blogDetail');
 Route::get('about-us', [FrontendController::class, 'aboutUs'])->name('aboutUs');
 Route::post('message', [FrontendController::class, 'message'])->name('frontMessage');
+Route::get('our-service', [FrontendController::class, 'ourService'])->name('ourService');
 
 Route::get('user-profile', [FrontendController::class, 'userProfile'])->name('userProfile');
 Route::get('user-profile/edit', [FrontendController::class, 'editProfile'])->name('userProfile.edit');

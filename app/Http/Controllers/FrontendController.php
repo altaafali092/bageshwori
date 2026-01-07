@@ -124,7 +124,10 @@ class FrontendController extends Controller
         Contact::create($request->validated());
         return back()->with('message send sucessfully', 'sucess');
     }
-
+    public function ourService()
+    {
+        return Inertia::render('Frontend/OurService/Index');
+    }
     // user profile
     public function userProfile()
     {
