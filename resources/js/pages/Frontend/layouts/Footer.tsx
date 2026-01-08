@@ -55,10 +55,7 @@ export default function Footer() {
                                 <Link href={aboutUs()} className="text-gray-400 hover:text-white transition-colors">About Us</Link>
 
                             </li>
-                            <li>
-                                <Link href={aboutUs()} className="text-gray-400 hover:text-white transition-colors">About Us</Link>
-
-                            </li>
+                           
                         </ul>
                     </div>
 
@@ -73,6 +70,9 @@ export default function Footer() {
                                 <Link href={allproduct()} className="text-gray-400 hover:text-white transition-colors">Shop</Link>
                             </li>
 
+                            <li>
+                                <Link href={ourService()} className="text-gray-400 hover:text-white transition-colors">Our Services</Link>
+                            </li>
                         </ul>
                     </div>
 
