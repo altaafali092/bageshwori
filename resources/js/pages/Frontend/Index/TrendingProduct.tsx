@@ -57,9 +57,9 @@ export default function TrendingProduct({ trendingProducts, topSells }: Trending
                               )}
                             </div>
 
-                            <p className="text-sm font-semibold text-emerald-600">
-                              ${product.price}
-                            </p>
+                            {/* <p className="text-sm font-semibold text-emerald-600">
+                              Rs. {product.price}
+                            </p> */}
                           </div>
 
                         </div>

@@ -84,9 +84,9 @@ export default function DealWeek({ dealdays, dealWeeks }: DealWeeksProps) {
                                     <div className="flex items-center justify-between">
                                         <div className="text-left mt-4">
 
-                                            <span className="text-emerald-600 font-bold text-lg">
-                                                ${product.price}
-                                            </span>
+                                            {/* <span className="text-emerald-600 font-bold text-lg">
+                                                Rs. {product.price}
+                                            </span> */}
                                         </div>
 
                                         <Button className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-full text-sm px-5">
@@ -121,8 +121,8 @@ export default function DealWeek({ dealdays, dealWeeks }: DealWeeksProps) {
                                     </div>
 
                                     {/* Price */}
-                                    <p className="text-emerald-600 font-semibold text-lg mb-1">
-                                        ${product.price}
+                                    <p className="text-gray-400 line-through text-sm mb-1">
+                                        Rs. {product.price}
                                     </p>
 
                                     {/* Name */}

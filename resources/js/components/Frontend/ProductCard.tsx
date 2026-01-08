@@ -50,7 +50,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         {/* Price and Button */}
         <div className="flex items-center justify-between gap-3">
           <span className="text-xl font-bold text-emerald-600">
-            ${product.price}
+            <p className="text-gray-400 line-through text-sm mb-1">
+              Rs. {product.price}
+            </p>
           </span>
           <Link href={productDetail(product.slug)}>
             <Button
