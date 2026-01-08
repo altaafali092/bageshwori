@@ -1,6 +1,7 @@
 import { Facebook, Instagram, Linkedin, Phone, Twitter } from 'lucide-react';
-import { usePage } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import { SharedData } from '@/types';
+import { aboutUs, allproduct, home, ourService } from '@/routes';
 
 export default function Footer() {
     const { officeSettings } = usePage<SharedData>().props;
@@ -47,7 +48,16 @@ export default function Footer() {
                         <h3 className="text-xl font-semibold mb-6">Page Links</h3>
                         <ul className="space-y-3">
                             <li>
-                                <a href="#" className="text-gray-400 hover:text-white transition-colors">About</a>
+                                <Link href={home()} className="text-gray-400 hover:text-white transition-colors"> Home</Link>
+
+                            </li>
+                            <li>
+                                <Link href={aboutUs()} className="text-gray-400 hover:text-white transition-colors">About Us</Link>
+
+                            </li>
+                            <li>
+                                <Link href={aboutUs()} className="text-gray-400 hover:text-white transition-colors">About Us</Link>
+
                             </li>
                         </ul>
                     </div>
@@ -57,17 +67,12 @@ export default function Footer() {
                         <h3 className="text-xl font-semibold mb-6">Quick Links</h3>
                         <ul className="space-y-3">
                             <li>
-                                <a href="#" className="text-gray-400 hover:text-white transition-colors">About Us</a>
+                                <Link href={aboutUs()} className="text-gray-400 hover:text-white transition-colors">About Us</Link>
                             </li>
                             <li>
-                                <a href="#" className="text-gray-400 hover:text-white transition-colors">Shop</a>
+                                <Link href={allproduct()} className="text-gray-400 hover:text-white transition-colors">Shop</Link>
                             </li>
-                            <li>
-                                <a href="#" className="text-gray-400 hover:text-white transition-colors">Vendors</a>
-                            </li>
-                            <li>
-                                <a href="#" className="text-gray-400 hover:text-white transition-colors">Contact Us</a>
-                            </li>
+
                         </ul>
                     </div>
 
@@ -108,21 +113,7 @@ export default function Footer() {
                         <div className="text-gray-400 text-sm">
                             Proudly powered by <span className="text-white">❤️</span> |  <span className="text-white">{officeSettings?.office_name}</span>
                         </div>
-                        {/* <div className="flex gap-3">
-                            <div className="bg-white px-4 py-2 rounded">
-                                <span className="text-blue-600 font-bold text-sm">VISA</span>
-                            </div>
-                            <div className="bg-white px-4 py-2 rounded flex items-center gap-1">
-                                <div className="w-6 h-6 rounded-full bg-red-500"></div>
-                                <div className="w-6 h-6 rounded-full bg-orange-500 -ml-3"></div>
-                            </div>
-                            <div className="bg-white px-4 py-2 rounded">
-                                <span className="text-blue-700 font-bold text-sm">AMEX</span>
-                            </div>
-                            <div className="bg-white px-4 py-2 rounded">
-                                <span className="text-blue-600 font-bold text-sm">PayPal</span>
-                            </div>
-                        </div> */}
+
                     </div>
                 </div>
             </div>
