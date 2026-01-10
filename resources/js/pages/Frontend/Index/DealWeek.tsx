@@ -75,18 +75,24 @@ export default function DealWeek({ dealdays, dealWeeks }: DealWeeksProps) {
                                         {product.name}
                                     </h3>
 
-                                    <p className="text-gray-500  mb-4 mt-4">
-                                        {product.description}
-                                    </p>
+                                    <p
+                                        className="text-gray-600 leading-relaxed mb-4"
+                                        dangerouslySetInnerHTML={{
+                                            __html: (product.description?.length ?? 0) > 100
+                                                ? product.description?.substring(0, 100) + "..."
+                                                : product.description ?? ""
+                                        }}
+                                    />
 
                                     <hr className="border-gray-200 mb-4" />
 
                                     <div className="flex items-center justify-between">
                                         <div className="text-left mt-4">
 
-                                            {/* <span className="text-emerald-600 font-bold text-lg">
+                                            <span className="text-emerald-600 line-through  font-bold text-lg">
                                                 Rs. {product.price}
-                                            </span> */}
+                                            </span>
+
                                         </div>
 
                                         <Button className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-full text-sm px-5">

@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 import { usePage } from "@inertiajs/react"
 import toast from "react-hot-toast"
 
@@ -7,11 +7,17 @@ export default function useFlashToast() {
         flash?: { success?: string; error?: string }
     }
 
+    const shownRef = useRef<{ success?: string; error?: string }>({})
+
     useEffect(() => {
-        //   console.log('Flash from Laravel:', flash)
+        if (flash?.success && shownRef.current.success !== flash.success) {
+            toast.success(flash.success)
+            shownRef.current.success = flash.success
+        }
 
-        if (flash?.success) toast.success(flash.success)
-        if (flash?.error) toast.error(flash.error)
+        if (flash?.error && shownRef.current.error !== flash.error) {
+            toast.error(flash.error)
+            shownRef.current.error = flash.error
+        }
     }, [flash])
-
 }
