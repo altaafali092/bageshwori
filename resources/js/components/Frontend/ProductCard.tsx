@@ -41,20 +41,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
 
         {/* Product Info */}
-        <h3 className="text-base font-semibold text-gray-900 mb-3">
+        <h3 className="text-base font-semibold text-gray-900 mb-1 text-center">
           {product.name}
         </h3>
 
-        <hr className="border-gray-200 mb-4" />
+        {/* <hr className="border-gray-200 mb-4" /> */}
 
         {/* Price and Button */}
         <div className="flex items-center justify-between gap-3">
           <span className="text-xl font-bold text-emerald-600">
             <p className="text-gray-400 line-through text-sm mb-1">
-              Rs. {product.price}
+              {/* Rs. {product.price} */}
             </p>
           </span>
-          <Link href={productDetail(product.slug)}>
+          {/* <Link href={productDetail(product.slug)}>
             <Button
               size="sm"
               variant="outline"
@@ -62,7 +62,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             >
               Buy Now
             </Button>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div >

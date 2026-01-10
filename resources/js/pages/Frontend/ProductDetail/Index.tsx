@@ -67,7 +67,7 @@ const ProductDetail = () => {
 
             {/* Price */}
             <p className="text-4xl font-bold text-gray-600 line-through">
-              Rs. {product.price}
+              {/* Rs. {product.price} */}
             </p>
 
 
