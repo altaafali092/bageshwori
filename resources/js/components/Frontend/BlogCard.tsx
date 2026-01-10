@@ -23,6 +23,13 @@ export function BlogCard({
   image,
   link = `/blog/${id}`,
 }: BlogCardProps) {
+  const htmlToText = (html?: string) => {
+    if (!html) return "";
+    const div = document.createElement("div");
+    div.innerHTML = html;
+    return div.textContent || div.innerText || "";
+  };
+
   return (
     <div className="group bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
       {/* Blog Image (optional) */}
@@ -52,8 +59,11 @@ export function BlogCard({
         <span>{date}</span>
       </div>
 
-      {/* Excerpt */}
-      <p className="text-sm text-gray-600 mb-6 line-clamp-3">{excerpt}</p>
+
+      <p className="text-gray-600 leading-relaxed text-sm mb-6 line-clamp-3">
+        {htmlToText(excerpt)}
+      </p>
+
 
       {/* Read More */}
       <Link href={link}>

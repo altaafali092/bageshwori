@@ -20,7 +20,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::latest()->paginate(1);
+        $blogs = Blog::latest()->paginate(7);
         return Inertia::render('Admin/Blog/Index', [
             'blogs' => $blogs
         ]);

@@ -26,7 +26,7 @@ interface BlogDetailProps {
 }
 
 export default function BlogDetail({ blog, blogs = [] }: BlogDetailProps) {
-    
+
     const getReadTime = (description?: string) => {
         if (!description) return "5 min read"
         const words = description.split(' ').length
@@ -111,9 +111,10 @@ export default function BlogDetail({ blog, blogs = [] }: BlogDetailProps) {
                         <div className="p-8 sm:p-12">
                             <div className="prose prose-lg max-w-none">
                                 {blog.description && (
-                                    <div className="text-gray-700 leading-relaxed whitespace-pre-wrap">
-                                        {blog.description}
-                                    </div>
+                                    <p
+                                        className="text-gray-600 leading-relaxed"
+                                        dangerouslySetInnerHTML={{ __html: blog.description ?? "" }}
+                                    />
                                 )}
                             </div>
 
@@ -159,15 +160,15 @@ export default function BlogDetail({ blog, blogs = [] }: BlogDetailProps) {
                             </h2>
                             <div className="grid sm:grid-cols-3 lg:grid-cols-4 gap-2">
                                 {blogs.slice(0, 4).map((relatedBlog) => (
-                                   <BlogCard
-                                    key={relatedBlog.id}
-                                    id={relatedBlog.id}
-                                    title={relatedBlog.title}
-                                    subject={relatedBlog.subject}
-                                    date={new Date(relatedBlog.created_at).toLocaleDateString()}
-                                    excerpt={relatedBlog.description}
-                                    link={blogDetail(relatedBlog.slug)}
-                                   />
+                                    <BlogCard
+                                        key={relatedBlog.id}
+                                        id={relatedBlog.id}
+                                        title={relatedBlog.title}
+                                        subject={relatedBlog.subject}
+                                        date={new Date(relatedBlog.created_at).toLocaleDateString()}
+                                        excerpt={relatedBlog.description}
+                                        link={blogDetail(relatedBlog.slug)}
+                                    />
                                 ))}
                             </div>
                         </div>
