@@ -10,6 +10,8 @@ import { ArrowLeft } from "lucide-react"
 import { type BreadcrumbItem } from "@/types"
 import { index, store, update } from "@/routes/admin/blogs"
 import { Blogs } from "@/types/Admin/Blogs"
+import ReactQuill from 'react-quill-new';
+import 'react-quill-new/dist/quill.snow.css';
 
 
 
@@ -23,6 +25,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 ]
 
 export default function BlogEdit({ blog }: BlogEditProps) {
+    const [description, setDescription] = React.useState(blog.description ?? "")
     const handleCancel = () => window.history.back()
 
     return (
@@ -102,7 +105,7 @@ export default function BlogEdit({ blog }: BlogEditProps) {
                                                     id="slug"
                                                     name="slug"
                                                     type="text"
-                                                   defaultValue={blog.slug}
+                                                    defaultValue={blog.slug}
                                                 />
                                                 {errors.slug && (
                                                     <p className="text-sm text-red-500">
@@ -148,12 +151,16 @@ export default function BlogEdit({ blog }: BlogEditProps) {
                                         {/* Description */}
                                         <div className="space-y-2">
                                             <Label htmlFor="description">Description</Label>
-                                            <Textarea
-                                                id="description"
-                                                name="description"
-                                                defaultValue={blog.description}
-                                                rows={4}
-                                            />
+                                            <div className="bg-white text-black rounded-md overflow-hidden min-h-[250px]">
+                                                <ReactQuill
+                                                    theme="snow"
+                                                    value={description}
+                                                    onChange={setDescription}
+                                                    placeholder="Optional description"
+                                                    className="h-[200px]"
+                                                />
+                                            </div>
+                                            <input type="hidden" name="description" value={description} />
                                             {errors.description && (
                                                 <p className="text-sm text-red-500">
                                                     {errors.description}

@@ -9,6 +9,9 @@ import { Textarea } from "@/components/ui/textarea"
 import { ArrowLeft } from "lucide-react"
 import { type BreadcrumbItem } from "@/types"
 import { index, store } from "@/routes/admin/categories"
+import ReactQuill from 'react-quill-new';
+import 'react-quill-new/dist/quill.snow.css';
+
 
 const breadcrumbs: BreadcrumbItem[] = [
     { title: "Categories", href: index().url },
@@ -16,6 +19,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 ]
 
 export default function FoodCategoryCreate() {
+    const [description, setDescription] = React.useState("")
     const handleCancel = () => window.history.back()
 
     return (
@@ -93,24 +97,28 @@ export default function FoodCategoryCreate() {
                                             <div className="space-y-2">
                                                 <Label htmlFor="image">Image</Label>
                                                 <Input id="image" type="file" name="image" />
-                                                  {errors.image && (
-                                                <p className="text-sm text-red-500">
-                                                    {errors.image}
-                                                </p>
-                                            )}
+                                                {errors.image && (
+                                                    <p className="text-sm text-red-500">
+                                                        {errors.image}
+                                                    </p>
+                                                )}
                                             </div>
-                                          
+
                                         </div>
 
                                         {/* Description */}
                                         <div className="space-y-2">
                                             <Label htmlFor="description">Description</Label>
-                                            <Textarea
-                                                id="description"
-                                                name="description"
-                                                placeholder="Optional description"
-                                                rows={4}
-                                            />
+                                            <div className="bg-white text-black rounded-md overflow-hidden min-h-[250px]">
+                                                <ReactQuill
+                                                    theme="snow"
+                                                    value={description}
+                                                    onChange={setDescription}
+                                                    placeholder="Optional description"
+                                                    className="h-[200px]"
+                                                />
+                                            </div>
+                                            <input type="hidden" name="description" value={description} />
                                             {errors.description && (
                                                 <p className="text-sm text-red-500">
                                                     {errors.description}

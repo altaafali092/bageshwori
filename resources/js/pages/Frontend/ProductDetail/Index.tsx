@@ -118,9 +118,10 @@ const ProductDetail = () => {
         {/* Description */}
         <div className="mt-16 max-w-4xl">
           <h2 className="text-2xl font-bold mb-4">Product Description</h2>
-          <p className="text-gray-600 leading-relaxed">
-            {product.description}
-          </p>
+          <p
+            className="text-gray-600 leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: product.description ?? "" }}
+          />
         </div>
       </div>
     </AuthLayout>

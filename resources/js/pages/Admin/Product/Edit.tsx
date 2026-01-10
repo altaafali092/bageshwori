@@ -11,6 +11,8 @@ import { type BreadcrumbItem } from "@/types"
 import { Category } from "@/types/Admin/Category"
 import { index, update } from "@/routes/admin/products"
 import { Product } from "@/types/Admin/Product"
+import ReactQuill from 'react-quill-new';
+import 'react-quill-new/dist/quill.snow.css';
 
 
 interface Props {
@@ -24,6 +26,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 ]
 
 export default function ProductEdit({ categories, product }: Props) {
+    const [description, setDescription] = React.useState(product.description ?? "")
     const handleCancel = () => window.history.back()
 
     return (
@@ -188,13 +191,21 @@ export default function ProductEdit({ categories, product }: Props) {
                                         {/* Description */}
                                         <div className="space-y-2">
                                             <Label htmlFor="description">Description</Label>
-                                            <Textarea
-                                                id="description"
-                                                name="description"
-                                                defaultValue={product.description ?? ""}
-                                                placeholder="Describe your menu item (optional)"
-                                                className="min-h-20"
-                                            />
+                                            <div className="bg-white text-black rounded-md overflow-hidden min-h-[250px]">
+                                                <ReactQuill
+                                                    theme="snow"
+                                                    value={description}
+                                                    onChange={setDescription}
+                                                    placeholder="Describe your menu item (optional)"
+                                                    className="h-[200px]"
+                                                />
+                                            </div>
+                                            <input type="hidden" name="description" value={description} />
+                                            {errors.description && (
+                                                <p className="text-sm text-red-500">
+                                                    {errors.description}
+                                                </p>
+                                            )}
                                         </div>
 
                                         {/* Buttons */}

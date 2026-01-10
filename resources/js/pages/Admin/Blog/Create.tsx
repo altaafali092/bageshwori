@@ -9,6 +9,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { ArrowLeft } from "lucide-react"
 import { type BreadcrumbItem } from "@/types"
 import { index, store } from "@/routes/admin/blogs"
+import ReactQuill from 'react-quill-new';
+import 'react-quill-new/dist/quill.snow.css';
 
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -17,6 +19,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 ]
 
 export default function BlogCreate() {
+    const [description, setDescription] = React.useState("")
     const handleCancel = () => window.history.back()
 
     return (
@@ -126,12 +129,16 @@ export default function BlogCreate() {
                                         {/* Description */}
                                         <div className="space-y-2">
                                             <Label htmlFor="description">Description</Label>
-                                            <Textarea
-                                                id="description"
-                                                name="description"
-                                                placeholder="Optional description"
-                                                rows={4}
-                                            />
+                                            <div className="bg-white text-black rounded-md overflow-hidden min-h-[250px]">
+                                                <ReactQuill
+                                                    theme="snow"
+                                                    value={description}
+                                                    onChange={setDescription}
+                                                    placeholder="Optional description"
+                                                    className="h-[200px]"
+                                                />
+                                            </div>
+                                            <input type="hidden" name="description" value={description} />
                                             {errors.description && (
                                                 <p className="text-sm text-red-500">
                                                     {errors.description}

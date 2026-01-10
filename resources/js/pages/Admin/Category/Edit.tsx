@@ -10,6 +10,8 @@ import { ArrowLeft } from "lucide-react"
 import { type BreadcrumbItem } from "@/types"
 import { index, update } from "@/routes/admin/categories"
 import { Category } from "@/types/Admin/Category"
+import ReactQuill from 'react-quill-new';
+import 'react-quill-new/dist/quill.snow.css';
 
 
 interface CategoryProps {
@@ -22,6 +24,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 
 export default function CategoryEdit({ category }: CategoryProps) {
+    const [description, setDescription] = React.useState(category.description ?? "")
     const handleCancel = () => window.history.back()
 
     return (
@@ -108,14 +111,14 @@ export default function CategoryEdit({ category }: CategoryProps) {
                                             </div>
                                             <div className="space-y-2">
                                                 <Label htmlFor="image"> Current Image</Label>
-                                               
-                                               {category.image &&(
+
+                                                {category.image && (
                                                     <img
                                                         src={category.image}
                                                         alt={category.name}
                                                         className="w-full h-48 object-cover mb-2"
                                                     />
-                                               )}
+                                                )}
                                             </div>
 
                                         </div>
@@ -123,12 +126,16 @@ export default function CategoryEdit({ category }: CategoryProps) {
                                         {/* Description */}
                                         <div className="space-y-2">
                                             <Label htmlFor="description">Description</Label>
-                                            <Textarea
-                                                id="description"
-                                                name="description"
-                                                defaultValue={category.description}
-                                                rows={4}
-                                            />
+                                            <div className="bg-white text-black rounded-md overflow-hidden min-h-[250px]">
+                                                <ReactQuill
+                                                    theme="snow"
+                                                    value={description}
+                                                    onChange={setDescription}
+                                                    placeholder="Optional description"
+                                                    className="h-[200px]"
+                                                />
+                                            </div>
+                                            <input type="hidden" name="description" value={description} />
                                             {errors.description && (
                                                 <p className="text-sm text-red-500">
                                                     {errors.description}

@@ -10,6 +10,8 @@ import { ArrowLeft } from "lucide-react"
 import { type BreadcrumbItem } from "@/types"
 import { index, store } from "@/routes/admin/products"
 import { Category } from "@/types/Admin/Category"
+import ReactQuill from 'react-quill-new';
+import 'react-quill-new/dist/quill.snow.css';
 
 
 interface categoryProps {
@@ -21,6 +23,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 ]
 
 export default function ProductCreate({ categories }: categoryProps) {
+    const [description, setDescription] = React.useState("")
     const handleCancel = () => window.history.back()
 
     return (
@@ -152,12 +155,16 @@ export default function ProductCreate({ categories }: categoryProps) {
                                         {/* Description */}
                                         <div className="space-y-2">
                                             <Label htmlFor="description">Description</Label>
-                                            <Textarea
-                                                id="description"
-                                                name="description"
-                                                placeholder="Optional description"
-                                                rows={4}
-                                            />
+                                            <div className="bg-white text-black rounded-md overflow-hidden min-h-[250px]">
+                                                <ReactQuill
+                                                    theme="snow"
+                                                    value={description}
+                                                    onChange={setDescription}
+                                                    placeholder="Optional description"
+                                                    className="h-[200px]"
+                                                />
+                                            </div>
+                                            <input type="hidden" name="description" value={description} />
                                             {errors.description && (
                                                 <p className="text-sm text-red-500">
                                                     {errors.description}
