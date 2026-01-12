@@ -21,7 +21,7 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
   // console.log(categories);
 
   return (
-    <div className="relative">
+    <div className="relative dark:bg-slate-950">
       <Header /> {/* Pass auth as a prop */}
       {children}
 

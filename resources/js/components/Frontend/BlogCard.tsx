@@ -8,10 +8,10 @@ interface BlogCardProps {
   id: number
   title: string
   subject: string
-  created_at: string
+  date: string
   excerpt: string
   image?: string
-  link?: string // optional link to blog detail page
+  link?: string
 }
 
 export function BlogCard({
@@ -25,14 +25,14 @@ export function BlogCard({
 }: BlogCardProps) {
   const htmlToText = (html?: string) => {
     if (!html) return "";
+    if (typeof document === "undefined") return html;
     const div = document.createElement("div");
     div.innerHTML = html;
     return div.textContent || div.innerText || "";
   };
 
   return (
-    <div className="group bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-      {/* Blog Image (optional) */}
+    <div className="group bg-white dark:bg-slate-900 rounded-2xl p-4 border border-gray-200 dark:border-slate-800 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
       {image && (
         <div className="mb-4 overflow-hidden rounded-xl">
           <img
@@ -43,34 +43,28 @@ export function BlogCard({
         </div>
       )}
 
-      {/* Category */}
-      <Badge className="mb-3 bg-emerald-100 text-emerald-700 font-medium">
+      <Badge className="mb-3 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 font-medium border-transparent">
         {subject}
       </Badge>
 
-      {/* Title */}
-      <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors duration-300">
+      <h3 className="text-xl font-semibold text-gray-900 dark:text-slate-100 mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors duration-300">
         {title}
       </h3>
 
-      {/* Date */}
-      <div className="flex items-center text-gray-500 text-xs mb-4">
+      <div className="flex items-center text-gray-500 dark:text-slate-400 text-xs mb-4">
         <CalendarDays className="w-3.5 h-3.5 mr-1" />
         <span>{date}</span>
       </div>
 
-
-      <p className="text-gray-600 leading-relaxed text-sm mb-6 line-clamp-3">
+      <p className="text-gray-600 dark:text-slate-400 leading-relaxed text-sm mb-6 line-clamp-3">
         {htmlToText(excerpt)}
       </p>
 
-
-      {/* Read More */}
       <Link href={link}>
         <Button
           variant="ghost"
           size="sm"
-          className="text-emerald-600 font-medium group/btn p-0"
+          className="text-emerald-600 dark:text-emerald-400 font-medium group/btn p-0 hover:bg-transparent hover:text-emerald-700 dark:hover:text-emerald-300"
         >
           Read More
           <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />

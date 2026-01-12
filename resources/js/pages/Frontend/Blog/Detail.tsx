@@ -16,7 +16,7 @@ import {
 } from "lucide-react"
 import AuthLayout from "../layouts/AuthLayout"
 import { BlogCard } from "@/components/Frontend/BlogCard"
-import { blogDetail } from "@/routes"
+import { blogDetail, blogIndex } from "@/routes"
 import { Blogs } from "@/types/frontend"
 
 
@@ -40,16 +40,17 @@ export default function BlogDetail({ blog, blogs = [] }: BlogDetailProps) {
         <AuthLayout>
             <Head title={blog.title} />
 
-            <div className="min-h-screen bg-gray-50">
+            <div className="min-h-screen bg-gray-50 dark:bg-slate-950 transition-colors duration-300">
                 {/* Breadcrumb */}
-                <div className="bg-white border-b">
+                <div className="bg-white dark:bg-slate-900 border-b dark:border-slate-800">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-                        <div className="flex items-center gap-2 text-sm text-gray-600">
-                            <Link href="/blogs" className="hover:text-blue-600 transition-colors">
+                        <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-slate-400">
+                            <Link href={blogIndex()} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                                 Blog
                             </Link>
                             <ChevronRight className="h-4 w-4" />
-                            <span className="text-gray-900 line-clamp-1">{blog.title}</span>
+
+                            <span className="text-gray-900 dark:text-white line-clamp-1">{blog.title}</span>
                         </div>
                     </div>
                 </div>
@@ -57,36 +58,36 @@ export default function BlogDetail({ blog, blogs = [] }: BlogDetailProps) {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
                     {/* Back Button */}
                     <Link href="/blogs">
-                        <Button variant="ghost" className="mb-6 -ml-1 bg-gray-200">
+                        <Button variant="ghost" className="mb-6 -ml-1 bg-gray-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700 transition-colors">
                             <ArrowLeft className="h-4 w-4 mr-1" />
                             Back to Articles
                         </Button>
                     </Link>
 
                     {/* Main Content */}
-                    <article className="bg-white rounded-lg shadow-sm overflow-hidden">
+                    <article className="bg-white dark:bg-slate-900 rounded-lg shadow-sm dark:shadow-none overflow-hidden border border-transparent dark:border-slate-800">
                         {/* Header */}
-                        <div className="p-8 sm:p-12 border-b">
+                        <div className="p-8 sm:p-12 border-b dark:border-slate-800">
                             {/* Category Badge */}
-                            <Badge className="mb-4 bg-blue-600">{blog.subject}</Badge>
+                            <Badge className="mb-4 bg-emerald-600 dark:bg-emerald-500">{blog.subject}</Badge>
 
                             {/* Title */}
-                            <h1 className="text-2xl sm:text-2xl lg:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+                            <h1 className="text-2xl sm:text-2xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
                                 {blog.title}
                             </h1>
 
                             {/* Meta Information */}
-                            <div className="flex flex-wrap items-center gap-6 text-sm text-gray-600">
+                            <div className="flex flex-wrap items-center gap-6 text-sm text-gray-600 dark:text-slate-400">
                                 <div className="flex items-center gap-2">
-                                    <User className="h-4 w-4" />
+                                    <User className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                                     <span>{blog.user?.name || "John Doe"}</span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <Calendar className="h-4 w-4" />
+                                    <Calendar className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                                     <span>{new Date(blog.created_at).toLocaleDateString()}</span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <Clock className="h-4 w-4" />
+                                    <Clock className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                                     <span>{getReadTime(blog.description)}</span>
                                 </div>
                             </div>
@@ -109,25 +110,26 @@ export default function BlogDetail({ blog, blogs = [] }: BlogDetailProps) {
 
                         {/* Article Content */}
                         <div className="p-8 sm:p-12">
-                            <div className="prose prose-lg max-w-none">
+                            <div className="prose prose-lg dark:prose-invert max-w-none">
                                 {blog.description && (
-                                    <p
-                                        className="text-gray-600 leading-relaxed"
+                                    <div
+                                        className="text-gray-600 dark:text-slate-300 leading-relaxed"
                                         dangerouslySetInnerHTML={{ __html: blog.description ?? "" }}
                                     />
                                 )}
                             </div>
 
                             {/* Share Section */}
-                            <div className="mt-12 pt-8 border-t">
+                            <div className="mt-12 pt-8 border-t dark:border-slate-800">
                                 <div className="flex items-center justify-between">
-                                    <h3 className="text-lg font-semibold text-gray-900">
+                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                                         Share this article
                                     </h3>
                                     <div className="flex items-center gap-3">
                                         <Button
                                             variant="outline"
                                             size="sm"
+                                            className="dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
                                             onClick={() => window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(blog.title)}`, '_blank')}
                                         >
                                             <Twitter className="h-4 w-4" />
@@ -135,6 +137,7 @@ export default function BlogDetail({ blog, blogs = [] }: BlogDetailProps) {
                                         <Button
                                             variant="outline"
                                             size="sm"
+                                            className="dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
                                             onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`, '_blank')}
                                         >
                                             <Facebook className="h-4 w-4" />
@@ -142,6 +145,7 @@ export default function BlogDetail({ blog, blogs = [] }: BlogDetailProps) {
                                         <Button
                                             variant="outline"
                                             size="sm"
+                                            className="dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
                                             onClick={() => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`, '_blank')}
                                         >
                                             <Linkedin className="h-4 w-4" />
@@ -155,7 +159,7 @@ export default function BlogDetail({ blog, blogs = [] }: BlogDetailProps) {
                     {/* Related Articles */}
                     {blogs.length > 0 && (
                         <div className="mt-16">
-                            <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
                                 Related Articles
                             </h2>
                             <div className="grid sm:grid-cols-3 lg:grid-cols-4 gap-2">

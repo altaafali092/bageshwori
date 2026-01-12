@@ -1,11 +1,9 @@
 import { BlogCard } from "@/components/Frontend/BlogCard";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { blogDetail, blogIndex } from "@/routes";
 import { Blogs } from "@/types/frontend";
 import { Link } from "@inertiajs/react";
-import { CalendarDays, ArrowRight } from "lucide-react";
 import React from "react";
 
 interface BlogIndexProps {
@@ -17,13 +15,13 @@ const Blog = ({ blogs }: BlogIndexProps) => {
     <div className="max-w-7xl mx-auto px-4 py-12">
       {/* Header */}
       <div className="flex justify-between items-center mb-2">
-        <h2 className="text-3xl font-bold text-gray-900 pb-2">
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-white pb-2">
           Latest News & Blogs
         </h2>
         <Link href={blogIndex()}>
           <Button
             variant="outline"
-            className="rounded-full px-8 border-gray-300 text-gray-700 hover:bg-gray-50"
+            className="rounded-full px-8 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
           >
             See All
           </Button>

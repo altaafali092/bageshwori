@@ -18,21 +18,21 @@ export default function EditProfile() {
         <AuthLayout>
             <Head title="Edit Profile" />
 
-            <div className="bg-gray-50 min-h-screen py-2 md:py-10">
+            <div className="bg-gray-50 dark:bg-slate-950 min-h-screen py-2 md:py-10 transition-colors duration-300">
                 <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
 
                     {/* Back Button */}
                     <div className="mb-2">
-                        <Button variant="ghost" className="gap-2 text-gray-600 hover:text-emerald-600 pl-0" onClick={() => window.history.back()}>
+                        <Button variant="ghost" className="gap-2 text-gray-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 pl-0" onClick={() => window.history.back()}>
                             <ArrowLeft size={20} />
                             Back to Profile
                         </Button>
                     </div>
 
-                    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                        <div className="p-6 md:p-8 border-b border-gray-100">
-                            <h1 className="text-2xl font-bold text-gray-900">Edit Profile</h1>
-                            <p className="text-gray-500 mt-1">Update your personal information</p>
+                    <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-800 overflow-hidden">
+                        <div className="p-6 md:p-8 border-b border-gray-100 dark:border-slate-800">
+                            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Edit Profile</h1>
+                            <p className="text-gray-500 dark:text-slate-400 mt-1">Update your personal information</p>
                         </div>
 
                         <Form action={updateProfile().url}
@@ -48,11 +48,11 @@ export default function EditProfile() {
 
                                     <div className="flex flex-col items-center justify-center gap-4">
                                         <div className="relative group">
-                                            <div className="w-32 h-32 rounded-full border-4 border-gray-100 bg-gray-50 overflow-hidden relative shadow-inner">
+                                            <div className="w-32 h-32 rounded-full border-4 border-gray-100 dark:border-slate-800 bg-gray-50 dark:bg-slate-800 overflow-hidden relative shadow-inner">
                                                 {avatarPreview ? (
                                                     <img src={avatarPreview} alt="Avatar Preview" className="w-full h-full object-cover" />
                                                 ) : (
-                                                    <div className="w-full h-full flex items-center justify-center text-4xl font-bold text-emerald-600 bg-emerald-50">
+                                                    <div className="w-full h-full flex items-center justify-center text-4xl font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20">
                                                         {user.name.charAt(0).toUpperCase()}
                                                     </div>
                                                 )}
@@ -69,20 +69,20 @@ export default function EditProfile() {
                                                 name='avatar'
                                             />
                                         </div>
-                                        <p className="text-sm text-gray-500">Click to upload new photo</p>
+                                        <p className="text-sm text-gray-500 dark:text-slate-400">Click to upload new photo</p>
                                         <InputError message={errors.avatar} className="mt-2" />
                                     </div>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         {/* Name */}
                                         <div className="space-y-2">
-                                            <label className="text-sm font-semibold text-gray-700">Full Name</label>
+                                            <label className="text-sm font-semibold text-gray-700 dark:text-slate-300">Full Name</label>
                                             <div className="relative">
-                                                <User className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                                                <User className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-slate-500" size={18} />
                                                 <input
                                                     type="text"
                                                     name='name'
                                                     defaultValue={user.name}
-                                                    className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all outline-none"
+                                                    className="w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all outline-none dark:text-white"
                                                     placeholder="Your Name"
                                                 />
                                             </div>
@@ -91,29 +91,29 @@ export default function EditProfile() {
 
                                         {/* Email (Read Only) */}
                                         <div className="space-y-2">
-                                            <label className="text-sm font-semibold text-gray-700">Email Address</label>
+                                            <label className="text-sm font-semibold text-gray-700 dark:text-slate-300">Email Address</label>
                                             <div className="relative">
-                                                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                                                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-slate-500" size={18} />
                                                 <input
                                                     type="email"
                                                     defaultValue={user.email}
                                                     readOnly
-                                                    className="w-full pl-10 pr-4 py-2.5 bg-gray-100 border border-gray-200 rounded-lg text-gray-500 cursor-not-allowed outline-none"
+                                                    className="w-full pl-10 pr-4 py-2.5 bg-gray-100 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-lg text-gray-500 dark:text-slate-500 cursor-not-allowed outline-none"
                                                 />
                                             </div>
-                                            <p className="text-xs text-gray-400">Email cannot be changed</p>
+                                            <p className="text-xs text-gray-400 dark:text-slate-500">Email cannot be changed</p>
                                         </div>
 
                                         {/* Phone */}
                                         <div className="space-y-2">
-                                            <label className="text-sm font-semibold text-gray-700">Phone Number</label>
+                                            <label className="text-sm font-semibold text-gray-700 dark:text-slate-300">Phone Number</label>
                                             <div className="relative">
-                                                <Phone className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                                                <Phone className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-slate-500" size={18} />
                                                 <input
                                                     type="text"
                                                     name='phone'
                                                     defaultValue={user.phone || ""}
-                                                    className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all outline-none"
+                                                    className="w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all outline-none dark:text-white"
                                                     placeholder="Your Phone Number"
                                                 />
                                             </div>
@@ -122,14 +122,14 @@ export default function EditProfile() {
 
                                         {/* Address */}
                                         <div className="space-y-2">
-                                            <label className="text-sm font-semibold text-gray-700">Address</label>
+                                            <label className="text-sm font-semibold text-gray-700 dark:text-slate-300">Address</label>
                                             <div className="relative">
-                                                <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                                                <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-slate-500" size={18} />
                                                 <input
                                                     type="text"
                                                     name='address'
                                                     defaultValue={user.address || ""}
-                                                    className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all outline-none"
+                                                    className="w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all outline-none dark:text-white"
                                                     placeholder="Your Address"
                                                 />
                                             </div>
@@ -137,12 +137,13 @@ export default function EditProfile() {
                                         </div>
                                     </div>
 
-                                    <div className="pt-6 border-t border-gray-100 flex items-center justify-end gap-4">
+                                    <div className="pt-6 border-t border-gray-100 dark:border-slate-800 flex items-center justify-end gap-4">
                                         <Button
                                             type="button"
                                             variant="outline"
                                             onClick={() => window.history.back()}
                                             disabled={processing}
+                                            className="dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
                                         >
                                             Cancel
                                         </Button>

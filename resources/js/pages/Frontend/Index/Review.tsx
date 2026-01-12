@@ -1,6 +1,6 @@
-
 import { Separator } from "@/components/ui/separator"
-import { Star } from "lucide-react"// 
+import { Star } from "lucide-react"
+
 interface Review {
     id: number
     name: string
@@ -9,7 +9,6 @@ interface Review {
     comment: string
 }
 
-// Professional testimonial data
 const reviews: Review[] = [
     {
         id: 1,
@@ -56,30 +55,24 @@ const reviews: Review[] = [
 ]
 
 export default function CustomerReviews() {
-    // Duplicate reviews for seamless loop
     const duplicatedReviews = [...reviews, ...reviews]
 
     return (
-        <section className="py-8 px-4 bg-gray-50 overflow-hidden">
+        <section className="py-8 px-4 bg-gray-50 dark:bg-slate-950 overflow-hidden transition-colors duration-300">
             <div className="container mx-auto max-w-7xl">
-                {/* Section Header */}
                 <div className="flex justify-between items-center mb-2">
                     <div>
-                        <h2 className="text-2xl font-semibold text-gray-900 pb-2  inline-block">
-                            Cutomer Reviews
+                        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white pb-2 inline-block">
+                            Customer Reviews
                         </h2>
-
                     </div>
                 </div>
-                  <Separator className='bg-emerald-500 mb-4 mt-5' />
+                <Separator className='bg-emerald-500 mb-4 mt-5' />
 
-                {/* Marquee Container */}
                 <div className="relative overflow-hidden">
-                    {/* Fade edges */}
-                    <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
-                    <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none"></div>
+                    <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-gray-50 dark:from-zinc-950 to-transparent z-10 pointer-events-none"></div>
+                    <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-gray-50 dark:from-zinc-950 to-transparent z-10 pointer-events-none"></div>
 
-                    {/* Scrolling reviews */}
                     <div
                         className="flex gap-6 animate-marquee"
                         style={{
@@ -90,7 +83,7 @@ export default function CustomerReviews() {
                         {duplicatedReviews.map((review, index) => (
                             <div
                                 key={`${review.id}-${index}`}
-                                className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 transition-all hover:shadow-md hover:-translate-y-1 w-80 flex-shrink-0 hover-pause-trigger"
+                                className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-zinc-800 transition-all hover:shadow-md hover:-translate-y-1 w-80 flex-shrink-0"
                                 onMouseEnter={(e) => {
                                     const marquee = e.currentTarget.closest('.animate-marquee') as HTMLElement;
                                     if (marquee) marquee.style.animationPlayState = 'paused';
@@ -100,12 +93,10 @@ export default function CustomerReviews() {
                                     if (marquee) marquee.style.animationPlayState = 'running';
                                 }}
                             >
-                                {/* Comment */}
-                                <p className="text-gray-700 text-base leading-relaxed mb-6 font-normal">
+                                <p className="text-gray-700 dark:text-zinc-300 text-base leading-relaxed mb-6 font-normal">
                                     {review.comment}
                                 </p>
 
-                                {/* Author info */}
                                 <div className="flex items-center">
                                     <div className="w-10 h-10 rounded-full overflow-hidden mr-3">
                                         <img
@@ -115,7 +106,7 @@ export default function CustomerReviews() {
                                         />
                                     </div>
                                     <div className="flex-1">
-                                        <h4 className="text-gray-900 font-medium text-base mb-1">
+                                        <h4 className="text-gray-900 dark:text-white font-medium text-base mb-1">
                                             {review.name}
                                         </h4>
                                         <div className="flex">
@@ -123,8 +114,8 @@ export default function CustomerReviews() {
                                                 <Star
                                                     key={i}
                                                     className={`w-4 h-4 ${i < review.rating
-                                                            ? "text-yellow-400 fill-yellow-400"
-                                                            : "text-gray-300"
+                                                        ? "text-yellow-400 fill-yellow-400"
+                                                        : "text-gray-300 dark:text-zinc-700"
                                                         }`}
                                                 />
                                             ))}
@@ -136,8 +127,6 @@ export default function CustomerReviews() {
                     </div>
                 </div>
             </div>
-
-        
         </section>
     )
 }

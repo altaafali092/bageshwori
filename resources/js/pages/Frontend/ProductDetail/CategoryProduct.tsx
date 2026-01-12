@@ -38,18 +38,18 @@ export default function ProductsIndex({ products, category }: ProductProps) {
         <AuthLayout>
             <Head title={`${categoryName} Products`} />
 
-            <div className="min-h-screen bg-gray-50">
+            <div className="min-h-screen bg-gray-50 dark:bg-slate-950 transition-colors duration-300">
                 {/* Header */}
-                <div className="bg-white border-b">
+                <div className="bg-white dark:bg-slate-900 border-b dark:border-slate-800">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
+                        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
                             {categoryName}
                         </h1>
-                        <p className="text-gray-600">
+                        <p className="text-gray-600 dark:text-slate-400">
                             {category ? (
                                 <>
                                     Discover our collection of amazing products in{" "}
-                                    <span className="font-semibold text-emerald-600">
+                                    <span className="font-semibold text-emerald-600 dark:text-emerald-400">
                                         {categoryName}
                                     </span>{" "}
                                     category.
@@ -63,7 +63,7 @@ export default function ProductsIndex({ products, category }: ProductProps) {
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                     {/* Filters Bar */}
-                    <div className="bg-white rounded-lg shadow-sm p-4 mb-8">
+                    <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm p-4 mb-8 border border-transparent dark:border-slate-800">
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                             {/* Search */}
                             <div className="md:col-span-2">
@@ -74,17 +74,17 @@ export default function ProductsIndex({ products, category }: ProductProps) {
                                         placeholder={`Search in ${categoryName}...`}
                                         value={searchTerm}
                                         onChange={(e) => setSearchTerm(e.target.value)}
-                                        className="pl-10"
+                                        className="pl-10 dark:bg-slate-800 dark:border-slate-700 dark:text-white"
                                     />
                                 </div>
                             </div>
 
                             {/* Sort By */}
                             <Select value={sortBy} onValueChange={setSortBy}>
-                                <SelectTrigger>
+                                <SelectTrigger className="dark:bg-slate-800 dark:border-slate-700 dark:text-white">
                                     <SelectValue placeholder="Sort by" />
                                 </SelectTrigger>
-                                <SelectContent>
+                                <SelectContent className="dark:bg-slate-800 dark:border-slate-700 dark:text-white">
                                     <SelectItem value="newest">Newest</SelectItem>
                                     <SelectItem value="price-low">Price: Low to High</SelectItem>
                                     <SelectItem value="price-high">Price: High to Low</SelectItem>
@@ -92,7 +92,7 @@ export default function ProductsIndex({ products, category }: ProductProps) {
                             </Select>
 
                             {/* Filter Button */}
-                            <Button variant="outline" className="w-full">
+                            <Button variant="outline" className="w-full dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800">
                                 <SlidersHorizontal className="h-4 w-4 mr-2" />
                                 Filters
                             </Button>
@@ -101,14 +101,14 @@ export default function ProductsIndex({ products, category }: ProductProps) {
 
                     {/* Results Count */}
                     <div className="mb-6">
-                        <p className="text-gray-600">
+                        <p className="text-gray-600 dark:text-slate-400">
                             Showing{" "}
-                            <span className="font-semibold">{filteredProducts.length}</span>{" "}
+                            <span className="font-semibold dark:text-white">{filteredProducts.length}</span>{" "}
                             products
                             {category && (
                                 <>
                                     {" "}in{" "}
-                                    <span className="font-semibold text-emerald-600">
+                                    <span className="font-semibold text-emerald-600 dark:text-emerald-400">
                                         {categoryName}
                                     </span>
                                 </>
@@ -120,15 +120,16 @@ export default function ProductsIndex({ products, category }: ProductProps) {
                     {filteredProducts.length === 0 ? (
                         <div className="text-center py-16">
                             <div className="text-6xl mb-4">🔍</div>
-                            <h2 className="text-2xl font-semibold mb-2 text-gray-900">
+                            <h2 className="text-2xl font-semibold mb-2 text-gray-900 dark:text-white">
                                 {category ? `No products found in ${categoryName}` : "No products found"}
                             </h2>
-                            <p className="text-gray-600 mb-4">
+                            <p className="text-gray-600 dark:text-slate-400 mb-4">
                                 Try adjusting your search or filters
                             </p>
                             <Button
                                 variant="outline"
                                 onClick={() => setSearchTerm("")}
+                                className="dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
                             >
                                 Clear Filters
                             </Button>

@@ -7,9 +7,9 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-import { Button } from '@/components/ui/button'; // Assuming Button component path
+import { Button } from '@/components/ui/button';
 import { GlobalCategories, MenuItem } from '@/types/Frontend';
-import { ChevronDown } from 'lucide-react'; // Assuming lucide-react is available for icons
+import { ChevronDown } from 'lucide-react';
 
 interface CategoryProps {
     globalCategories: GlobalCategories[] | null;
@@ -21,10 +21,10 @@ const Header = () => {
     const { menuSettings } = usePage<{ menuSettings: MenuItem[] }>().props;
 
     return (
-        <div className="bg-gray-50 flex flex-col">
+        <div className="bg-gray-50 flex flex-col dark:bg-slate-950">
             <Navbar />
 
-            <div className="bg-white border-b sticky top-0 z-40 shadow-sm">
+            <div className="bg-white dark:bg-slate-900 border-b dark:border-slate-800 sticky top-0 z-40 shadow-sm">
                 <div className="max-w-7xl mx-auto px-4 flex items-center gap-6 py-3 overflow-x-auto">
 
                     {/* 🔽 Category Selector */}
@@ -32,7 +32,7 @@ const Header = () => {
                         <DropdownMenuTrigger asChild>
                             <Button
                                 variant="default"
-                                className="bg-emerald-600 hover:bg-emerald-700 shadow-sm whitespace-nowrap"
+                                className="bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 shadow-sm whitespace-nowrap text-white"
                             >
                                 Select Category
                             </Button>
@@ -61,7 +61,7 @@ const Header = () => {
                                 <DropdownMenuTrigger asChild>
                                     <Button
                                         variant="ghost"
-                                        className="whitespace-nowrap flex items-center gap-1 text-gray-700 hover:text-emerald-600"
+                                        className="whitespace-nowrap flex items-center gap-1 text-gray-700 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400"
                                     >
                                         {menu.title}
                                         <ChevronDown className="ml-1 h-3 w-3" />
@@ -89,7 +89,7 @@ const Header = () => {
                                 key={menu.id}
                                 variant="ghost"
                                 asChild
-                                className="whitespace-nowrap text-gray-700 hover:text-emerald-600"
+                                className="whitespace-nowrap text-gray-700 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400"
                             >
                                 <Link href={menu.url}>
                                     {menu.title}
@@ -97,8 +97,6 @@ const Header = () => {
                             </Button>
                         )
                     )}
-
-
                 </div>
             </div>
         </div>

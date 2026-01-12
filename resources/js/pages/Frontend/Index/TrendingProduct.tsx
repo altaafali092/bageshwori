@@ -23,10 +23,10 @@ export default function TrendingProduct({ trendingProducts, topSells }: Trending
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Top Selling Sidebar */}
           <div className="lg:col-span-3">
-            <Card>
+            <Card className="dark:bg-slate-950 dark:border-slate-800">
               <div className="px-6">
                 <div className='mb-4'>
-                  <h2 className="text-lg font-semibold text-gray-900 pb-2  inline-block">
+                  <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 pb-2  inline-block">
                     Top Selling
                   </h2>
                   <Separator className='bg-emerald-500' />
@@ -34,7 +34,10 @@ export default function TrendingProduct({ trendingProducts, topSells }: Trending
 
                 <div className="space-y-3">
                   {topSells.map((product) => (
-                    <div key={product.id} className=" hover:shadow-md cursor-pointer">
+                    <div
+                      key={product.id}
+                      className="hover:shadow-md cursor-pointer dark:bg-gray-900 rounded-md transition-all duration-300 hover:-translate-y-0.5"
+                    >
                       <div className="flex gap-3">
                         <div className={`w-20 h-20 rounded-lg flex items-center justify-center flex-shrink-0 p-2 overflow-hidden`}>
                           <img src={
@@ -44,24 +47,18 @@ export default function TrendingProduct({ trendingProducts, topSells }: Trending
                             alt={product.name} className="w-full h-full object-cover rounded" />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h3 className="text-sm font-medium text-gray-900 mb-1.5">
+                          <h3 className="text-sm font-medium mt-2 text-gray-900 dark:text-gray-100 mb-1.5">
                             {product.name}
                           </h3>
                           <div className="flex items-center gap-2 mb-1.5">
-                            {/* <StarRating rating={product.rating} /> */}
                             <div>
                               {product.in_stock && (
-                                <Badge variant="secondary" className="text-xs text-emerald-600 bg-emerald-50 hover:bg-emerald-50">
+                                <Badge variant="secondary" className="text-xs text-emerald-600 bg-emerald-50 hover:bg-emerald-50 dark:bg-emerald-900/20 dark:text-emerald-400">
                                   In stock
                                 </Badge>
                               )}
                             </div>
-
-                            {/* <p className="text-sm font-semibold text-emerald-600">
-                              Rs. {product.price}
-                            </p> */}
                           </div>
-
                         </div>
                       </div>
                     </div>
@@ -84,16 +81,15 @@ export default function TrendingProduct({ trendingProducts, topSells }: Trending
           <div className="lg:col-span-9">
             <div className="flex justify-between items-center mb-2">
               <div>
-                <h2 className="text-2xl font-semibold text-gray-900 pb-2  inline-block">
+                <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 pb-2  inline-block">
                   Trending Products
                 </h2>
-
               </div>
 
               <Link href={allproduct()}>
                 <Button
                   variant="outline"
-                  className="rounded-full px-8 border-gray-300 text-gray-700 hover:bg-gray-50"
+                  className="rounded-full px-8 border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-800"
                 >
                   See All
                 </Button>
@@ -102,7 +98,6 @@ export default function TrendingProduct({ trendingProducts, topSells }: Trending
             <Separator className='bg-emerald-500 mb-4 mt-5' />
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
               {trendingProducts.map((product) => (
                 <ProductCard
                   key={product.id}

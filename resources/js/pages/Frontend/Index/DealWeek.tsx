@@ -12,23 +12,21 @@ interface DealWeeksProps {
     dealdays: Product[];
     dealWeeks: Product[];
 }
+
 export default function DealWeek({ dealdays, dealWeeks }: DealWeeksProps) {
-
-
     return (
         <div className="min-h-screen max-w-7xl mx-auto px-4 py-8">
             <div className="flex justify-between items-center mb-2">
                 <div>
-                    <h2 className="text-2xl font-semibold text-gray-900 pb-2  inline-block">
-                        Deal Of The Weak
+                    <h2 className="text-2xl font-semibold text-gray-900 dark:text-white pb-2 inline-block">
+                        Deal Of The Week
                     </h2>
-
                 </div>
 
                 <Link href={allproduct()}>
                     <Button
                         variant="outline"
-                        className="rounded-full px-8 border-gray-300 text-gray-700 hover:bg-gray-50"
+                        className="rounded-full px-8 border-gray-300 dark:border-slate-700 text-gray-700 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-slate-800"
                     >
                         See All
                     </Button>
@@ -43,7 +41,7 @@ export default function DealWeek({ dealdays, dealWeeks }: DealWeeksProps) {
                         {dealdays.map((product) => (
                             <div
                                 key={product.id}
-                                className="border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 bg-white"
+                                className="border border-gray-200 dark:border-slate-800 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 bg-white dark:bg-slate-900"
                             >
                                 {/* Product Image */}
                                 <div className="relative w-full h-80 overflow-hidden py-4 px-4 ">
@@ -70,13 +68,12 @@ export default function DealWeek({ dealdays, dealWeeks }: DealWeeksProps) {
 
                                 {/* Product Content */}
                                 <div className="px-6 pb-6 mt-6">
-
-                                    <h3 className="text-lg font-semibold text-gray-900 mb-2 mt-2">
+                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 mt-2">
                                         {product.name}
                                     </h3>
 
                                     <p
-                                        className="text-gray-600 leading-relaxed mb-4"
+                                        className="text-gray-600 dark:text-slate-400 leading-relaxed mb-4"
                                         dangerouslySetInnerHTML={{
                                             __html: (product.description?.length ?? 0) > 100
                                                 ? product.description?.substring(0, 100) + "..."
@@ -84,15 +81,13 @@ export default function DealWeek({ dealdays, dealWeeks }: DealWeeksProps) {
                                         }}
                                     />
 
-                                    <hr className="border-gray-200 mb-4" />
+                                    <hr className="border-gray-200 dark:border-slate-800 mb-4" />
 
                                     <div className="flex items-center justify-between">
                                         <div className="text-left mt-4">
-
-                                            <span className="text-emerald-600 line-through  font-bold text-lg">
+                                            <span className="text-emerald-600 line-through font-bold text-lg">
                                                 Rs. {product.price}
                                             </span>
-
                                         </div>
 
                                         <Button className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-full text-sm px-5">
@@ -102,7 +97,6 @@ export default function DealWeek({ dealdays, dealWeeks }: DealWeeksProps) {
                                 </div>
                             </div>
                         ))}
-
                     </div>
 
                     {/* Trending Products Main Section */}
@@ -111,10 +105,10 @@ export default function DealWeek({ dealdays, dealWeeks }: DealWeeksProps) {
                             {dealWeeks.map((product) => (
                                 <div
                                     key={product.id}
-                                    className="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 p-6 flex flex-col"
+                                    className="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 p-6 flex flex-col"
                                 >
                                     {/* Product Image */}
-                                    <div className="w-50 h-40 flex mb-3  overflow-hidden">
+                                    <div className="w-50 h-40 flex mb-3 overflow-hidden">
                                         <img
                                             src={
                                                 Array.isArray(product.image)
@@ -127,19 +121,15 @@ export default function DealWeek({ dealdays, dealWeeks }: DealWeeksProps) {
                                     </div>
 
                                     {/* Price */}
-                                    <p className="text-gray-400 line-through text-sm mb-1">
+                                    <p className="text-gray-400 dark:text-slate-500 line-through text-sm mb-1">
                                         Rs. {product.price}
                                     </p>
 
                                     {/* Name */}
-                                    <h3 className="text-gray-900 font-semibold text-base mb-2">
+                                    <h3 className="text-gray-900 dark:text-white font-semibold text-base mb-2">
                                         {product.name}
                                     </h3>
-
-                                    {/* Rating */}
-                                    {/* <StarRating rating={product.rating} /> */}
                                 </div>
-
                             ))}
                         </div>
                     </div>
