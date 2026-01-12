@@ -124,7 +124,7 @@ export default function BlogShow({ blog }: BlogShowProps) {
                                 {blog.image && blog.image.length > 0 ? (
                                     <Carousel className="w-full">
                                         <CarouselContent>
-                                            {blog.image.map((img, index) => (
+                                            {blog.image.map((img: string, index: number) => (
                                                 <CarouselItem key={index}>
                                                     <div className="relative">
                                                         <img

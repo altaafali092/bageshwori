@@ -17,7 +17,8 @@ import {
 import AuthLayout from "../layouts/AuthLayout"
 import { BlogCard } from "@/components/Frontend/BlogCard"
 import { blogDetail, blogIndex } from "@/routes"
-import { Blogs } from "@/types/frontend"
+import { Blogs } from "@/types/Frontend"
+
 
 
 interface BlogDetailProps {
@@ -96,7 +97,7 @@ export default function BlogDetail({ blog, blogs = [] }: BlogDetailProps) {
                         {/* Featured Image/Carousel */}
                         {blog.image && blog.image.length > 0 && (
                             <div className="relative m-2 flex gap-2 overflow-x-auto scrollbar-hide     [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-                                {blog.image.map((img, idx) => (
+                                {blog.image.map((img: string, idx: number) => (
                                     <img
                                         key={idx}
                                         src={img}

@@ -49,7 +49,7 @@ export type Blogs = {
     subject: string,
     slug: string,
     description: string,
-    image: string,
+    image: string[],
     user_id: number
     user: {
         id: number,

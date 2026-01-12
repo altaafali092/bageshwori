@@ -117,7 +117,7 @@ export default function BlogEdit({ blog }: BlogEditProps) {
                                                 <Label htmlFor="image">Image</Label>
                                                 {blog.image && blog.image.length > 0 ? (
                                                     <div className="flex flex-wrap gap-2">
-                                                        {blog.image.map((img, index) => (
+                                                        {blog.image.map((img: string, index: number) => (
                                                             <div key={index} className="mb-2">
                                                                 <img
                                                                     src={img}
