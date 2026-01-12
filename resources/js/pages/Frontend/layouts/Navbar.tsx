@@ -1,4 +1,4 @@
-import { login, logout, userProfile } from '@/routes'
+import { home, login, logout, userProfile } from '@/routes'
 import { SharedData } from '@/types'
 import { Link, useForm, usePage } from '@inertiajs/react'
 import { Facebook, Instagram, MapPin, Phone, SearchIcon, LogOut, User } from 'lucide-react'
@@ -59,9 +59,11 @@ const Navbar = () => {
             {/* MAIN HEADER */}
             <div className="bg-white dark:bg-gray-900 shadow-sm border-b dark:border-gray-800 transition-colors">
                 <div className="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <h1 className="text-3xl font-bold text-gray-800 dark:text-white">
-                        {officeSettings?.office_name || ""}
-                    </h1>
+                    <Link href={home()}>
+                        <h1 className="text-3xl font-bold text-gray-800 dark:text-white">
+                            {officeSettings?.office_name || ""}
+                        </h1>
+                    </Link>
 
                     <div className="flex items-center w-full gap-3 md:w-96">
                         <div className="flex items-center flex-1">
