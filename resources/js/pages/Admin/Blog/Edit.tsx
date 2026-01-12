@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { ArrowLeft } from "lucide-react"
 import { type BreadcrumbItem } from "@/types"
 import { index, store, update } from "@/routes/admin/blogs"
-import { Blogs } from "@/types/Admin/Blogs"
+import { Blog as Blogs } from "@/types/Admin/BLog"
 import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
 

@@ -133,13 +133,13 @@ export default function BlogShow({ blog }: BlogShowProps) {
                                                             className="w-full h-[450px] rounded-lg object-cover"
                                                         />
                                                         <span className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
-                                                            {index + 1} / {blog.image.length}
+                                                            {index + 1} / {blog.image?.length}
                                                         </span>
                                                     </div>
                                                 </CarouselItem>
                                             ))}
                                         </CarouselContent>
-                                        {blog.image.length > 1 && (
+                                        {(blog.image?.length ?? 0) > 1 && (
                                             <>
                                                 <CarouselPrevious className="bg-white/70 hover:bg-white absolute left-4 top-1/2 -translate-y-1/2 rounded-full" />
                                                 <CarouselNext className="bg-white/70 hover:bg-white absolute right-4 top-1/2 -translate-y-1/2 rounded-full" />
