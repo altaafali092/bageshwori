@@ -2,8 +2,9 @@ import React from "react"
 import { Card } from "@/components/ui/card"
 import { Dog, PawPrintIcon, Home, GraduationCap, Syringe, Bone, ShirtIcon, Check } from "lucide-react"
 import AuthLayout from "../layouts/AuthLayout"
-import { Link } from "@inertiajs/react"
+import { Head, Link } from "@inertiajs/react"
 import { aboutUs } from "@/routes"
+import Header from "../layouts/Header"
 
 export default function OurServicesPage() {
     const coreServices = [
@@ -30,6 +31,7 @@ export default function OurServicesPage() {
 
     return (
         <AuthLayout>
+            <Head title="Our Services" />
             <div className="min-h-screen dark:bg-slate-950 transition-colors duration-300">
                 {/* Hero Section */}
                 <section className="bg-emerald-50 dark:bg-slate-900/50 py-16 text-center transition-colors">
